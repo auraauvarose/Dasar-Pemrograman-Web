@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form</title>
+</head>
+<body>
+    <!-- Input Element -->
+    <h1>Input Element</h1>
+    <form action="/submit" method="post">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" name="name"><br><br>        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Non-Single Line Input Element -->
+    <h1>Non-Single Line Input Element</h1>
+    <input
+        type="text"
+        value="Belajar
+        Dasar
+        Pemrograman
+        Web"
+    />
+
+    <!-- Label Element -->
+    <label for="non-single-line-input">Non-Single Line Input:</label>
+    <input type="text" id="non-single-line-input"   
+        value="Belajar
+        Dasar
+        Pemrograman
+        Web"
+    />
+
+    <div>
+        <label for="name">Name</label>
+        <label for="email">Email</label>
+        <br>
+        <input type="text" id="name" />
+        <input type="email" id="email" />
+    </div>
+
+    <div>
+        <label for="password">Password</label>
+        <br>
+        <input type="password" id="password" />
+    </div>
+</body>
+</html>
