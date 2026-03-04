@@ -1,28 +1,51 @@
-# 🌐 Belajar Dasar Pemrograman Web
+**# 🌐 Belajar Dasar Pemrograman Web (Dicoding)
 
-Repositori ini adalah dokumentasi perjalanan belajar saya dalam memahami fundamental pengembangan web, mulai dari struktur dasar hingga teknik tata letak modern.
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Responsive](https://img.shields.io/badge/Responsive-Design-success?style=for-the-badge)
 
-## 📂 Struktur Materi
-Berdasarkan progres yang telah diselesaikan:
+Repository ini berisi kumpulan kode latihan dan proyek akhir (Submission) dari kelas **Belajar Dasar Pemrograman Web** di [Dicoding Indonesia](https://www.dicoding.com/).
 
-1. **Pendahuluan**: Pemahaman dasar cara kerja web dan browser.
-2. **Pengantar HTML**: Mempelajari elemen dasar, atribut, dan struktur dokumen.
-3. **Pengantar Pendalaman HTML**: Penggunaan list, tabel, form, dan elemen multimedia.
-4. **Pengenalan CSS**: Dasar penataan gaya, selector, dan box model.
-5. **Pendalaman CSS**: Eksplorasi selector tingkat lanjut dan cascading.
-6. **Responsif Dengan Flexbox**: Teknik tata letak satu dimensi untuk membuat tampilan web yang adaptif di berbagai ukuran layar.
-
-## 🛠️ Teknologi yang Digunakan
-* **HTML5**: Kerangka struktural web.
-* **CSS3**: Penataan visual dan layout.
-* **VS Code**: Editor utama dengan ekstensi Live Server.
-* **Brave Browser**: Alat utama untuk testing dan debugging.
-
-## 🚀 Cara Menjalankan Proyek
-1. Clone repositori ini.
-2. Buka folder proyek menggunakan VS Code.
-3. Klik kanan pada file `index.html`.
-4. Pilih **"Open with Live Server"** untuk melihat hasil secara real-time.
+Tujuan utama dari pembelajaran ini adalah memahami dasar-dasar pembuatan website statis menggunakan HTML semantik dan CSS modern, serta menerapkan teknik *Responsive Design* agar website terlihat rapi di berbagai ukuran layar.
 
 ---
-*Dibuat dengan dedikasi untuk menjadi pengembang web profesional.*
+
+## 📚 Struktur Pembelajaran
+
+Berdasarkan modul yang telah dipelajari, berikut adalah materi yang mencakup repository ini:
+
+- **01. Pendahuluan** - Pengenalan cara kerja website dan internet.
+- **02. Pengantar HTML** - Struktur dasar HTML, Paragraf, Heading, dan List.
+- **04. Pengantar Pendalaman HTML** - Tabel, Form, dan Semantic HTML (`header`, `footer`, `main`, `article`, `aside`).
+- **05. Pengenalan CSS** - Selektor, pewarnaan, dan properti dasar teks.
+- **06. Pendalaman CSS** - Box Model, Positioning, dan Styling lanjutan.
+- **07. Responsif Dengan Flexbox** - Teknik layouting modern menggunakan Flexbox dan Media Query untuk tampilan mobile-friendly.
+
+---
+
+## 🚀 Proyek Akhir (Submission)
+
+Sebagai syarat kelulusan kelas, terdapat proyek akhir berupa pembuatan **Website Profil Pribadi / Halaman Web Sederhana**.
+
+### Fitur Utama Website:
+✅ **Semantic HTML5**: Menggunakan tag yang tepat untuk struktur konten (SEO friendly).
+✅ **CSS3 Styling**: Desain visual yang menarik tanpa menggunakan Framework (Bootstrap/Tailwind) - *Pure CSS*.
+✅ **Flexbox Layout**: Tata letak elemen yang fleksibel dan rapi.
+✅ **Responsive Design**: Tampilan menyesuaikan ukuran layar (Desktop, Tablet, Mobile) menggunakan `@media query`.
+✅ **Profil Diri**: Menampilkan foto dan biodata singkat pada elemen `aside`.
+
+---
+
+## 🛠️ Teknologi yang Digunakan
+
+- **Bahasa**: HTML5, CSS3.
+- **Tools**: Visual Studio Code, Chrome Developer Tools.
+- **Teknik**: Flexbox, Media Queries, Box Model.
+
+---
+
+## 💻 Cara Menjalankan
+
+Karena ini adalah *Static Website*, kamu tidak perlu menginstall *dependencies* apapun.
+
+1. **Clone** repository ini ke komputer kamu:
+   ```bash
+   git clone [https://github.com/username-kamu/belajar-dasar-pemrograman-web.git](https://github.com/username-kamu/belajar-dasar-pemrograman-web.git)**
