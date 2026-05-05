@@ -1,0 +1,72 @@
+body {
+    background-color: rgb(0, 0, 0);
+}
+
+
+/* Font family */
+h1 {
+    font-family: Arial, Helvetica, sans-serif; 
+    color: rgba(106, 0, 255, 0.964);
+}
+
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('path/to/your/font.woff2') format('woff2'),
+         url('path/to/your/font.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h2 {
+    font-family: 'MyCustomFont', Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+/* font size */
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+/* Relative Unit
+
+em = 1em = ukuran font dari elemen induk (relative terhadap parent element)
+rem = 1rem = ukuran font dari elemen root (relative terhadap <html>, biasanya 16px)
+% = persentase relative terhadap parent element
+vw = viewport width (1% dari lebar viewport)
+vh = viewport height (1% dari tinggi viewport)
+
+Contoh:
+- Jika parent font-size = 20px, maka 1.5em = 30px
+- Jika root font-size = 16px, maka 2rem = 32px
+- 50% dari 100px = 50px
+- 100vw = 100% lebar layar
+- 100vh = 100% tinggi layar
+
+*/
+
+/* Absolute Unit
+
+px = pixels (1/96 inch, titik terkecil di layar)
+pt = points (1/72 inch, untuk print)
+pc = picas (1/6 inch, untuk print)
+in = inches (inch, untuk print)
+cm = centimeters (sentimeter, untuk print)
+mm = millimeters (milimeter, untuk print)
+
+Contoh:
+- 1in = 2.54cm = 25.4mm = 96px = 72pt = 6pc
+- px adalah absolute unit paling umum untuk screen display
+- pt, pc, cm, mm lebih cocok untuk media cetak (print)
+
+*/
+
+/* Absolute Unit 
+
+px = pixel, ukuran tetap 
+
+
+*/
