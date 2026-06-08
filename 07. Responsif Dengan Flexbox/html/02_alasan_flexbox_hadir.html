@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02. Alasan Flexbox Hadir (Materi 02)</title>
+    <!-- APA: Menghubungkan file HTML dengan berkas CSS eksternal -->
+    <!-- KENAPA: Agar struktur halaman HTML terpisah rapi dengan dekorasi styling CSS -->
+    <link rel="stylesheet" href="../css/02_alasan_flexbox_hadir.css">
+</head>
+<body>
+    <div class="container">
+        <h1>02. Alasan Flexbox Hadir (Materi 02)</h1>
+
+        <!-- 📚 RANGKUMAN MATERI -->
+        <div class="rangkuman">
+            <h3>📚 Kenapa Butuh Flexbox?</h3>
+            <p>Sebelum Flexbox lahir, pembuatan tata letak menggunakan <code>float</code> dan <code>positioning</code> memiliki banyak keterbatasan dan menyulitkan pada kasus berikut:</p>
+            <ol>
+                <li><strong>Centering Secara Vertikal:</strong> Sangat sulit membuat elemen berada tepat di tengah-tengah tinggi parent container secara dinamis.</li>
+                <li><strong>Fluid Secara Dinamis & Rata:</strong> Membagi lebar container secara merata ke elemen anak (terutama jika jumlah kolom ganjil) sering kali menyisakan celah/sisa piksel yang berantakan.</li>
+                <li><strong>Tinggi Kolom yang Sama (Equal Height):</strong> Float tidak mendukung kolom yang memiliki tinggi sama secara otomatis ketika konten di dalamnya memiliki panjang teks berbeda.</li>
+            </ol>
+        </div>
+
+        <!-- 🛠️ AREA PRAKTEK -->
+        <h2>🛠️ Area Praktik</h2>
+
+        <!-- Kasus 1: Vertical Centering -->
+        <div class="kasus-box">
+            <h3>Kasus 1: Vertically Centering Content</h3>
+            <p class="instruksi">Ubah properti pada <code>.container-flex-center</code> di CSS untuk memposisikan teks di tengah kontainer secara vertikal dan horizontal!</p>
+            <div class="practice-area">
+                <div class="container-flex-center">
+                    <div class="center-item">Aku di Tengah!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kasus 2: Fluid Spacing -->
+        <div class="kasus-box">
+            <h3>Kasus 2: Membagi Kolom Merata Tanpa Sisa Celah</h3>
+            <p class="instruksi">Pada <code>.container-flex-fluid</code> di CSS, gunakan flexbox agar 3 kolom terbagi rata secara otomatis tanpa menggunakan persentase statis!</p>
+            <div class="practice-area">
+                <div class="container-flex-fluid">
+                    <div class="col col-1">Kolom 1</div>
+                    <div class="col col-2">Kolom 2</div>
+                    <div class="col col-3">Kolom 3</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kasus 3: Equal Height Columns -->
+        <div class="kasus-box">
+            <h3>Kasus 3: Kolom dengan Tinggi Sama (Equal Height)</h3>
+            <p class="instruksi">Walaupun teks di kolom kanan sedikit, dengan mengaktifkan flexbox pada <code>.container-flex-equal</code>, kedua kolom akan memiliki tinggi yang persis sama!</p>
+            <div class="practice-area">
+                <div class="container-flex-equal">
+                    <div class="equal-col col-left">
+                        <h4>Produk A</h4>
+                        <p>Deskripsi produk yang sangat panjang, detil, memiliki banyak info, spesifikasi lengkap, dan menjelaskan manfaat produk ini secara mendalam.</p>
+                    </div>
+                    <div class="equal-col col-right">
+                        <h4>Produk B</h4>
+                        <p>Deskripsi pendek saja.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

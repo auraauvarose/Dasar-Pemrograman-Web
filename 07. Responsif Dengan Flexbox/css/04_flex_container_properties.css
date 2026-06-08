@@ -1,0 +1,117 @@
+/* 04_flex_container_properties.css */
+
+body {
+    background-color: #f8fafc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1e293b;
+    padding: 30px;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    text-align: center;
+    color: #0f172a;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.rangkuman {
+    background-color: #f0fdf4;
+    border-left: 6px solid #16a34a;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 0 8px 8px 0;
+    color: #166534;
+}
+
+.rangkuman h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.rangkuman ul {
+    margin-left: 20px;
+    padding: 0;
+}
+
+.rangkuman li {
+    margin-bottom: 8px;
+}
+
+.instruksi {
+    background-color: #fef08a;
+    color: #713f12;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    border-left: 4px solid #eab308;
+}
+
+.practice-area {
+    border: 2px dashed #cbd5e1;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8fafc;
+}
+
+/* ==========================================
+   TUGAS KAMU: Playground Flex Container
+   ========================================== */
+.playground-container {
+    /* APA: Container Utama */
+    /* KENAPA: Mengatur tata letak kotak-kotak secara fleksibel */
+    display: flex;
+    background-color: #cbd5e1;
+    padding: 15px;
+    border-radius: 8px;
+    min-height: 350px;
+
+    /* TODO 1: Coba arah flex-direction di bawah ini (row, row-reverse, column, column-reverse) */
+    flex-direction: row;
+
+    /* TODO 2: Coba ubah flex-wrap di bawah ini (nowrap, wrap, wrap-reverse) */
+    flex-wrap: wrap;
+
+    /* TODO 3: Coba atur perataan horizontal di bawah (flex-start, flex-end, center, space-between, space-around, space-evenly) */
+    justify-content: flex-start;
+
+    /* TODO 4: Coba atur perataan vertikal elemen di bawah (stretch, flex-start, flex-end, center, baseline) */
+    align-items: stretch;
+
+    /* TODO 5: Aktifkan align-content di bawah (hanya bekerja jika flex-wrap: wrap dan elemen meluap menjadi beberapa baris)
+       Pilihan: flex-start, flex-end, center, space-between, space-around, space-evenly */
+    align-content: stretch;
+
+    /* TODO 6: Berikan celah antar item menggunakan properti gap (contoh: gap: 15px; atau gap: 10px 20px;) */
+    gap: 10px;
+}
+
+.box {
+    background-color: #16a34a;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 6px;
+    min-width: 100px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Pewarnaan variatif agar kotak terlihat jelas perbedaannya */
+.box-1 { background-color: #10b981; }
+.box-2 { background-color: #059669; }
+.box-3 { background-color: #047857; }
+.box-4 { background-color: #065f46; }
+.box-5 { background-color: #064e3b; }

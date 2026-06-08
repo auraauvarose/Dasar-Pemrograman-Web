@@ -1,0 +1,142 @@
+/* 03_dasar_dan_terminologi.css */
+
+body {
+    background-color: #f8fafc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1e293b;
+    padding: 30px;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: #ffffff;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    text-align: center;
+    color: #0f172a;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.rangkuman {
+    background-color: #f5f3ff;
+    border-left: 6px solid #7c3aed;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 0 8px 8px 0;
+    color: #5b21b6;
+}
+
+.rangkuman h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.rangkuman ul {
+    margin-left: 20px;
+    padding: 0;
+}
+
+.rangkuman li {
+    margin-bottom: 8px;
+}
+
+.instruksi {
+    background-color: #fef08a;
+    color: #713f12;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    border-left: 4px solid #eab308;
+}
+
+.practice-area {
+    position: relative;
+    border: 2px dashed #cbd5e1;
+    padding: 40px 20px 20px 40px; /* Jarak untuk label garis sumbu */
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+/* Label Pembantu Arah Sumbu */
+.axis-helper {
+    position: absolute;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+.horizontal-axis {
+    top: 10px;
+    left: 40px;
+    width: calc(100% - 60px);
+    border-bottom: 1px dashed #cbd5e1;
+    padding-bottom: 5px;
+}
+
+.vertical-axis {
+    top: 40px;
+    left: 10px;
+    height: calc(100% - 60px);
+    writing-mode: vertical-lr;
+    border-right: 1px dashed #cbd5e1;
+    padding-right: 5px;
+}
+
+/* ==========================================
+   TUGAS KAMU: Flex Container
+   ========================================== */
+.flex-container {
+    display: flex;
+    
+    /* TODO: Coba ganti value 'row' di bawah menjadi 'column'! */
+    flex-direction: row; 
+    
+    background-color: #ddd6fe;
+    padding: 15px;
+    border-radius: 8px;
+    min-height: 200px;
+}
+
+.flex-item {
+    background-color: #7c3aed;
+    color: white;
+    padding: 15px;
+    margin: 8px;
+    border-radius: 8px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 100px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.flex-item .badge {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    align-self: flex-start;
+    font-weight: bold;
+}
+
+.flex-item .details {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #ddd6fe;
+}
+
+.item-1 { background-color: #a78bfa; }
+.item-2 { background-color: #8b5cf6; }
+.item-3 { background-color: #7c3aed; }

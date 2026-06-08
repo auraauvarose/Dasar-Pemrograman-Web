@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!--
+  TAG/ELEMEN: <!DOCTYPE html>
+  APA: Deklarasi tipe dokumen (Document Type Declaration / DTD)
+  KENAPA: Memberitahu browser bahwa dokumen ini menggunakan standar HTML5,
+          sehingga browser merender halaman dalam mode "standards mode" (bukan "quirks mode")
+  TIPS: Selalu letakkan di baris pertama, sebelum tag <html> apapun
+  NILAI LAIN: Tidak ada nilai lain untuk HTML5. Versi lama HTML memiliki DOCTYPE yang panjang.
+-->
+
+<!--
+  TAG/ELEMEN: <html lang="id">
+  APA: Elemen akar (root element) dari seluruh dokumen HTML
+  KENAPA: Semua konten HTML harus dibungkus di dalam tag ini.
+          Atribut lang="id" memberitahu browser dan mesin pencari bahwa bahasa konten adalah Indonesia (id).
+  NILAI LAIN: lang="en" untuk Inggris | lang="ja" untuk Jepang | lang="ar" untuk Arab
+  TIPS: Selalu isi atribut lang untuk aksesibilitas (screen reader) dan SEO yang lebih baik
+-->
+<html lang="id">
+<head>
+    <!--
+      TAG/ELEMEN: <head>
+      APA: Bagian kepala dokumen, berisi informasi metadata tentang halaman
+      KENAPA: Konten di dalam <head> tidak ditampilkan di halaman, tetapi digunakan
+              oleh browser, mesin pencari, dan perangkat lainnya
+      TIPS: Seluruh metadata, link CSS, dan script sebaiknya diletakkan di sini
+    -->
+
+    <!--
+      TAG/ELEMEN: <meta charset="UTF-8">
+      APA: Menetapkan karakter encoding (pengkodean karakter) yang digunakan dokumen
+      KENAPA: UTF-8 adalah encoding universal yang mendukung hampir semua karakter
+              dari semua bahasa di dunia, termasuk huruf Indonesia (é, ñ, dll.)
+      NILAI LAIN: charset="ISO-8859-1" (Latin hanya), charset="UTF-16"
+      TIPS: Selalu gunakan UTF-8! Ini adalah standar modern untuk web
+      COMMON MISTAKE: Jika lupa charset, karakter seperti 'é', 'ü', atau emoji
+                      mungkin tampil sebagai simbol aneh/kotak
+    -->
+    <meta charset="UTF-8">
+
+    <!--
+      TAG/ELEMEN: <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      APA: Mengatur viewport (area tampilan) browser, terutama untuk perangkat mobile
+      KENAPA: Tanpa tag ini, browser mobile akan menampilkan halaman dalam lebar
+              layar desktop yang kemudian dikecilkan, sehingga teks menjadi sangat kecil
+      ATRIBUT content:
+        - width=device-width: Lebar viewport sama dengan lebar layar perangkat
+        - initial-scale=1.0: Tidak ada zoom awal saat halaman dimuat
+      NILAI LAIN CONTENT: initial-scale=2.0 (zoom 2x), maximum-scale=1.0 (nonaktifkan pinch zoom)
+      TIPS: Tag ini WAJIB ada di setiap halaman yang ingin responsif/mobile-friendly
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+      TAG/ELEMEN: <title>
+      APA: Menetapkan judul halaman yang tampil di tab browser dan hasil pencarian Google
+      KENAPA: Judul yang deskriptif membantu SEO dan memudahkan pengguna memahami
+              isi halaman hanya dari tab browser
+      TIPS: Idealnya 50-60 karakter, unik untuk setiap halaman
+    -->
+    <title>01. Pengantar Flexbox (Materi 01)</title>
+
+    <!--
+      TAG/ELEMEN: <link rel="stylesheet" href="...">
+      APA: Menghubungkan file HTML ini dengan file CSS eksternal
+      KENAPA: Memisahkan struktur (HTML) dari tampilan (CSS) adalah praktik terbaik
+              yang disebut "Separation of Concerns" agar kode lebih mudah dikelola
+      ATRIBUT:
+        - rel="stylesheet": Menunjukkan hubungan bahwa file yang ditaut adalah lembar gaya CSS
+        - href="../css/01_pengantar_flexbox.css": Path/lokasi file CSS.
+          "../" berarti naik satu folder dari lokasi file HTML ini (folder html/) ke folder parent,
+          lalu masuk ke folder css/
+      NILAI REL LAIN: rel="icon" untuk favicon | rel="preconnect" untuk optimasi koneksi
+    -->
+    <link rel="stylesheet" href="../css/01_pengantar_flexbox.css">
+</head>
+
+<!--
+  TAG/ELEMEN: <body>
+  APA: Bagian tubuh dokumen, berisi semua konten yang ditampilkan di browser
+  KENAPA: Browser merender semua elemen di dalam tag ini sebagai konten visual halaman
+  TIPS: Hanya boleh ada SATU <body> per dokumen HTML
+-->
+<body>
+
+    <!--
+      TAG/ELEMEN: <div class="container">
+      APA: Tag div (division) adalah elemen pembungkus blok generik tanpa makna semantik khusus
+      KENAPA: Digunakan di sini sebagai wrapper utama untuk membatasi lebar konten halaman
+              dan memusatkannya di tengah layar. Class "container" memudahkan styling di CSS.
+      NILAI LAIN: Bisa menggunakan <main>, <section>, atau <article> jika kontennya lebih spesifik
+      TIPS: Gunakan elemen semantik (<main>, <section>, dll.) jika memungkinkan,
+            gunakan <div> hanya untuk kebutuhan styling/layout murni
+    -->
+    <div class="container">
+
+        <!--
+          TAG/ELEMEN: <h1>
+          APA: Heading level 1 - judul terpenting/tertinggi di halaman
+          KENAPA: Memberikan hirarki konten yang jelas. Penting untuk SEO dan aksesibilitas.
+                  Screen reader menggunakan heading untuk navigasi
+          TIPS: Idealnya hanya ada SATU <h1> per halaman, mewakili topik utama halaman itu
+          NILAI LAIN (heading levels): <h1> s/d <h6>, dari yang paling penting ke paling kecil
+        -->
+        <h1>01. Pengantar Flexbox (Materi 01)</h1>
+
+        <!-- ============================================================
+             📚 RANGKUMAN MATERI
+             TAG: <div class="rangkuman">
+             APA: Div pembungkus ringkasan materi teoritis
+             KENAPA: Mengelompokkan konten teori agar bisa diberi gaya visual
+                     berbeda (latar biru muda, border kiri) via CSS
+             ============================================================ -->
+        <div class="rangkuman">
+
+            <!--
+              TAG/ELEMEN: <h3>
+              APA: Heading level 3 - judul sub-bagian (di bawah h1 dan h2 dalam hierarki)
+              KENAPA: Menandai judul rangkuman sebagai sub-bagian, bukan judul utama halaman
+              TIPS: Jangan melewati level heading (jangan pakai h3 langsung setelah h1 tanpa h2
+                    jika kontennya memang bertingkat) agar hierarki konten tetap logis
+            -->
+            <h3>📚 Rangkuman Teori</h3>
+
+            <!--
+              TAG/ELEMEN: <ul>
+              APA: Unordered List - daftar tanpa urutan/nomor (menggunakan bullet point)
+              KENAPA: Digunakan karena poin-poin teori tidak perlu berurutan secara numerik
+              NILAI LAIN: <ol> untuk ordered list (bernomor) | <dl> untuk definition list
+            -->
+            <ul>
+                <!--
+                  TAG/ELEMEN: <li>
+                  APA: List Item - satu item dalam daftar (ul atau ol)
+                  KENAPA: Setiap poin teori dibungkus dalam <li> agar browser tahu
+                          ini adalah anggota dari daftar
+                  TIPS: <li> hanya boleh menjadi anak langsung dari <ul>, <ol>, atau <menu>
+                -->
+                <li>
+                    <!--
+                      TAG/ELEMEN: <strong>
+                      APA: Menandai teks sebagai sangat penting (strong importance)
+                      KENAPA: Membuat istilah kunci menjadi bold DAN memiliki makna semantik
+                              "penting", berbeda dengan <b> yang hanya styling bold tanpa makna
+                      NILAI LAIN: <b> hanya bold visual | <em> untuk penekanan (italic semantik)
+                    -->
+                    <strong>Flexbox (Flexible Box Layout):</strong> Model tata letak satu dimensi (row atau column) yang dirancang untuk menyusun elemen secara efisien dan fleksibel dalam container.
+                </li>
+                <li>
+                    <strong>Satu Dimensi:</strong> Flexbox hanya bekerja pada satu sumbu saja dalam satu waktu (secara horizontal ATAU vertikal), berbeda dengan Grid Layout yang dua dimensi.
+                </li>
+                <li>
+                    <strong>Direction-Agnostic:</strong> Tidak terikat oleh arah tertentu (bisa mengalir ke atas, bawah, kiri, atau kanan dengan mudah).
+                </li>
+                <li>
+                    <strong>Fleksibilitas Sizing:</strong> Secara otomatis dapat memperluas (grow) item untuk mengisi ruang kosong atau menciutkan (shrink) item agar tidak keluar batas (overflow).
+                </li>
+            </ul>
+        </div>
+
+        <!-- ============================================================
+             🛠️ AREA PRAKTEK
+             ============================================================ -->
+
+        <!--
+          TAG/ELEMEN: <h2>
+          APA: Heading level 2 - judul bagian (section) di bawah h1
+          KENAPA: Menandai awal bagian baru "Area Praktik" yang berbeda dari rangkuman teori.
+                  Ini adalah level tepat setelah h1 untuk bagian utama kedua
+        -->
+        <h2>🛠️ Area Praktik</h2>
+
+        <!--
+          TAG/ELEMEN: <p class="instruksi">
+          APA: Paragraf teks instruksi/petunjuk latihan
+          KENAPA: Mengelompokkan teks petunjuk agar bisa diberi gaya khusus (latar kuning)
+                  via CSS class "instruksi", membedakannya secara visual dari konten biasa
+        -->
+        <p class="instruksi">
+            Ubah properti
+            <!--
+              TAG/ELEMEN: <code>
+              APA: Menampilkan teks sebagai kode komputer (monospace font)
+              KENAPA: Membedakan secara visual antara nama properti CSS ("display: block;")
+                      dengan teks narasi biasa. Juga memiliki makna semantik bahwa ini adalah kode
+              NILAI LAIN: <pre> untuk blok kode multi-baris dengan whitespace yang dipertahankan
+                          <kbd> untuk keyboard input | <samp> untuk output program
+            -->
+            <code>display: block;</code> menjadi <code>display: flex;</code>
+            pada selector <code>.flex-container</code> di dalam file
+            <code>css/01_pengantar_flexbox.css</code> untuk melihat keajaiban Flexbox!
+        </p>
+
+        <!--
+          TAG/ELEMEN: <div class="practice-area">
+          APA: Div pembungkus area uji coba/praktik
+          KENAPA: Membatasi area sandbox dengan border putus-putus dan background berbeda
+                  agar jelas mana bagian yang merupakan "area uji coba" vs konten halaman
+        -->
+        <div class="practice-area">
+
+            <!--
+              TAG/ELEMEN: <div class="flex-container">
+              APA: Container utama yang akan diubah menjadi Flex Container
+              KENAPA: Ini adalah elemen kunci yang menjadi "wadah" Flexbox.
+                      Dengan mengubah display-nya menjadi 'flex' di CSS,
+                      semua anak langsungnya (.flex-item) otomatis menjadi Flex Items
+              KONSEP PENTING:
+                Sebelum display: flex → Item-item menumpuk vertikal (layout block normal)
+                Sesudah display: flex → Item-item berjejer horizontal (layout flex row)
+            -->
+            <div class="flex-container">
+
+                <!--
+                  TAG/ELEMEN: <div class="flex-item item-1">
+                  APA: Flex Item pertama - child langsung dari flex-container
+                  KENAPA: Ini adalah "item" yang akan diatur posisinya oleh Flexbox.
+                          Class ganda digunakan: "flex-item" untuk style dasar bersama,
+                          "item-1" untuk warna unik tiap item
+                  KONSEP PENTING:
+                    HANYA child LANGSUNG yang menjadi Flex Item.
+                    Cucu dan keturunan lebih jauh TIDAK otomatis menjadi Flex Item!
+                -->
+                <div class="flex-item item-1">Item 1</div>
+
+                <!--
+                  TAG/ELEMEN: <div class="flex-item item-2">
+                  APA: Flex Item kedua - berwarna hijau
+                  KENAPA: Menunjukkan bahwa ada tiga item yang semuanya akan diatur
+                          posisinya oleh container flex
+                -->
+                <div class="flex-item item-2">Item 2</div>
+
+                <!--
+                  TAG/ELEMEN: <div class="flex-item item-3">
+                  APA: Flex Item ketiga - berwarna biru
+                  KENAPA: Dengan tiga item, kita bisa melihat efek pengaturan
+                          posisi (justify-content, align-items, dll.) dengan lebih jelas
+                -->
+                <div class="flex-item item-3">Item 3</div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

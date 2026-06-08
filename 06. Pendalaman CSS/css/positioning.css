@@ -1,74 +1,364 @@
+/*
+  ============================================================
+  FILE: positioning.css
+  MATERI: CSS Positioning - Pengantar (Materi 34)
+  ============================================================
+  CATATAN BELAJAR — PROPERTI POSITION:
+  Properti "position" menentukan METODE penentuan letak elemen.
+  Nilai-nilainya:
+    static   → default, mengikuti aliran normal
+    relative → bergeser dari posisi aslinya
+    absolute → lepas dari aliran, relatif ke induk non-static
+    fixed    → dikunci ke viewport/layar browser
+    sticky   → relatif + fixed (menempel saat scroll)
+
+  Properti koordinat (top, bottom, left, right) HANYA bekerja
+  jika position bukan "static"!
+  ============================================================
+*/
+
 /* positioning.css */
 
+/* ============================================================
+   SELEKTOR: body
+   APA: Memilih elemen <body> — kontainer terluar semua konten halaman
+   KENAPA: Mengatur gaya dasar yang diwarisi oleh semua elemen di dalamnya,
+           seperti font, warna teks, dan background halaman secara global
+   ============================================================ */
 body {
-    /* APA: Mengatur latar belakang halaman */
-    /* KENAPA: Memberikan kenyamanan visual dan kontras yang pas */
+    /* PROPERTI: background-color: #f1f2f6
+       APA: Mengatur warna latar belakang seluruh halaman menjadi abu-abu
+            sangat muda (mendekati putih) dengan kode hex #f1f2f6
+       KENAPA: Abu-abu muda menciptakan kontras yang lebih lembut daripada
+               putih murni (#ffffff), mengurangi kelelahan mata saat membaca
+       NILAI ALTERNATIF:
+         - #ffffff    : Putih murni (terlalu terang/kontras tinggi)
+         - #e8e8e8    : Abu-abu lebih gelap
+         - #f0f4f8    : Variasi abu-abu kebiruan
+         - lightgray  : Nama warna CSS, setara ~#d3d3d3 */
     background-color: #f1f2f6;
+
+    /* PROPERTI: font-family: Arial, sans-serif
+       APA: Menentukan jenis huruf (typeface) yang digunakan untuk SEMUA
+            teks di halaman (diwarisi oleh elemen turunan)
+       KENAPA: Arial adalah font sans-serif yang bersih, mudah dibaca di layar,
+               dan tersedia di hampir semua sistem operasi (Windows, Mac, Linux)
+       CARA KERJA: Browser mencoba font pertama (Arial). Jika tidak ada,
+                   coba font berikutnya. "sans-serif" adalah kategori generik
+                   sebagai fallback terakhir — browser pilih font sans-serif apapun
+       NILAI ALTERNATIF:
+         - 'Helvetica Neue', Helvetica, Arial, sans-serif : Lebih modern
+         - Georgia, serif                                 : Font serif, kesan formal
+         - 'Courier New', monospace                       : Font monospace, kesan kode
+         - system-ui                                      : Font sistem operasi native */
     font-family: Arial, sans-serif;
+
+    /* PROPERTI: color: #2f3542
+       APA: Mengatur warna teks utama menjadi abu-abu gelap hampir hitam (#2f3542)
+       KENAPA: Warna #2f3542 (dark slate) memberikan keterbacaan tinggi tanpa
+               terlalu pekat seperti hitam murni (#000000), mengurangi kelelahan
+               mata terutama untuk teks panjang
+       NILAI ALTERNATIF:
+         - #000000 : Hitam murni (kontras maksimal, bisa melelahkan)
+         - #333333 : Abu-abu sangat gelap (populer di desain web)
+         - #4a4a4a : Abu-abu medium
+         - #1a202c : Gelap kebiruan (gaya Tailwind CSS) */
     color: #2f3542;
+
+    /* PROPERTI: padding: 30px
+       APA: Menambahkan jarak dalam (padding) sebesar 30px di semua sisi
+            (atas, kanan, bawah, kiri) elemen body
+       KENAPA: Mencegah konten halaman menempel langsung ke tepi browser,
+               memberikan "napas" visual yang membuat halaman terasa lebih nyaman
+       CATATAN: Shorthand 1 nilai = berlaku untuk semua 4 sisi sekaligus
+       NILAI ALTERNATIF:
+         - padding: 20px 40px     : 20px atas-bawah, 40px kiri-kanan
+         - padding: 10px 20px 30px : atas=10, kiri-kanan=20, bawah=30
+         - padding-top: 30px      : Hanya atas (longhand property) */
     padding: 30px;
+
+    /* PROPERTI: line-height: 1.6
+       APA: Mengatur tinggi baris (jarak antar baris teks) menjadi 1.6 kali
+            ukuran font yang sedang digunakan
+       KENAPA: line-height: 1.6 adalah nilai yang direkomendasikan W3C untuk
+               keterbacaan optimal. Tanpa satuan (unitless) lebih baik karena
+               mengikuti ukuran font elemen secara proporsional
+       CARA KERJA: Jika font-size = 16px, maka tinggi baris = 16 × 1.6 = 25.6px
+       NILAI ALTERNATIF:
+         - 1.0  : Terlalu rapat, sulit dibaca
+         - 1.4  : Sedikit rapat, masih oke
+         - 2.0  : Terlalu longgar, pemborosan ruang
+         - 24px : Nilai piksel tetap (tidak direkomendasikan karena tidak skalabel) */
     line-height: 1.6;
 }
 
+/* ============================================================
+   SELEKTOR: .container
+   APA: Class selector yang memilih semua elemen dengan class="container"
+   KENAPA: Membungkus konten utama dalam kotak putih yang terpusat,
+           teknik layout klasik untuk menjaga konten tidak terlalu melebar
+           di layar besar (readability optimal ~600-800px)
+   ============================================================ */
 .container {
-    /* APA: Membungkus konten utama di tengah layar */
-    /* KENAPA: Menjaga kerapian konten agar mudah dibaca */
+    /* PROPERTI: background-color: #ffffff
+       APA: Warna latar belakang container putih bersih
+       KENAPA: Kontras antara background abu-abu body (#f1f2f6) dengan
+               container putih (#ffffff) menciptakan efek "card" yang elegan
+               dan memisahkan konten dari latar */
     background-color: #ffffff;
+
+    /* PROPERTI: max-width: 650px
+       APA: Menetapkan lebar MAKSIMUM container menjadi 650px
+       KENAPA: Pada layar lebar (desktop), teks tidak akan terlalu panjang
+               per barisnya. Penelitian menunjukkan 50-75 karakter per baris
+               adalah optimal untuk keterbacaan. 650px menghasilkan ~80 karakter
+       CARA KERJA: Jika layar < 650px, container mengikuti lebar layar.
+                   Jika layar > 650px, container maksimal 650px lalu terpusat.
+       NILAI ALTERNATIF:
+         - 800px   : Lebih lebar, cocok untuk konten kompleks
+         - 1200px  : Layout penuh, umum untuk website modern
+         - 100%    : Mengikuti lebar penuh parent */
     max-width: 650px;
+
+    /* PROPERTI: margin: 0 auto
+       APA: Mengatur margin luar container — 0 atas-bawah, auto kiri-kanan
+       KENAPA: "margin: 0 auto" adalah teknik klasik CSS untuk memusatkan elemen
+               blok secara horizontal. "auto" membagi sisa ruang sama rata
+               di kiri dan kanan, efeknya elemen terpusat
+       SYARAT: Harus ada width atau max-width, dan elemen harus block-level
+       NILAI ALTERNATIF:
+         - margin: 20px auto    : Ada jarak 20px atas-bawah, kiri-kanan auto
+         - margin: auto         : Auto semua sisi (vertikal auto biasanya 0) */
     margin: 0 auto;
+
+    /* PROPERTI: padding: 25px
+       APA: Jarak dalam 25px di semua sisi container
+       KENAPA: Memberi ruang antara tepi container dengan konten di dalamnya,
+               agar teks tidak menempel ke pinggir kotak putih */
     padding: 25px;
+
+    /* PROPERTI: border-radius: 8px
+       APA: Membulatkan sudut-sudut kotak container sebesar 8px
+       KENAPA: Sudut membulat memberikan kesan modern dan ramah dibandingkan
+               sudut tajam yang terkesan kaku. 8px adalah nilai sedang yang
+               halus dan profesional
+       NILAI ALTERNATIF:
+         - 0px    : Sudut tajam (kotak persegi sempurna)
+         - 4px    : Sedikit membulat (lebih subtle)
+         - 16px   : Sangat membulat
+         - 50%    : Lingkaran sempurna (jika width = height)
+         - border-radius: 8px 8px 0 0 : Hanya sudut atas yang membulat */
     border-radius: 8px;
+
+    /* PROPERTI: box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05)
+       APA: Menambahkan bayangan kotak di sekitar container
+       FORMAT: box-shadow: [offset-x] [offset-y] [blur] [color]
+         - 0          : Tidak ada pergeseran horizontal (bayangan lurus di bawah)
+         - 4px        : Bayangan digeser 4px ke bawah (vertikal)
+         - 6px        : Radius blur bayangan (makin besar makin lembut/menyebar)
+         - rgba(0,0,0,0.05) : Hitam dengan opacity sangat rendah (5%), bayangan
+                              sangat halus dan subtle
+       KENAPA: Box-shadow ringan menciptakan kedalaman (depth) agar container
+               tampak "mengapung" di atas background — efek visual modern
+       NILAI ALTERNATIF:
+         - 0 2px 4px rgba(0,0,0,0.1)  : Lebih terlihat
+         - 0 10px 30px rgba(0,0,0,0.2): Bayangan dramatis
+         - inset 0 2px 4px #ccc       : Bayangan ke dalam (cekung) */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
+/* ============================================================
+   SELEKTOR: .rangkuman
+   APA: Menata kotak informasi rangkuman teori
+   KENAPA: Secara visual membedakan blok teori dari area praktek,
+           menggunakan warna biru muda sebagai penanda "informasi penting"
+   ============================================================ */
 .rangkuman {
-    /* APA: Kotak info rangkuman teori */
-    /* KENAPA: Memberikan penanda visual yang menonjol untuk belajar teori */
+    /* PROPERTI: background-color: #eff6ff
+       APA: Biru muda sangat terang sebagai latar kotak rangkuman
+       KENAPA: Warna biru secara psikologi dikaitkan dengan kepercayaan
+               dan informasi. Biru muda (#eff6ff) cukup terlihat tanpa
+               menggangu keterbacaan teks di atasnya */
     background-color: #eff6ff;
+
+    /* PROPERTI: border-left: 5px solid #3b82f6
+       APA: Membuat garis batas (border) di sisi KIRI saja, tebal 5px,
+            solid (penuh), warna biru (#3b82f6)
+       KENAPA: Garis kiri tebal adalah pola desain klasik untuk "callout box"
+               atau "blockquote visual" — langsung menarik perhatian pembaca
+       FORMAT: border-[sisi]: [ketebalan] [gaya] [warna]
+       NILAI ALTERNATIF gaya: dashed, dotted, double, groove, ridge */
     border-left: 5px solid #3b82f6;
+
+    /* PROPERTI: padding: 15px
+       APA: Ruang dalam 15px di semua sisi kotak rangkuman
+       KENAPA: Agar teks tidak menempel ke border/tepi kotak */
     padding: 15px;
+
+    /* PROPERTI: margin-bottom: 25px
+       APA: Jarak luar 25px di bawah kotak rangkuman
+       KENAPA: Memberikan jarak pemisah antara kotak rangkuman dengan
+               elemen di bawahnya (h2 area praktik) */
     margin-bottom: 25px;
+
+    /* PROPERTI: border-radius: 0 6px 6px 0
+       APA: Membulatkan sudut dengan nilai berbeda per sudut
+       FORMAT (searah jarum jam): [kiri-atas] [kanan-atas] [kanan-bawah] [kiri-bawah]
+         - 0px  : Kiri-atas TIDAK membulat (karena ada border kiri)
+         - 6px  : Kanan-atas membulat 6px
+         - 6px  : Kanan-bawah membulat 6px
+         - 0px  : Kiri-bawah TIDAK membulat
+       KENAPA: Sudut kiri tetap tajam untuk menyatu dengan border kiri yang tebal,
+               sementara sisi kanan membulat untuk kesan modern */
     border-radius: 0 6px 6px 0;
+
+    /* PROPERTI: color: #1e40af
+       APA: Warna teks dalam kotak rangkuman — biru tua gelap
+       KENAPA: Warna teks biru tua (#1e40af) kontras dengan background biru
+               muda (#eff6ff) dan menciptakan kesan berwarna yang harmonis
+               (monokromatik) serta mudah dibaca */
     color: #1e40af;
 }
 
+/* ============================================================
+   SELEKTOR: .rangkuman h3
+   APA: Descendant selector — menarget <h3> yang berada DI DALAM .rangkuman
+   KENAPA: Mengatur khusus heading h3 di dalam kotak rangkuman tanpa
+           memengaruhi h3 di tempat lain
+   ============================================================ */
 .rangkuman h3 {
+    /* PROPERTI: margin-top: 0
+       APA: Menghilangkan margin atas bawaan h3 (biasanya ~21px)
+       KENAPA: Agar h3 tidak terlalu jauh dari tepi atas kotak rangkuman */
     margin-top: 0;
+
+    /* PROPERTI: margin-bottom: 8px
+       APA: Jarak bawah h3 ke daftar <ul> sebesar 8px
+       KENAPA: Jarak kecil agar terlihat terhubung tapi tidak menempel */
     margin-bottom: 8px;
 }
 
+/* SELEKTOR: .rangkuman ul — daftar di dalam kotak rangkuman */
 .rangkuman ul {
+    /* PROPERTI: margin-left: 20px
+       APA: Menggeser daftar ke kanan 20px
+       KENAPA: Memberi indentasi visual agar bullet point tidak menempel
+               ke tepi kiri kotak, terlihat lebih rapi dan terstruktur */
     margin-left: 20px;
 }
 
+/* SELEKTOR: .rangkuman li — setiap item daftar dalam kotak rangkuman */
 .rangkuman li {
+    /* PROPERTI: margin-bottom: 6px
+       APA: Jarak bawah setiap item daftar 6px
+       KENAPA: Sedikit jarak antar baris daftar agar tidak terlalu rapat
+               dan mudah dibaca */
     margin-bottom: 6px;
 }
 
+/* ============================================================
+   SELEKTOR: h1
+   APA: Type selector yang menarget SEMUA elemen <h1> di halaman
+   KENAPA: Mengatur gaya judul utama halaman secara global
+   ============================================================ */
 h1 {
+    /* PROPERTI: text-align: center
+       APA: Meratakan teks ke tengah secara horizontal
+       KENAPA: Judul terpusat memberikan kesan formal dan simetris,
+               cocok untuk halaman materi pembelajaran
+       NILAI ALTERNATIF: left (kiri, default), right (kanan), justify (rata kiri-kanan) */
     text-align: center;
+
+    /* PROPERTI: color: #2f3542
+       APA: Warna teks judul abu-abu gelap hampir hitam
+       KENAPA: Sama dengan warna teks body untuk konsistensi,
+               heading sudah menonjol karena ukurannya yang besar */
     color: #2f3542;
+
+    /* PROPERTI: margin-bottom: 30px
+       APA: Jarak bawah judul h1 ke elemen berikutnya sebesar 30px
+       KENAPA: Memberikan jarak cukup besar agar judul tidak terlalu
+               dekat dengan konten di bawahnya */
     margin-bottom: 30px;
+
+    /* PROPERTI: font-size: 1.5rem
+       APA: Mengatur ukuran font h1 menjadi 1.5rem
+       APA ITU rem: "root em" — satuan relatif terhadap font-size root (<html>)
+                    Default browser: 1rem = 16px, jadi 1.5rem = 24px
+       KENAPA: h1 bawaan browser (~32px) terlalu besar untuk layout card kecil (650px).
+               1.5rem = 24px lebih proporsional
+       NILAI ALTERNATIF:
+         - 2rem   : 32px (default browser)
+         - 1.8rem : 28.8px (sedikit lebih besar)
+         - 24px   : Nilai tetap (tidak skalabel seperti rem) */
     font-size: 1.5rem;
 }
 
+/* ============================================================
+   SELEKTOR: h2
+   APA: Type selector untuk semua elemen <h2>
+   KENAPA: Mengatur style sub-judul seksi (seperti "🛠️ Area Praktik")
+   ============================================================ */
 h2 {
+    /* PROPERTI: color: #747d8c
+       APA: Warna teks h2 abu-abu medium (lebih terang dari #2f3542)
+       KENAPA: Sub-judul lebih "mundur" secara visual dibanding h1,
+               abu-abu (#747d8c) memberikan hierarki visual yang jelas */
     color: #747d8c;
+
+    /* PROPERTI: font-size: 1.2rem
+       APA: Ukuran font h2 = 1.2rem = 19.2px (lebih kecil dari h1 1.5rem)
+       KENAPA: h2 harus lebih kecil dari h1 untuk mempertahankan hierarki visual */
     font-size: 1.2rem;
+
+    /* PROPERTI: margin-top: 20px
+       APA: Jarak atas h2 dari elemen sebelumnya
+       KENAPA: Memberi ruang napas antara kotak rangkuman dan label area praktik */
     margin-top: 20px;
+
+    /* PROPERTI: margin-bottom: 10px
+       APA: Jarak bawah h2 ke div.practice-area
+       KENAPA: Jarak lebih kecil di bawah heading (mendekatkan heading ke kontennya) */
     margin-bottom: 10px;
 }
 
+/* ============================================================
+   SELEKTOR: .practice-area
+   APA: Kotak pembatas area praktik dengan border dashed
+   KENAPA: Visualisasi zona eksperimen agar terpisah jelas dari teori
+   ============================================================ */
 .practice-area {
-    /* APA: Pembatas area praktik */
-    /* KENAPA: Memisahkan secara visual antara rangkuman teori dengan elemen uji coba */
+    /* PROPERTI: border: 2px dashed #cbd5e1
+       APA: Border tipis bergaris putus-putus (dashed) warna abu-abu muda
+       CARA KERJA: shorthand = [ketebalan] [gaya] [warna]
+       KENAPA: Border dashed secara konvensi menunjukkan area "sandbox" atau
+               zona demo. Abu-abu muda (#cbd5e1) tidak terlalu mencolok */
     border: 2px dashed #cbd5e1;
+
+    /* PROPERTI: padding: 20px
+       APA: Ruang dalam 20px agar konten tidak menempel ke border dashed */
     padding: 20px;
+
+    /* PROPERTI: border-radius: 6px
+       APA: Sudut border sedikit membulat
+       KENAPA: Konsisten dengan gaya desain container yang juga membulat */
     border-radius: 6px;
 }
 
+/* ============================================================
+   SELEKTOR: .intro-pos
+   APA: Styling khusus untuk paragraf pengantar di area praktik
+   KENAPA: Menandai teks perkenalan materi agar lebih menonjol
+   ============================================================ */
 .intro-pos {
-    /* APA: Mengubah font weight menjadi tebal */
-    /* KENAPA: Menandai awal materi pemosisian */
+    /* PROPERTI: font-weight: bold
+       APA: Menebalkan teks paragraf pengantar
+       KENAPA: Menegaskan bahwa ini adalah kalimat definisi/konsep utama
+       NILAI ALTERNATIF:
+         - normal  : Ketebalan default (400)
+         - bold    : Tebal (700)
+         - 100–900 : Nilai numerik (100=tipis, 900=sangat tebal)
+         - lighter : Lebih tipis dari parent
+         - bolder  : Lebih tebal dari parent */
     font-weight: bold;
 }

@@ -1,28 +1,228 @@
+<!--
+  ============================================================
+  FILE: positioning.html
+  MATERI: CSS Positioning - Pengantar (Materi 34)
+  ============================================================
+  KONSEP KUNCI — CSS POSITIONING:
+  CSS Positioning adalah teknik untuk mengontrol letak/posisi
+  elemen HTML di halaman secara lebih presisi, di luar aliran
+  dokumen (document flow) bawaan browser.
+
+  Ada 5 nilai utama properti "position":
+  ┌─────────────┬──────────────────────────────────────────────┐
+  │ static      │ Default. Mengikuti aliran normal dokumen.     │
+  │             │ Properti top/left/right/bottom diabaikan.     │
+  ├─────────────┼──────────────────────────────────────────────┤
+  │ relative    │ Bergeser dari posisi aslinya. Ruang asli      │
+  │             │ tetap ada (tidak direbut elemen lain).        │
+  ├─────────────┼──────────────────────────────────────────────┤
+  │ absolute    │ Dicabut dari aliran normal. Diposisikan       │
+  │             │ relatif terhadap induk non-static terdekat.  │
+  ├─────────────┼──────────────────────────────────────────────┤
+  │ fixed       │ Dikunci ke viewport (layar). Tidak bergerak   │
+  │             │ saat halaman di-scroll. Relatif ke jendela.  │
+  ├─────────────┼──────────────────────────────────────────────┤
+  │ sticky      │ Kombinasi relative + fixed. Bergerak normal   │
+  │             │ lalu "menempel" saat mencapai batas scroll.  │
+  └─────────────┴──────────────────────────────────────────────┘
+
+  Properti Koordinat (hanya aktif jika position ≠ static):
+  - top    : Jarak dari tepi atas referensi
+  - bottom : Jarak dari tepi bawah referensi
+  - left   : Jarak dari tepi kiri referensi
+  - right  : Jarak dari tepi kanan referensi
+  ============================================================
+-->
+
+<!--
+  TAG: <!DOCTYPE html>
+  APA: Deklarasi tipe dokumen HTML5 kepada browser
+  KENAPA: Memberitahu browser bahwa ini adalah dokumen HTML5,
+          bukan HTML4 atau XHTML, agar rendering dilakukan
+          dengan standar modern (standards mode, bukan quirks mode)
+  PENTING: Harus selalu berada di baris paling pertama dokumen
+  NILAI LAIN: Tidak ada alternatif untuk HTML5; ini satu-satunya format
+-->
 <!DOCTYPE html>
+
+<!--
+  TAG: <html lang="id">
+  APA: Elemen akar (root element) yang membungkus seluruh konten HTML
+  KENAPA: Semua tag HTML lain harus berada di dalam tag <html>
+  ATRIBUT lang="id":
+    - "id" = kode bahasa Indonesia (ISO 639-1)
+    - Membantu screen reader membacakan teks dengan aksen yang benar
+    - Berguna bagi mesin pencari (SEO) untuk menentukan bahasa halaman
+    - Mengaktifkan fitur pemeriksaan ejaan (spell check) yang sesuai
+  NILAI LAIN: lang="en" (Inggris), lang="ja" (Jepang), lang="ar" (Arab)
+-->
 <html lang="id">
+
+<!--
+  TAG: <head>
+  APA: Bagian kepala dokumen — berisi metadata, tidak tampil di halaman
+  KENAPA: Tempat mendefinisikan konfigurasi halaman: judul, charset,
+          koneksi ke file CSS/JS, meta tag untuk SEO dan responsivitas
+  PENTING: Konten <head> tidak terlihat oleh pengguna, tetapi sangat
+           penting bagi browser dan mesin pencari
+-->
 <head>
+
+    <!--
+      TAG: <meta charset="UTF-8">
+      APA: Menetapkan encoding karakter yang digunakan dokumen
+      KENAPA: UTF-8 mendukung hampir semua karakter di dunia, termasuk
+              huruf latin, aksara Jawa, emoji, karakter Arab, dll.
+              Tanpa ini, karakter seperti é, ñ, atau karakter Indonesia
+              bisa tampil rusak (kotak kosong / tanda tanya)
+      NILAI LAIN: ISO-8859-1 (Latin-1, hanya karakter Eropa Barat) — sudah usang
+      TIPS: Selalu letakkan di baris pertama dalam <head> sebelum tag lain
+    -->
     <meta charset="UTF-8">
+
+    <!--
+      TAG: <meta name="viewport">
+      APA: Meta tag konfigurasi viewport untuk mendukung tampilan responsif
+      KENAPA: Tanpa tag ini, browser mobile akan menampilkan halaman
+              dengan lebar desktop (~980px) lalu zoom out, membuat teks
+              sangat kecil dan susah dibaca di ponsel
+      ATRIBUT content="width=device-width, initial-scale=1.0":
+        - width=device-width   : Lebar halaman = lebar fisik layar perangkat
+        - initial-scale=1.0    : Zoom awal = 100% (tidak dizoom in/out)
+      NILAI LAIN content:
+        - "width=600"                    : Lebar tetap 600px
+        - "initial-scale=2.0"            : Zoom awal 200%
+        - "maximum-scale=1.0, user-scalable=no" : Menonaktifkan zoom manual
+      TIPS: WAJIB ada di setiap halaman web modern yang ingin tampil
+            baik di ponsel (responsive design)
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+      TAG: <title>
+      APA: Judul dokumen yang tampil di tab browser dan hasil pencarian Google
+      KENAPA: Membantu pengguna mengidentifikasi halaman di antara banyak tab,
+              juga sangat penting untuk SEO (Search Engine Optimization)
+      TIPS: Idealnya 50–60 karakter, deskriptif, dan unik per halaman
+      NILAI LAIN: Bisa mengandung nama situs + nama halaman, misal:
+                  "Profil Saya | Belajar CSS"
+    -->
     <title>CSS Positioning (Materi 34)</title>
+
+    <!--
+      TAG: <link>
+      APA: Menghubungkan/mengimpor file eksternal ke dokumen HTML
+      KENAPA: Memisahkan HTML (struktur) dari CSS (tampilan) adalah
+              prinsip Separation of Concerns — membuat kode lebih
+              rapi, mudah dikelola, dan bisa digunakan ulang di banyak halaman
+      ATRIBUT rel="stylesheet":
+        - Menyatakan relasi file yang ditautkan = stylesheet CSS
+        - Tanpa ini, browser tidak tahu cara memproses file tersebut
+      ATRIBUT href="../css/positioning.css":
+        - href = HyperText REFerence, path ke file CSS
+        - "../" = naik satu level direktori (dari /html/ ke /06. Pendalaman CSS/)
+        - lalu masuk ke folder /css/ dan file positioning.css
+      NILAI LAIN rel: "icon" (favicon), "preconnect" (optimasi koneksi)
+      NILAI LAIN href: URL absolut seperti "https://cdn.example.com/style.css"
+    -->
     <!-- APA: Menghubungkan file HTML dengan berkas CSS eksternal -->
     <!-- KENAPA: Agar struktur halaman HTML terpisah rapi dengan dekorasi styling CSS -->
     <link rel="stylesheet" href="../css/positioning.css">
 </head>
+
+<!--
+  TAG: <body>
+  APA: Badan dokumen — semua konten yang tampil di browser ada di sini
+  KENAPA: Browser hanya merender konten yang ada di dalam <body>
+          Semua elemen visual: teks, gambar, tombol, tabel, dll. ada di sini
+  TIPS: Hanya boleh ada SATU tag <body> dalam satu dokumen HTML
+-->
 <body>
+
+    <!--
+      TAG: <div class="container">
+      APA: <div> adalah elemen blok generik tanpa makna semantik khusus
+      KENAPA: Digunakan sebagai "kotak pembungkus" untuk mengelompokkan
+              elemen-elemen dan memberikan styling CSS pada grup tersebut
+      ATRIBUT class="container":
+        - Menandai div ini sebagai "container" utama halaman
+        - CSS menggunakan class ini untuk mengatur lebar, margin, padding, dll.
+        - Teknik umum: .container dengan max-width + margin auto = konten terpusat
+      NILAI LAIN: Bisa pakai id="main" jika hanya ada satu, tapi class lebih fleksibel
+      TIPS: Untuk konten semantic, pertimbangkan <main>, <article>, atau <section>
+    -->
     <div class="container">
+
+        <!--
+          TAG: <h1>
+          APA: Heading level 1 — judul utama/terpenting halaman
+          KENAPA: Secara semantik menandai judul halaman, penting untuk SEO
+                  dan aksesibilitas (screen reader membacanya pertama kali)
+          TIPS: Sebaiknya hanya ada SATU <h1> per halaman
+          NILAI LAIN: <h2>–<h6> untuk sub-judul dengan hierarki menurun
+        -->
         <h1>CSS Positioning (Materi 34)</h1>
 
+        <!--
+          BLOK: Rangkuman Materi
+          APA: Area informasi teoritis yang disorot secara visual
+          KENAPA: Memisahkan teori dari praktek agar lebih mudah dipelajari,
+                  diberi warna biru agar langsung terlihat sebagai "info penting"
+        -->
         <!-- 📚 RANGKUMAN MATERI -->
         <div class="rangkuman">
+
+            <!--
+              TAG: <h3>
+              APA: Heading level 3 — sub-judul di dalam sebuah seksi
+              KENAPA: Hierarki heading: h1 > h2 > h3. Karena ini ada di
+                      dalam div .rangkuman yang di bawah h2, maka h3 tepat
+              TIPS: Jangan melompat langsung dari h1 ke h3, ikuti hierarki
+            -->
             <h3>📚 Rangkuman Teori</h3>
+
+            <!--
+              TAG: <ul>
+              APA: Unordered List — daftar item tanpa urutan/nomor
+              KENAPA: Cocok untuk daftar poin-poin teori yang tidak
+                      memerlukan urutan tertentu (berbeda dengan <ol> yang bernomor)
+              NILAI LAIN: <ol> untuk daftar berurutan, <dl> untuk daftar definisi
+            -->
             <ul>
+                <!--
+                  TAG: <li>
+                  APA: List Item — satu item dalam daftar <ul> atau <ol>
+                  KENAPA: Setiap poin dalam daftar harus dibungkus dengan <li>
+                  TIPS: <li> hanya valid di dalam <ul>, <ol>, atau <menu>
+                -->
                 <li>Positioning digunakan untuk menggeser letak penempatan kotak elemen di luar tata letak bawaan browser.</li>
             </ul>
         </div>
 
+        <!--
+          BLOK: Area Praktik
+          APA: Zona demo/eksperimen langsung untuk melihat efek CSS
+          KENAPA: Memisahkan area eksperimen dari penjelasan teori,
+                  diberi border dashed agar mudah dikenali sebagai "sandbox"
+        -->
         <!-- 🛠️ AREA PRAKTEK -->
         <h2>🛠️ Area Praktik</h2>
+
+        <!--
+          TAG: <div class="practice-area">
+          APA: Pembungkus area praktik dengan border dashed abu-abu
+          KENAPA: Batas visual yang jelas antara penjelasan dan demo elemen
+          TIPS: border: 2px dashed adalah konvensi umum untuk area "sandbox"
+        -->
         <div class="practice-area">
+
+            <!--
+              TAG: <p class="intro-pos">
+              APA: Paragraf teks pengantar yang diberi style bold via CSS
+              KENAPA: Memberikan deskripsi singkat tentang apa yang dipraktikkan
+              ATRIBUT class="intro-pos": CSS memberikan font-weight: bold
+              TIPS: Paragraf pengantar berguna sebagai konteks sebelum melihat demo
+            -->
             <p class="intro-pos">Positioning membolehkan pergeseran elemen menggunakan top, bottom, left, dan right.</p>
         </div>
     </div>

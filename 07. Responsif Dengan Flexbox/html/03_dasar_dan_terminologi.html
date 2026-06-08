@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03. Dasar-Dasar dan Terminologi Flexbox (Materi 03)</title>
+    <!-- APA: Menghubungkan file HTML dengan berkas CSS eksternal -->
+    <!-- KENAPA: Agar struktur halaman HTML terpisah rapi dengan dekorasi styling CSS -->
+    <link rel="stylesheet" href="../css/03_dasar_dan_terminologi.css">
+</head>
+<body>
+    <div class="container">
+        <h1>03. Dasar-Dasar dan Terminologi Flexbox (Materi 03)</h1>
+
+        <!-- 📚 RANGKUMAN MATERI -->
+        <div class="rangkuman">
+            <h3>📚 Terminologi Penting Flexbox</h3>
+            <p>Untuk memahami Flexbox, kita harus mengetahui anatomi dan sumbu arahnya:</p>
+            <ul>
+                <li><strong>Flex Container:</strong> Parent element yang diberi properti <code>display: flex</code> atau <code>display: inline-flex</code>.</li>
+                <li><strong>Flex Items:</strong> Semua child element langsung dari Flex Container.</li>
+                <li><strong>Main Axis:</strong> Sumbu utama alur penyusunan item (horizontal jika <code>flex-direction: row</code>, vertikal jika <code>flex-direction: column</code>).</li>
+                <li><strong>Cross Axis:</strong> Sumbu yang arahnya tegak lurus (90 derajat) terhadap Main Axis.</li>
+                <li><strong>Main-Start & Main-End:</strong> Titik awal dan akhir item dijajarkan pada Main Axis.</li>
+                <li><strong>Cross-Start & Cross-End:</strong> Titik awal dan akhir item dijajarkan pada Cross Axis.</li>
+                <li><strong>Main Size & Cross Size:</strong> Dimensi item (lebar/tinggi) sepanjang Main Axis dan Cross Axis.</li>
+            </ul>
+        </div>
+
+        <!-- 🛠️ AREA PRAKTEK -->
+        <h2>🛠️ Area Praktik (Visualisasi Sumbu)</h2>
+        <p class="instruksi">Ubah properti <code>flex-direction: row;</code> menjadi <code>flex-direction: column;</code> pada selector <code>.flex-container</code> di CSS untuk melihat perubahan arah <strong>Main Axis</strong> dan <strong>Cross Axis</strong> secara instan!</p>
+        
+        <div class="practice-area">
+            <!-- Label Arah Sumbu -->
+            <div class="axis-helper horizontal-axis">Main Axis (Row) / Cross Axis (Column) &rarr;</div>
+            <div class="axis-helper vertical-axis">Cross Axis (Row) / Main Axis (Column) &darr;</div>
+
+            <div class="flex-container">
+                <div class="flex-item item-1">
+                    <span class="badge">Item 1</span>
+                    <span class="details">Main-Start</span>
+                </div>
+                <div class="flex-item item-2">
+                    <span class="badge">Item 2</span>
+                    <span class="details">Tengah</span>
+                </div>
+                <div class="flex-item item-3">
+                    <span class="badge">Item 3</span>
+                    <span class="details">Main-End</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

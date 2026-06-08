@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10. Rangkuman Layout Responsif dengan Flexbox (Materi 10)</title>
+    <!-- APA: Menghubungkan file HTML dengan berkas CSS eksternal -->
+    <!-- KENAPA: Agar struktur halaman HTML terpisah rapi dengan dekorasi styling CSS -->
+    <link rel="stylesheet" href="../css/10_rangkuman_flexbox.css">
+</head>
+<body>
+    <div class="container">
+        <h1>10. Rangkuman Layout Responsif dengan Flexbox (Materi 10)</h1>
+
+        <!-- 📚 RANGKUMAN MATERI -->
+        <div class="rangkuman">
+            <h3>📝 Rangkuman Komprehensif Flexbox</h3>
+            <p>Berikut adalah tabel ringkasan semua properti Flexbox yang telah kita pelajari:</p>
+            
+            <table class="summary-table">
+                <thead>
+                    <tr>
+                        <th>Tipe Target</th>
+                        <th>Nama Properti</th>
+                        <th>Fungsi Utama</th>
+                        <th>Nilai Populer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- CONTAINER PROPERTIES -->
+                    <tr class="header-row">
+                        <td colspan="4">Parent Element (Flex Container)</td>
+                    </tr>
+                    <tr>
+                        <td>Container</td>
+                        <td><code>display</code></td>
+                        <td>Mengaktifkan mode flexbox</td>
+                        <td><code>flex</code>, <code>inline-flex</code></td>
+                    </tr>
+                    <tr>
+                        <td>Container</td>
+                        <td><code>flex-direction</code></td>
+                        <td>Menentukan arah sumbu utama (Main Axis)</td>
+                        <td><code>row</code>, <code>column</code>, <code>row-reverse</code>, <code>column-reverse</code></td>
+                    </tr>
+                    <tr>
+                        <td>Container</td>
+                        <td><code>flex-wrap</code></td>
+                        <td>Membungkus baris elemen anak</td>
+                        <td><code>nowrap</code>, <code>wrap</code>, <code>wrap-reverse</code></td>
+                    </tr>
+                    <tr>
+                        <td>Container</td>
+                        <td><code>justify-content</code></td>
+                        <td>Meratakan item di Main Axis</td>
+                        <td><code>center</code>, <code>space-between</code>, <code>space-around</code>, <code>space-evenly</code></td>
+                    </tr>
+                    <tr>
+                        <td>Container</td>
+                        <td><code>align-items</code></td>
+                        <td>Meratakan item di Cross Axis</td>
+                        <td><code>stretch</code>, <code>center</code>, <code>flex-start</code>, <code>flex-end</code></td>
+                    </tr>
+                    <tr>
+                        <td>Container</td>
+                        <td><code>align-content</code></td>
+                        <td>Meratakan baris-baris (multiline)</td>
+                        <td><code>center</code>, <code>space-between</code>, <code>space-around</code>, <code>space-evenly</code></td>
+                    </tr>
+                    <tr>
+                        <td>Container</td>
+                        <td><code>gap</code></td>
+                        <td>Memberi celah kosong antar item</td>
+                        <td><code>[nilai ukuran] (e.g. 10px, 1rem)</code></td>
+                    </tr>
+
+                    <!-- ITEM PROPERTIES -->
+                    <tr class="header-row">
+                        <td colspan="4">Child Element (Flex Items)</td>
+                    </tr>
+                    <tr>
+                        <td>Items</td>
+                        <td><code>order</code></td>
+                        <td>Menyusun ulang urutan visual item</td>
+                        <td><code>[angka bulat] (e.g. -1, 0, 1)</code></td>
+                    </tr>
+                    <tr>
+                        <td>Items</td>
+                        <td><code>flex-grow</code></td>
+                        <td>Mengembangkan ukuran item mengisi sisa ruang</td>
+                        <td><code>[angka tanpa satuan] (default 0)</code></td>
+                    </tr>
+                    <tr>
+                        <td>Items</td>
+                        <td><code>flex-shrink</code></td>
+                        <td>Mengizinkan item untuk menciut jika sempit</td>
+                        <td><code>[angka tanpa satuan] (default 1)</code></td>
+                    </tr>
+                    <tr>
+                        <td>Items</td>
+                        <td><code>flex-basis</code></td>
+                        <td>Ukuran dasar awal sebelum pembagian ruang</td>
+                        <td><code>[ukuran / auto] (e.g. 150px, 20%)</code></td>
+                    </tr>
+                    <tr>
+                        <td>Items</td>
+                        <td><code>align-self</code></td>
+                        <td>Meratakan satu item secara individu</td>
+                        <td><code>flex-start</code>, <code>flex-end</code>, <code>center</code>, <code>stretch</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 🛠️ AREA PRAKTEK -->
+        <h2>🛠️ Area Praktik (Flexbox Cheat Sheet Sandbox)</h2>
+        <p class="instruksi">Uji pemahaman Anda! Buka file <code>css/10_rangkuman_flexbox.css</code>, aktifkan semua properti Flexbox, dan cobalah untuk memposisikan Box 1 di kanan atas, Box 2 di tengah bawah, dan Box 3 di kiri bawah secara presisi!</p>
+        
+        <div class="practice-area">
+            <div class="summary-container">
+                <div class="sandbox-item box-1">Box 1 (Order: 3)</div>
+                <div class="sandbox-item box-2">Box 2 (Order: 2)</div>
+                <div class="sandbox-item box-3">Box 3 (Order: 1)</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

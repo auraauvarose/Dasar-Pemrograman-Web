@@ -1,31 +1,138 @@
 <!DOCTYPE html>
+<!--
+  DEKLARASI DOCTYPE: Memberitahu browser ini adalah dokumen HTML5.
+  Wajib selalu ada di baris pertama setiap file HTML.
+-->
 <html lang="id">
+<!--
+  TAG: <html lang="id">
+  APA: Elemen root pembungkus seluruh dokumen HTML.
+  KENAPA: lang="id" menandai dokumen berbahasa Indonesia agar screen reader & mesin terjemahan bekerja benar.
+-->
+
 <head>
     <meta charset="UTF-8">
+    <!--
+      TAG: <meta charset="UTF-8">
+      APA: Menetapkan encoding karakter UTF-8 sehingga semua karakter (termasuk karakter khusus & emoji) ditampilkan benar.
+      KENAPA: Tanpa ini, teks bisa tampil sebagai karakter aneh (???, â€™, dll).
+    -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Type Selector & Class Selector (Materi 02)</title>
-    <!-- APA: Menghubungkan file HTML dengan berkas CSS eksternal -->
-    <!-- KENAPA: Agar struktur halaman HTML terpisah rapi dengan dekorasi styling CSS -->
+    <!--
+      TAG: <meta name="viewport">
+      APA: Mengontrol viewport browser mobile agar lebar halaman = lebar layar dan zoom awal = 100%.
+      KENAPA: Wajib untuk layout responsif di smartphone/tablet.
+    -->
+
+    <!--
+      TAG: <title>
+      APA: Judul dokumen yang muncul di tab browser dan hasil mesin pencari.
+      KENAPA: Judul yang informatif membantu identifikasi halaman.
+    -->
+    <title>Type Selector &amp; Class Selector (Materi 02)</title>
+
+    <!--
+      TAG: <link rel="stylesheet" href="../css/selector_type_class.css">
+      APA: Menghubungkan file HTML ini dengan stylesheet eksternal.
+      KENAPA: Separation of concerns — struktur (HTML) dipisahkan dari tampilan (CSS).
+      ATRIBUT rel="stylesheet": Menentukan tipe relasi file yang ditautkan adalah stylesheet.
+      ATRIBUT href="../css/selector_type_class.css": Path relatif naik satu folder ("../") lalu masuk ke folder css/.
+    -->
     <link rel="stylesheet" href="../css/selector_type_class.css">
 </head>
+
 <body>
+    <!--
+      TAG: <body>
+      APA: Wadah utama semua konten yang terlihat di browser (teks, gambar, tombol, dll).
+    -->
+
+    <!--
+      TAG: <div class="container">
+      APA: Elemen div (division) sebagai kotak pembungkus konten utama halaman.
+      KENAPA: Class "container" digunakan CSS untuk menerapkan layout terpusat (centered) dengan lebar maksimum.
+      TIPS: <div> adalah elemen non-semantik; untuk konten utama secara semantik bisa pakai <main>.
+    -->
     <div class="container">
-        <h1>Type Selector & Class Selector (Materi 02)</h1>
+
+        <!--
+          TAG: <h1>
+          APA: Judul utama halaman (heading level 1) — paling penting secara hierarki.
+          KENAPA: Satu halaman idealnya hanya punya satu h1 sebagai judul utama untuk SEO dan aksesibilitas.
+        -->
+        <h1>Type Selector &amp; Class Selector (Materi 02)</h1>
+        <!--
+          CATATAN: "&amp;" adalah HTML entity untuk karakter "&" (ampersand).
+          Di dalam HTML, karakter & harus ditulis sebagai &amp; agar tidak salah diinterpretasi browser.
+          Entity lain: &lt; untuk <, &gt; untuk >, &nbsp; untuk spasi tidak terputus.
+        -->
 
         <!-- 📚 RANGKUMAN MATERI -->
+        <!--
+          TAG: <div class="rangkuman">
+          APA: Kotak informasi teori yang diberi styling khusus (biru) agar mudah dibedakan dari area praktik.
+          KENAPA: Pemisahan visual antara "belajar teori" dan "praktik kode" memudahkan navigasi visual.
+        -->
         <div class="rangkuman">
             <h3>📚 Rangkuman Teori</h3>
+            <!--
+              TAG: <ul> (Unordered List) berisi <li> (List Item)
+              APA: Daftar bullet poin tanpa urutan angka.
+              KENAPA: Poin-poin teori tidak memerlukan urutan, sehingga <ul> lebih tepat dari <ol>.
+            -->
             <ul>
+                <!--
+                  KONSEP: TYPE SELECTOR
+                  Menargetkan elemen berdasarkan nama tag HTML-nya secara langsung.
+                  Contoh: "span { color: red; }" akan mewarnai SEMUA <span> di halaman.
+                  Kelemahan: Terlalu global — tidak bisa membedakan span yang berbeda.
+                -->
                 <li>Type Selector: Menargetkan elemen langsung berdasarkan nama tag HTML (contoh: span, p).</li>
+
+                <!--
+                  KONSEP: CLASS SELECTOR
+                  Menargetkan elemen yang memiliki atribut class tertentu.
+                  Contoh: ".highlight { background: yellow; }" hanya mewarnai elemen dengan class="highlight".
+                  Kelebihan: Bisa dipakai di banyak elemen berbeda (p, div, span, dll).
+                  Penulisan di CSS: diawali titik → .nama-class {}
+                -->
                 <li>Class Selector: Menargetkan elemen yang memiliki kelas tertentu. Diawali dengan tanda titik (contoh: .highlight).</li>
             </ul>
         </div>
 
         <!-- 🛠️ AREA PRAKTEK -->
         <h2>🛠️ Area Praktik</h2>
+
+        <!--
+          TAG: <div class="practice-area">
+          APA: Kotak area demonstrasi dengan border putus-putus.
+          KENAPA: Memisahkan secara visual antara penjelasan teori dan contoh kode yang berjalan.
+        -->
         <div class="practice-area">
+
+            <!--
+              TAG: <span>
+              APA: Elemen inline (tidak membuat baris baru) tanpa makna semantik — digunakan untuk
+                   mengelompokkan teks agar bisa diberi styling CSS tertentu.
+              KENAPA: Di sini <span> dipakai sebagai target demonstrasi TYPE SELECTOR.
+                      CSS akan menulis "span { color: #e74c3c; }" yang mewarnai SEMUA elemen span.
+              PERBEDAAN span vs div:
+                - <span>: elemen INLINE (mengalir bersama teks, tidak membuat baris baru)
+                - <div>: elemen BLOCK (selalu mulai dari baris baru, mengambil lebar penuh)
+            -->
             <span>Teks ini ditargetkan dengan Type Selector (span).</span>
-      <p class="highlight">Teks ini ditargetkan dengan Class Selector (.highlight).</p>
+
+            <!--
+              TAG: <p class="highlight">
+              APA: Elemen paragraf dengan atribut class="highlight".
+              KENAPA: Class "highlight" digunakan CSS untuk demonstrasi CLASS SELECTOR.
+                      CSS menulis ".highlight { background-color: yellow; }" yang hanya berlaku
+                      pada elemen yang punya class tersebut, tidak ke semua <p>.
+              ATRIBUT class: Nilai bisa berisi satu atau lebih nama class (dipisah spasi).
+                             Contoh: class="highlight bold warning" → elemen punya 3 class.
+            -->
+            <p class="highlight">Teks ini ditargetkan dengan Class Selector (.highlight).</p>
         </div>
     </div>
 </body>

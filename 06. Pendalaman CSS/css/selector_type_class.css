@@ -1,34 +1,100 @@
-/* selector_type_class.css */
+/* ============================================================
+   FILE: selector_type_class.css
+   DESKRIPSI: Stylesheet untuk materi Type Selector & Class Selector (Materi 02)
+   KONSEP UTAMA: Perbedaan menargetkan elemen berdasarkan nama TAG vs. CLASS
+   ============================================================ */
 
+/* ---- GAYA DASAR HALAMAN (DIWARISI KE SEMUA ELEMEN TURUNAN) ---- */
+
+/* SELEKTOR: body (TYPE SELECTOR)
+   APA: Menargetkan elemen <body> — seluruh area konten halaman.
+   KENAPA: Properti yang diatur di sini diwarisi (inherited) ke semua elemen anak,
+           sehingga efisien sebagai gaya "default" halaman. */
 body {
-    /* APA: Mengatur latar belakang halaman */
-    /* KENAPA: Memberikan kenyamanan visual dan kontras yang pas */
+    /* PROPERTI: background-color: #f1f2f6
+       APA: Warna latar belakang halaman abu-abu sangat terang (#f1f2f6).
+       KENAPA: Lebih nyaman di mata dibanding putih murni. Menciptakan kontras visual
+               dengan kotak konten putih di atasnya.
+       NILAI ALTERNATIF: #f0f2f5 (Facebook grey), #f8fafc (Tailwind slate-50). */
     background-color: #f1f2f6;
+
+    /* PROPERTI: font-family: Arial, sans-serif
+       APA: Font utama halaman. Arial sebagai pilihan pertama, sans-serif sebagai fallback.
+       KENAPA: Arial tersedia di hampir semua OS, mudah dibaca, dan cocok untuk konten edukasi.
+       TIPS: Selalu sertakan generic family (sans-serif/serif/monospace) di akhir sebagai jaring pengaman. */
     font-family: Arial, sans-serif;
+
+    /* PROPERTI: color: #2f3542
+       APA: Warna teks default abu-abu gelap (hampir hitam dengan sedikit nuansa biru).
+       KENAPA: Kontras yang cukup dengan background terang tapi tidak seekstrem hitam murni (#000). */
     color: #2f3542;
+
+    /* PROPERTI: padding: 30px
+       APA: Jarak dalam 30px di semua sisi body.
+       KENAPA: Konten tidak menempel di tepi layar — memberikan "margin napas". */
     padding: 30px;
+
+    /* PROPERTI: line-height: 1.6
+       APA: Jarak antar baris = 1.6× ukuran font. Di font 16px, berarti jarak baris = 25.6px.
+       KENAPA: Standar keterbacaan teks paragraf. Nilai 1.4–1.8 dianggap optimal. */
     line-height: 1.6;
 }
 
+/* SELEKTOR: .container (CLASS SELECTOR)
+   APA: Menargetkan elemen dengan atribut class="container".
+   ⭐ INI ADALAH CONTOH CLASS SELECTOR — diawali titik (.) */
 .container {
-    /* APA: Membungkus konten utama di tengah layar */
-    /* KENAPA: Menjaga kerapian konten agar mudah dibaca */
+    /* PROPERTI: background-color: #ffffff
+       APA: Latar belakang putih murni untuk kotak kontainer.
+       KENAPA: Kontras "kertas putih di atas meja abu-abu" — pola card design yang umum. */
     background-color: #ffffff;
+
+    /* PROPERTI: max-width: 650px
+       APA: Lebar maksimum 650px. Di layar lebih kecil, lebar mengikuti layar.
+       KENAPA: Mengontrol panjang baris teks agar tidak terlalu lebar dan melelahkan mata. */
     max-width: 650px;
+
+    /* PROPERTI: margin: 0 auto
+       APA: Margin atas-bawah 0, kiri-kanan otomatis sama rata = memusatkan elemen.
+       KENAPA: Teknik klasik CSS untuk centering elemen block secara horizontal. */
     margin: 0 auto;
+
     padding: 25px;
+
+    /* PROPERTI: border-radius: 8px
+       APA: Membulatkan keempat sudut kotak sebesar 8px.
+       KENAPA: Tampilan modern, lebih ramah dan lembut dibanding sudut tajam. */
     border-radius: 8px;
+
+    /* PROPERTI: box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05)
+       APA: Bayangan kotak tipis di bawah container untuk efek elevasi/kedalaman.
+       KENAPA: Membuat kontainer tampak "mengapung" sedikit di atas background.
+       SINTAKS: offset-x | offset-y | blur-radius | warna */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
+/* SELEKTOR: .rangkuman (CLASS SELECTOR)
+   APA: Kotak info teori dengan styling khusus biru.
+   ⭐ CLASS SELECTOR — satu class bisa dipakai di banyak elemen berbeda (div, section, article, dll). */
 .rangkuman {
-    /* APA: Kotak info rangkuman teori */
-    /* KENAPA: Memberikan penanda visual yang menonjol untuk belajar teori */
+    /* PROPERTI: background-color: #eff6ff
+       APA: Background biru muda pucat untuk membedakan area teori dari area praktik.
+       KENAPA: Warna biru memberi kesan informatif/edukatif. */
     background-color: #eff6ff;
+
+    /* PROPERTI: border-left: 5px solid #3b82f6
+       APA: Garis solid biru tebal 5px di sisi kiri — pola "callout box".
+       KENAPA: Menarik perhatian ke kotak teori ini. Lebih halus dari outline penuh. */
     border-left: 5px solid #3b82f6;
+
     padding: 15px;
     margin-bottom: 25px;
+
+    /* PROPERTI: border-radius: 0 6px 6px 0
+       APA: Hanya sudut kanan yang dibulatkan (6px), sudut kiri tetap tajam (0).
+       KENAPA: Sudut kiri tajam menyatu dengan border-left vertikal. */
     border-radius: 0 6px 6px 0;
+
     color: #1e40af;
 }
 
@@ -45,37 +111,87 @@ body {
     margin-bottom: 6px;
 }
 
+/* SELEKTOR: h1 (TYPE SELECTOR)
+   APA: Menargetkan SEMUA elemen <h1> di halaman.
+   ⭐ INI ADALAH CONTOH TYPE SELECTOR — langsung nama tag tanpa awalan. */
 h1 {
+    /* PROPERTI: text-align: center
+       APA: Perataan teks ke tengah secara horizontal.
+       NILAI ALTERNATIF: left (default) | right | justify */
     text-align: center;
+
     color: #2f3542;
     margin-bottom: 30px;
+
+    /* PROPERTI: font-size: 1.5rem
+       APA: Ukuran font 1.5× dari ukuran root element (biasanya 16px → hasil 24px).
+       KENAPA: Satuan rem lebih konsisten dari em karena selalu relatif ke root, bukan parent.
+       NILAI ALTERNATIF: 1.8rem, 24px, 1.5em */
     font-size: 1.5rem;
 }
 
+/* SELEKTOR: h2 (TYPE SELECTOR)
+   ⭐ Contoh TYPE SELECTOR lain — menargetkan semua <h2> */
 h2 {
+    /* PROPERTI: color: #747d8c
+       APA: Warna abu-abu medium untuk sub-judul.
+       KENAPA: Lebih terang dari body text (#2f3542) agar terasa sebagai elemen sekunder. */
     color: #747d8c;
+
     font-size: 1.2rem;
     margin-top: 20px;
     margin-bottom: 10px;
 }
 
+/* SELEKTOR: .practice-area (CLASS SELECTOR)
+   APA: Kotak area demonstrasi dengan border putus-putus.
+   ⭐ Contoh penggunaan CLASS SELECTOR untuk kotak demo. */
 .practice-area {
-    /* APA: Pembatas area praktik */
-    /* KENAPA: Memisahkan secara visual antara rangkuman teori dengan elemen uji coba */
+    /* PROPERTI: border: 2px dashed #cbd5e1
+       APA: Garis tepi putus-putus (dashed) 2px berwarna abu-abu biru (#cbd5e1).
+       KENAPA: Konvensi visual untuk "zona kerja" atau "placeholder area".
+       TIPE BORDER: solid (penuh) | dashed (putus panjang) | dotted (titik-titik) | double | none. */
     border: 2px dashed #cbd5e1;
+
     padding: 20px;
     border-radius: 6px;
 }
 
+/* =============================================================
+   ⭐ BAGIAN UTAMA DEMONSTRASI: TYPE SELECTOR vs CLASS SELECTOR
+   ============================================================= */
+
+/* SELEKTOR: span (TYPE SELECTOR)
+   APA: Menargetkan SEMUA elemen <span> di halaman ini tanpa terkecuali.
+   KENAPA: Ini adalah cara termudah tapi paling global — seluruh <span> di halaman terkena.
+   KELEBIHAN: Mudah, tidak perlu menambah class di HTML.
+   KELEMAHAN: Tidak bisa membedakan <span> yang berbeda fungsinya di halaman yang sama.
+   ⭐ PERBEDAAN UTAMA:
+      - Type Selector (span {}): berlaku ke SEMUA elemen span
+      - Class Selector (.merah {}): berlaku ke elemen yang PUNYA class="merah" saja */
 span {
-    /* APA: Mengubah warna teks tag span menjadi merah */
-    /* KENAPA: Menunjukkan bahwa Type Selector menargetkan seluruh tag span secara global */
+    /* PROPERTI: color: #e74c3c
+       APA: Warna teks merah cerah (#e74c3c) untuk semua elemen <span>.
+       KENAPA: Warna merah mencolok — cocok untuk demo agar siswa langsung melihat efeknya.
+       NILAI ALTERNATIF: red (nama warna), #c0392b (merah lebih tua), rgb(231, 76, 60). */
     color: #e74c3c;
 }
 
+/* SELEKTOR: .highlight (CLASS SELECTOR)
+   APA: Menargetkan elemen yang memiliki atribut class="highlight".
+   KENAPA: Lebih spesifik dari Type Selector — hanya elemen yang kita tandai dengan class ini yang terkena.
+   ⭐ CARA MENULIS CLASS SELECTOR: awali dengan tanda titik (.) → .nama-class {}
+   KEUNGGULAN: Satu class bisa dipakai di berbagai tag berbeda (<p>, <div>, <span>, <li>, dll).
+               Satu elemen bisa punya banyak class: class="highlight bold important". */
 .highlight {
-    /* APA: Memberikan warna latar belakang kuning lembut pada class .highlight */
-    /* KENAPA: Menunjukkan Class Selector menargetkan elemen apa saja yang memiliki class="highlight" */
+    /* PROPERTI: background-color: #ffeaa7
+       APA: Latar belakang kuning telur (#ffeaa7) — seperti stabilo kuning.
+       KENAPA: Warna kuning adalah warna "highlight" yang universal — mudah dikenali sebagai tanda penting.
+       NILAI ALTERNATIF: yellow (kuning murni tapi terlalu mencolok), #fff3cd (kuning lembut Bootstrap). */
     background-color: #ffeaa7;
+
+    /* PROPERTI: padding: 5px
+       APA: Jarak dalam 5px di semua sisi agar highlight tidak terlalu mepet ke teks.
+       KENAPA: Sedikit padding membuat area background kuning terlihat lebih rapi. */
     padding: 5px;
 }

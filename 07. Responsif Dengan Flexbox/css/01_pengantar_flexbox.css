@@ -1,0 +1,386 @@
+/* ============================================================
+   FILE: 01_pengantar_flexbox.css
+   TUJUAN: Memperkenalkan konsep dasar Flexbox dengan contoh
+           yang bisa dimodifikasi langsung oleh pemula
+   ============================================================ */
+
+/* ==========================================
+   SELEKTOR: body
+   APA: Mengatur gaya dasar (base style) untuk seluruh halaman
+   KENAPA: Pengaturan font, warna teks, dan background di <body>
+           akan diwarisi (inherit) oleh hampir semua elemen turunannya,
+           sehingga kita tidak perlu mengulang deklarasi yang sama
+   ========================================== */
+body {
+    /* PROPERTI: background-color
+       APA: Mengatur warna latar belakang elemen body (seluruh halaman)
+       KENAPA: Warna #f8fafc adalah biru-abu terang yang sangat muda,
+               memberikan kesan bersih dan profesional, tidak menyilaukan
+       NILAI LAIN:
+         - background-color: white; (putih murni)
+         - background-color: #f0f0f0; (abu-abu muda)
+         - background-color: transparent; (transparan / tidak ada latar) */
+    background-color: #f8fafc;
+
+    /* PROPERTI: font-family
+       APA: Mengatur jenis huruf (font) yang digunakan untuk teks
+       KENAPA: Mendefinisikan daftar font secara berurutan (font stack).
+               Browser akan mencoba font pertama dulu ('Segoe UI'),
+               jika tidak tersedia di perangkat pengguna, pindah ke Tahoma, dst.
+               Font terakhir (sans-serif) adalah font generik sebagai fallback terakhir.
+       NILAI LAIN:
+         - font-family: Arial, sans-serif; (font umum)
+         - font-family: 'Times New Roman', serif; (font serif klasik)
+         - font-family: Consolas, monospace; (font untuk kode)
+       TIPS: Gunakan 'font stack' (banyak font sebagai cadangan) agar tampilan
+             konsisten di berbagai sistem operasi */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* PROPERTI: color
+       APA: Mengatur warna teks utama halaman
+       KENAPA: #1e293b adalah biru-slate sangat gelap. Dipilih agar teks
+               mudah dibaca (kontras tinggi) namun tidak terlalu pekat
+               seperti hitam murni (#000000) yang bisa melelahkan mata
+       NILAI LAIN:
+         - color: black; / color: #000000;
+         - color: #333333; (abu-abu gelap, populer)
+         - color: #334155; (slate-700 Tailwind) */
+    color: #1e293b;
+
+    /* PROPERTI: padding
+       APA: Ruang kosong di dalam elemen, antara konten dan border
+       KENAPA: padding: 30px memberikan jarak 30px di semua sisi (atas, kanan,
+               bawah, kiri) agar konten tidak menempel di tepi layar browser
+       NILAI SHORTHAND:
+         - padding: 30px; → semua sisi 30px
+         - padding: 10px 20px; → atas-bawah 10px, kiri-kanan 20px
+         - padding: 10px 20px 15px 25px; → atas, kanan, bawah, kiri
+       PERBEDAAN PADDING VS MARGIN:
+         - padding: ruang di DALAM elemen (mempengaruhi latar belakang)
+         - margin: ruang di LUAR elemen (antar elemen) */
+    padding: 30px;
+
+    /* PROPERTI: line-height
+       APA: Mengatur tinggi setiap baris teks (jarak antar baris)
+       KENAPA: Nilai 1.6 berarti tinggi baris = 1.6 × ukuran font saat ini.
+               Ini memberikan jarak antar baris yang nyaman untuk dibaca
+               (tidak terlalu rapat, tidak terlalu renggang)
+       NILAI UMUM:
+         - line-height: 1; (rapat, hanya setinggi font)
+         - line-height: 1.5; (standar nyaman)
+         - line-height: 1.6; (sedikit lebih longgar, direkomendasikan untuk body text)
+         - line-height: 2; (sangat renggang)
+       TIPS: Nilai tanpa satuan (seperti 1.6) lebih direkomendasikan
+             daripada 16px, karena otomatis menyesuaikan dengan font-size */
+    line-height: 1.6;
+}
+
+/* ==========================================
+   SELEKTOR: .container
+   APA: Mengatur wrapper utama konten halaman
+   KENAPA: Pola "container" ini umum digunakan untuk:
+           1. Membatasi lebar konten agar tidak terlalu lebar di layar besar
+           2. Memusatkan konten di tengah layar
+           3. Memberikan background dan shadow agar terlihat seperti "kartu"
+   ========================================== */
+.container {
+    /* PROPERTI: background-color: #ffffff
+       APA: Memberikan latar belakang putih pada container
+       KENAPA: Kontras dengan body yang berwarna abu-abu terang,
+               sehingga container terlihat "terangkat" dari halaman */
+    background-color: #ffffff;
+
+    /* PROPERTI: max-width
+       APA: Membatasi lebar maksimum elemen (tidak lebih dari 700px)
+       KENAPA: Mencegah konten menjadi terlalu lebar di layar besar (ultra-wide),
+               yang akan membuat baris teks terlalu panjang dan sulit dibaca.
+               700px adalah lebar yang nyaman untuk teks artikel
+       NILAI LAIN:
+         - max-width: 1200px; (untuk layout lebar seperti dashboard)
+         - max-width: 600px; (untuk konten teks/blog yang sempit)
+         - max-width: 100%; (menyesuaikan lebar parent) */
+    max-width: 700px;
+
+    /* PROPERTI: margin: 0 auto
+       AHA MOMENT! Ini trik klasik untuk MEMUSATKAN elemen blok secara horizontal.
+       APA: margin: 0 auto berarti margin atas-bawah = 0, margin kiri-kanan = auto
+       KENAPA: Ketika margin kiri DAN kanan di-set ke 'auto', browser membagi
+               sisa ruang kosong secara merata ke dua sisi, hasilnya: elemen di tengah!
+       PENTING: Trik ini hanya bekerja jika elemen memiliki 'width' atau 'max-width'
+               yang lebih kecil dari parent-nya. Tanpa itu, tidak ada "sisa ruang" yang dibagi. */
+    margin: 0 auto;
+
+    /* PROPERTI: padding: 30px
+       APA: Jarak 30px di dalam container, antara border dan konten
+       KENAPA: Agar teks dan elemen di dalam container tidak menempel
+               ke tepi putih container */
+    padding: 30px;
+
+    /* PROPERTI: border-radius
+       APA: Membuat sudut-sudut elemen menjadi melengkung/membulat
+       KENAPA: border-radius: 12px memberikan sudut yang tidak terlalu tajam dan
+               tidak terlalu bulat, menciptakan tampilan modern dan ramah
+       NILAI LAIN:
+         - border-radius: 0; (sudut lancip/kotak, default)
+         - border-radius: 4px; (sedikit melengkung)
+         - border-radius: 50%; (bulat sempurna, untuk avatar/lingkaran) */
+    border-radius: 12px;
+
+    /* PROPERTI: box-shadow
+       APA: Memberikan efek bayangan pada elemen
+       KENAPA: Bayangan tipis membuat container terlihat "mengambang" di atas
+               background body, menciptakan kedalaman (depth) visual
+       FORMAT: box-shadow: [offset-x] [offset-y] [blur-radius] [spread-radius] [warna]
+         - 0: tidak bergeser horizontal
+         - 10px: bergeser 10px ke bawah
+         - 15px: radius blur bayangan 15px
+         - -3px: spread negatif membuat bayangan lebih kecil dari elemen
+         - rgba(0,0,0,0.05): hitam dengan opacity 5% (sangat transparan = bayangan halus)
+       NILAI LAIN:
+         - box-shadow: none; (tanpa bayangan)
+         - box-shadow: 2px 2px 5px gray; (bayangan sederhana)
+         - box-shadow: 0 4px 20px rgba(0,0,0,0.15); (bayangan lebih kuat) */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================
+   SELEKTOR: h1
+   APA: Mengatur gaya untuk semua elemen heading level 1 di halaman
+   ========================================== */
+h1 {
+    /* PROPERTI: text-align: center
+       APA: Meratakan teks secara horizontal
+       KENAPA: Judul halaman diletakkan di tengah untuk tampilan yang simetris dan formal
+       NILAI LAIN:
+         - text-align: left; (default untuk bahasa kiri ke kanan)
+         - text-align: right;
+         - text-align: justify; (meratakan kiri-kanan seperti koran) */
+    text-align: center;
+
+    /* PROPERTI: color: #0f172a
+       APA: Warna teks h1 slate-900 (hampir hitam namun dengan sedikit warna biru)
+       KENAPA: Lebih gelap dari teks body (#1e293b) agar judul menonjol lebih kuat */
+    color: #0f172a;
+
+    /* PROPERTI: font-size: 1.6rem
+       APA: Ukuran font menggunakan satuan rem
+       KENAPA: 1.6rem = 1.6 × ukuran font root (biasanya 16px di browser) = 25.6px
+               Satuan 'rem' lebih baik dari 'px' karena menghormati pengaturan
+               ukuran font pengguna di browser (aksesibilitas)
+       NILAI LAIN:
+         - font-size: 2rem; (lebih besar)
+         - font-size: 24px; (ukuran tetap, tidak menyesuaikan preferensi user)
+         - font-size: 1.5em; (em: relatif terhadap font-size PARENT, bukan root) */
+    font-size: 1.6rem;
+
+    /* PROPERTI: margin-bottom: 20px
+       APA: Jarak 20px di bawah elemen h1
+       KENAPA: Memberikan ruang antara judul dan konten di bawahnya
+               agar tidak terasa sesak */
+    margin-bottom: 20px;
+}
+
+/* ==========================================
+   SELEKTOR: .rangkuman
+   APA: Mengatur tampilan visual kotak rangkuman materi
+   KENAPA: Desain dengan border kiri berwarna dan background berbeda
+           adalah pola umum untuk menampilkan "callout" atau "info box"
+   ========================================== */
+.rangkuman {
+    /* Latar biru sangat muda (#f0f9ff = sky-50 Tailwind) */
+    background-color: #f0f9ff;
+
+    /* PROPERTI: border-left: 6px solid #0284c7
+       APA: Menambahkan border (garis) hanya di sisi KIRI elemen setebal 6px
+       KENAPA: Border kiri berwarna ini adalah "aksento" visual yang menarik
+               perhatian ke kotak informasi ini. Pattern ini populer di banyak
+               desain modern (seperti kotak blockquote atau warning)
+       FORMAT: border-left: [ketebalan] [tipe] [warna]
+       TIPE LAIN: dotted | dashed | double | groove | ridge */
+    border-left: 6px solid #0284c7;
+
+    padding: 20px;
+    margin-bottom: 30px;
+
+    /* PROPERTI: border-radius: 0 8px 8px 0
+       APA: Melengkungkan sudut secara selektif
+       KENAPA: Nilai empat angka berarti: atas-kiri, atas-kanan, bawah-kanan, bawah-kiri
+               = 0, 8px, 8px, 0
+               Sudut kiri dibuat lancip (0) agar menyatu mulus dengan border kiri,
+               sudut kanan dilengkungkan (8px) untuk tampilan modern */
+    border-radius: 0 8px 8px 0;
+
+    /* Warna teks biru tua untuk kontras dengan latar biru muda */
+    color: #0369a1;
+}
+
+/* ==========================================
+   SELEKTOR: .rangkuman h3
+   APA: Mengatur gaya h3 yang ada DI DALAM elemen .rangkuman
+   KENAPA: CSS descendant selector untuk menargetkan elemen spesifik
+           dalam konteks tertentu tanpa mempengaruhi h3 di tempat lain
+   ========================================== */
+.rangkuman h3 {
+    /* margin-top: 0 menghilangkan margin bawaan browser di atas h3
+       agar tidak ada jarak kosong berlebih di atas teks judul */
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.rangkuman ul {
+    /* margin-left: 20px menggeser daftar ke dalam (indentasi)
+       agar bullet point terlihat jelas */
+    margin-left: 20px;
+    /* padding: 0 mereset padding default browser pada ul
+       (beberapa browser memberikan padding kiri bawaan pada ul) */
+    padding: 0;
+}
+
+.rangkuman li {
+    /* Jarak 8px di bawah setiap item daftar agar tidak terlalu rapat */
+    margin-bottom: 8px;
+}
+
+/* ==========================================
+   SELEKTOR: .instruksi
+   APA: Mengatur tampilan kotak instruksi/petunjuk (latar kuning)
+   KENAPA: Warna kuning digunakan secara universal sebagai "warning" atau
+           "perhatian", cocok untuk kotak petunjuk yang perlu dibaca dulu
+   ========================================== */
+.instruksi {
+    background-color: #fef08a; /* Kuning terang */
+    color: #713f12; /* Cokelat tua agar kontras dengan kuning */
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+
+    /* PROPERTI: font-weight: 500
+       APA: Ketebalan font. 500 adalah "medium" (antara normal 400 dan bold 700)
+       KENAPA: Teks instruksi sedikit lebih tebal agar terasa lebih penting
+       NILAI LAIN:
+         - font-weight: 100; (thin, sangat tipis)
+         - font-weight: 400; (normal, default)
+         - font-weight: 700; (bold)
+         - font-weight: 900; (black, sangat tebal)
+         - font-weight: bold; (sama dengan 700) */
+    font-weight: 500;
+
+    border-left: 4px solid #eab308; /* Border kiri kuning lebih gelap */
+}
+
+/* ==========================================
+   SELEKTOR: .practice-area
+   APA: Mengatur tampilan area sandbox/uji coba
+   KENAPA: Border putus-putus memberi kesan "placeholder" atau "area kosong
+           yang perlu diisi", cocok untuk area eksperimen
+   ========================================== */
+.practice-area {
+    /* PROPERTI: border: 2px dashed #cbd5e1
+       APA: Garis pinggiran (border) solid 2px berwarna abu-abu dengan gaya dashed (putus-putus)
+       KENAPA: Garis putus-putus secara visual menyiratkan "ini area sementara/eksperimen"
+       TIPE GARIS: solid (penuh) | dashed (putus) | dotted (titik-titik) | double (dua garis) */
+    border: 2px dashed #cbd5e1;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fafafa; /* Putih sangat terang */
+}
+
+/* ==========================================
+   SELEKTOR: .flex-container
+   APA: Container yang akan menjadi Flex Container
+   KENAPA: Ini adalah elemen inti demonstrasi Flexbox!
+           Dengan mengubah 'display: block' menjadi 'display: flex',
+           semua anak langsungnya otomatis menjadi Flex Items
+   ========================================== */
+.flex-container {
+    /* APA: Menentukan wadah kontainer elemen */
+    /* KENAPA: Mengaktifkan flexbox layout pada elemen-elemen di dalamnya */
+
+    /* =====================================================
+       EKSPERIMEN UTAMA! UBAH BARIS INI:
+       
+       PROPERTI: display
+       APA: Menentukan tipe layout model yang digunakan elemen ini
+       
+       display: block;  → Layout normal, setiap child menempati satu baris penuh
+                           dan menumpuk dari atas ke bawah (PERILAKU SAAT INI)
+       
+       display: flex;   → Mengaktifkan Flexbox! Semua child langsung menjadi
+                           Flex Items yang berjejar secara HORIZONTAL (row) by default
+       
+       NILAI ALTERNATIF DISPLAY:
+         - display: block; (default untuk div, p, h1, dll.)
+         - display: inline; (konten mengalir dalam baris, tidak bisa diatur lebar/tinggi)
+         - display: inline-block; (gabungan: inline tapi bisa diatur lebar/tinggi)
+         - display: flex; ← YANG AKAN KAMU COBA!
+         - display: inline-flex; (seperti flex, tapi container sendiri bersifat inline)
+         - display: grid; (CSS Grid Layout - untuk tata letak 2 dimensi)
+         - display: none; (menyembunyikan elemen sepenuhnya dari halaman)
+       
+       TODO: Ganti 'block' menjadi 'flex' di bawah ini lalu simpan dan refresh browser!
+       ===================================================== */
+    display: flex; /* ← SUDAH DIAKTIFKAN! Lihat perbedaannya! */
+
+    background-color: #e2e8f0; /* Latar abu-abu muda untuk container */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* ==========================================
+   SELEKTOR: .flex-item
+   APA: Mengatur gaya dasar yang SAMA untuk semua flex item
+   KENAPA: Menggunakan shared class ".flex-item" untuk properti yang
+           berlaku ke semua item, lalu class individual (.item-1, dll.)
+           hanya untuk properti yang berbeda (warna)
+   ========================================== */
+.flex-item {
+    /* PROPERTI: color: white
+       APA: Warna teks menjadi putih
+       KENAPA: Kontras dengan background item yang berwarna gelap (merah/hijau/biru) */
+    color: white;
+
+    /* PROPERTI: padding: 15px 25px
+       APA: Jarak dalam elemen: 15px atas-bawah, 25px kiri-kanan
+       KENAPA: Memberikan "napas" pada teks agar tidak menempel ke tepi item
+               Nilai horizontal (25px) lebih besar agar item terlihat lebih lebar */
+    padding: 15px 25px;
+
+    /* PROPERTI: font-weight: bold
+       APA: Menebalkan teks
+       KENAPA: Teks "Item 1", "Item 2", "Item 3" perlu menonjol di atas background berwarna */
+    font-weight: bold;
+
+    text-align: center;
+    border-radius: 6px;
+
+    /* PROPERTI: margin: 5px
+       APA: Jarak 5px di semua sisi LUAR item
+       KENAPA: Memberikan sedikit jarak antar item agar tidak menempel satu sama lain
+       TIPS MODERN: Saat menggunakan Flexbox, lebih baik gunakan properti 'gap' pada
+                    container daripada 'margin' pada item, karena 'gap' tidak menambah
+                    jarak di sisi luar (pinggir) container */
+    margin: 5px;
+}
+
+/* ==========================================
+   SELEKTOR: .item-1, .item-2, .item-3
+   APA: Pewarnaan individual untuk masing-masing item
+   KENAPA: Setiap item diberi warna berbeda agar kita bisa dengan mudah
+           melihat pergerakan/posisi masing-masing saat bereksperimen
+   ========================================== */
+.item-1 {
+    /* PROPERTI: background-color: #ef4444
+       APA: Warna latar belakang merah (red-500 dalam sistem warna Tailwind)
+       KENAPA: Merah sebagai warna pertama yang mencolok */
+    background-color: #ef4444; /* Merah */
+}
+
+.item-2 {
+    background-color: #10b981; /* Hijau (emerald-500) */
+}
+
+.item-3 {
+    background-color: #3b82f6; /* Biru (blue-500) */
+}

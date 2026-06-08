@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06. Latihan: Implementasi Flexbox pada Halaman Profil (Materi 06)</title>
+    <!-- APA: Menghubungkan file HTML dengan berkas CSS eksternal -->
+    <!-- KENAPA: Agar struktur halaman HTML terpisah rapi dengan dekorasi styling CSS -->
+    <link rel="stylesheet" href="../css/06_latihan_halaman_profil.css">
+</head>
+<body>
+    <div class="container">
+        <h1>06. Latihan: Implementasi Flexbox pada Halaman Profil (Materi 06)</h1>
+
+        <!-- 📚 RANGKUMAN MATERI -->
+        <div class="rangkuman">
+            <h3>📚 Refactoring Halaman Profil ke Flexbox</h3>
+            <ul>
+                <li>Mengubah penataan daftar navigasi (<code>nav ul</code>) dari <code>display: inline</code> pada item li menjadi <code>display: flex</code> pada item ul, dipadukan dengan properti <code>gap</code> untuk celah yang efisien.</li>
+                <li>Menerapkan <code>display: flex</code> pada elemen pembungkus utama (<code>main</code>) sehingga elemen artikel (<code>#content</code>) dan informasi samping (<code>aside</code>) berjejer secara horizontal tanpa float.</li>
+                <li>Membagi ukuran ruang menggunakan properti shorthand <code>flex: [porsi]</code>, contoh: <code>flex: 5</code> untuk konten utama dan <code>flex: 1</code> untuk aside.</li>
+                <li>Menggunakan properti shorthand <code>flex-flow</code> (gabungan dari <code>flex-direction</code> dan <code>flex-wrap</code>).</li>
+                <li>Menggunakan logical properties seperti <code>padding-inline</code> (padding kiri & kanan) dan <code>padding-block</code> (padding atas & bawah) untuk penulisan CSS modern.</li>
+            </ul>
+        </div>
+
+        <!-- 🛠️ AREA PRAKTEK -->
+        <h2>🛠️ Area Praktik (Mini Profil Page)</h2>
+        <p class="instruksi">Ubah CSS di <code>css/06_latihan_halaman_profil.css</code>. Ikuti langkah TODO untuk refactoring layout dari <strong>Float</strong> menjadi <strong>Flexbox</strong>!</p>
+        
+        <div class="practice-area">
+            <!-- HEADER / NAV BAR -->
+            <header>
+                <nav>
+                    <ul>
+                        <li><a href="#">Beranda</a></li>
+                        <li><a href="#">Sejarah</a></li>
+                        <li><a href="#">Geografis</a></li>
+                        <li><a href="#">Wisata</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main>
+                <!-- KONTEN UTAMA -->
+                <div id="content">
+                    <article class="card">
+                        <h3>Sejarah Kota Bandung</h3>
+                        <p>Kata Bandung berasal dari kata bendung atau bendungan karena terbendungnya sungai Citarum oleh lava Gunung Tangkuban Parahu yang lalu membentuk telaga...</p>
+                    </article>
+                    <article class="card">
+                        <h3>Geografis</h3>
+                        <p>Kota Bandung dikelilingi oleh pegunungan, sehingga bentuk morfologi wilayahnya bagaikan sebuah mangkok raksasa...</p>
+                    </article>
+                </div>
+
+                <!-- SIDEBAR -->
+                <aside class="card">
+                    <h3>Kota Bandung</h3>
+                    <p><strong>Negara:</strong> Indonesia</p>
+                    <p><strong>Hari Jadi:</strong> 25 September 1810</p>
+                </aside>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

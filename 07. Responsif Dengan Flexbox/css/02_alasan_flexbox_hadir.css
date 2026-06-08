@@ -1,0 +1,169 @@
+/* 02_alasan_flexbox_hadir.css */
+
+body {
+    background-color: #f8fafc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1e293b;
+    padding: 30px;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: #ffffff;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    text-align: center;
+    color: #0f172a;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.rangkuman {
+    background-color: #eff6ff;
+    border-left: 6px solid #2563eb;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 0 8px 8px 0;
+    color: #1e40af;
+}
+
+.rangkuman h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.rangkuman ol {
+    margin-left: 20px;
+    padding: 0;
+}
+
+.rangkuman li {
+    margin-bottom: 8px;
+}
+
+.kasus-box {
+    margin-bottom: 40px;
+    background: #fdfdfd;
+    padding: 20px;
+    border: 1px solid #f1f5f9;
+    border-radius: 10px;
+}
+
+.kasus-box h3 {
+    margin-top: 0;
+    color: #334155;
+    font-size: 1.15rem;
+}
+
+.instruksi {
+    background-color: #fef08a;
+    color: #713f12;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+    border-left: 4px solid #eab308;
+}
+
+.practice-area {
+    border: 2px dashed #cbd5e1;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f8fafc;
+}
+
+/* ==========================================
+   KASUS 1: Vertically Centering Content
+   ========================================== */
+.container-flex-center {
+    height: 150px;
+    background-color: #e2e8f0;
+    border-radius: 6px;
+    
+    /* TODO: Aktifkan flexbox dengan menghapus komentar di bawah ini */
+    /*
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    */
+}
+
+.center-item {
+    background-color: #6366f1;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+/* ==========================================
+   KASUS 2: Fluid Spacing (Membagi Kolom Rata)
+   ========================================== */
+.container-flex-fluid {
+    background-color: #e2e8f0;
+    border-radius: 6px;
+    padding: 10px;
+    
+    /* TODO: Aktifkan flexbox pada container ini! */
+    /* display: flex; */
+}
+
+.container-flex-fluid .col {
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    font-weight: bold;
+    margin: 5px;
+    border-radius: 6px;
+    
+    /* TODO: Berikan properti flex-grow: 1; agar setiap kolom membagi rata lebarnya secara dinamis! */
+    /* flex-grow: 1; */
+}
+
+.col-1 { background-color: #ec4899; }
+.col-2 { background-color: #f59e0b; }
+.col-3 { background-color: #10b981; }
+
+/* ==========================================
+   KASUS 3: Equal Height Columns
+   ========================================== */
+.container-flex-equal {
+    /* TODO: Aktifkan display: flex; di sini untuk membuat kedua kolom memiliki tinggi yang sama! */
+    /* display: flex; */
+    gap: 15px;
+}
+
+.equal-col {
+    padding: 20px;
+    border-radius: 8px;
+    color: #1e293b;
+    border: 1px solid #cbd5e1;
+    
+    /* TODO: Berikan properti flex: 1; agar lebar kolom membagi rata dan tingginya mengikuti kolom tertinggi! */
+    /* flex: 1; */
+}
+
+.col-left {
+    background-color: #dbeafe;
+}
+
+.col-right {
+    background-color: #fee2e2;
+}
+
+.equal-col h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.equal-col p {
+    margin: 0;
+}

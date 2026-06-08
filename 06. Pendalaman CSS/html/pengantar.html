@@ -1,29 +1,144 @@
 <!DOCTYPE html>
+<!--
+  TAG: <!DOCTYPE html>
+  APA: Deklarasi tipe dokumen yang memberitahu browser bahwa ini adalah file HTML versi 5 (HTML5).
+  KENAPA: Wajib ditaruh di baris pertama agar browser merender halaman dalam mode "standar" (bukan mode quirks/lama).
+  NILAI LAIN: Versi HTML lama memakai <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"> tapi HTML5 cukup dengan <!DOCTYPE html>.
+-->
+
+<!--
+  TAG: <html lang="id">
+  APA: Elemen akar (root element) yang membungkus seluruh konten HTML.
+  KENAPA: Atribut lang="id" memberi tahu browser & screen reader bahwa bahasa halaman ini adalah Bahasa Indonesia (id = kode ISO 639-1 untuk Indonesia).
+  NILAI LAIN: lang="en" (Inggris), lang="ja" (Jepang), lang="ar" (Arab).
+  TIPS: Selalu isi atribut lang agar aksesibilitas dan SEO halaman lebih baik.
+-->
 <html lang="id">
+
+<!--
+  TAG: <head>
+  APA: Bagian kepala dokumen yang berisi metadata — informasi tentang halaman yang TIDAK terlihat di layar browser secara langsung.
+  KENAPA: Browser, mesin pencari (Google), dan tools lainnya membaca <head> untuk mengetahui encoding, judul, stylesheet, dan meta informasi lainnya.
+  CATATAN: Isi <head> tidak tampil di halaman, berbeda dengan <body>.
+-->
 <head>
+    <!--
+      TAG: <meta charset="UTF-8">
+      APA: Menetapkan sistem encoding karakter yang digunakan dokumen ini menjadi UTF-8.
+      KENAPA: UTF-8 mendukung seluruh karakter dunia termasuk huruf latin beraksent (é, ñ), karakter Arab, China, emoji, dsb. Tanpa ini, teks Bahasa Indonesia dengan karakter khusus bisa tampil rusak (mojibake).
+      NILAI LAIN: charset="ISO-8859-1" (hanya latin Eropa Barat), charset="UTF-16" (jarang dipakai di web).
+      TIPS: Selalu taruh meta charset sebagai tag pertama di dalam <head> agar browser membacanya sebelum elemen lain.
+    -->
     <meta charset="UTF-8">
+
+    <!--
+      TAG: <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      APA: Mengatur cara browser mobile merender lebar halaman dan level zoom awal.
+      KENAPA: Tanpa tag ini, smartphone akan menampilkan halaman desktop yang diperkecil (zoom out) sehingga teks sangat kecil.
+        - width=device-width → lebar halaman = lebar layar perangkat
+        - initial-scale=1.0  → zoom awal 100% (tidak diperbesar/diperkecil)
+      NILAI LAIN: initial-scale=0.5 (tampilan zoom 50%), maximum-scale=1.0 (cegah user melakukan zoom-in).
+      TIPS: Tag ini WAJIB untuk membuat halaman mobile-responsive.
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+      TAG: <title>
+      APA: Menetapkan judul dokumen yang ditampilkan di tab browser, bookmark, dan hasil pencarian Google.
+      KENAPA: Judul yang deskriptif membantu pengguna mengidentifikasi halaman dengan cepat, sekaligus meningkatkan SEO.
+      NILAI LAIN: Bisa berisi teks apa saja, idealnya 50-60 karakter agar tidak terpotong di Google.
+    -->
     <title>Pengantar Pendalaman CSS (Materi 01)</title>
-    <!-- APA: Menghubungkan file HTML dengan berkas CSS eksternal -->
-    <!-- KENAPA: Agar struktur halaman HTML terpisah rapi dengan dekorasi styling CSS -->
+
+    <!--
+      TAG: <link rel="stylesheet" href="../css/pengantar.css">
+      APA: Menghubungkan file HTML ini dengan file CSS eksternal yang ada di folder ../css/pengantar.css.
+      KENAPA: Dengan memisahkan HTML dan CSS ke file yang berbeda (separation of concerns), kode menjadi lebih terorganisir, mudah dikelola, dan file CSS bisa dipakai ulang oleh banyak halaman HTML sekaligus.
+      ATRIBUT:
+        - rel="stylesheet" → menentukan tipe hubungan antara file ini dengan file yang ditautkan (stylesheet = berkas CSS).
+        - href="../css/pengantar.css" → path menuju file CSS. "../" berarti naik satu folder dari lokasi file HTML ini.
+      NILAI LAIN: rel="icon" (untuk favicon), rel="preload" (untuk preload resource).
+    -->
     <link rel="stylesheet" href="../css/pengantar.css">
 </head>
+
+<!--
+  TAG: <body>
+  APA: Badan dokumen yang memuat seluruh konten yang TERLIHAT di browser — teks, gambar, tombol, form, dll.
+  KENAPA: Semua yang ingin ditampilkan kepada pengguna HARUS berada di dalam <body>.
+  TIPS: Hanya boleh ada SATU <body> dalam satu dokumen HTML.
+-->
 <body>
+
+    <!--
+      TAG: <div class="container">
+      APA: Elemen pembungkus (wrapper) umum tanpa makna semantik khusus. Digunakan sebagai kotak kontainer utama.
+      KENAPA: Dengan class="container", kita bisa memberi styling CSS (max-width, padding, margin auto) untuk memusatkan dan membatasi lebar konten agar tidak terlalu melebar di layar besar.
+      NILAI LAIN: Bisa gunakan <main> untuk semantik yang lebih tepat jika ini konten utama halaman.
+    -->
     <div class="container">
+
+        <!--
+          TAG: <h1>
+          APA: Heading level 1 — judul utama halaman. Secara default ditampilkan tebal dan besar.
+          KENAPA: H1 digunakan untuk judul terpenting. Browser dan Google memberi bobot SEO terbesar pada <h1>. Idealnya hanya ada SATU <h1> per halaman.
+          NILAI LAIN: <h2> s/d <h6> untuk sub-judul dengan hierarki semakin kecil.
+          COMMON MISTAKE: Jangan gunakan <h1> hanya untuk membuat teks besar — gunakan CSS font-size untuk itu.
+        -->
         <h1>Pengantar Pendalaman CSS (Materi 01)</h1>
 
         <!-- 📚 RANGKUMAN MATERI -->
+        <!--
+          TAG: <div class="rangkuman">
+          APA: Kotak pembungkus untuk menampilkan ringkasan materi teori. Tidak punya makna semantik khusus.
+          KENAPA: Dengan class="rangkuman", CSS bisa menargetkan div ini secara spesifik dan memberinya tampilan kotak biru (border-left biru, background biru muda) sebagai penanda visual area teori.
+          ALTERNATIF SEMANTIK: Bisa menggunakan <aside> jika ini adalah catatan sampingan, atau <section> jika ini bagian utama.
+        -->
         <div class="rangkuman">
+            <!--
+              TAG: <h3>
+              APA: Heading level 3 — sub-judul tingkat ketiga. Ukurannya lebih kecil dari h1 dan h2.
+              KENAPA: Dipakai karena kotak rangkuman ini merupakan sub-bagian dari halaman (bukan judul utama), sehingga h3 tepat secara hierarki.
+            -->
             <h3>📚 Rangkuman Teori</h3>
+
+            <!--
+              TAG: <ul>
+              APA: Unordered List — daftar butir (bullet list) tanpa urutan angka.
+              KENAPA: Dipakai untuk menampilkan poin-poin teori yang tidak memerlukan urutan/prioritas tertentu.
+              NILAI LAIN: <ol> (ordered list — daftar bernomor), <dl> (definition list — untuk istilah & definisi).
+            -->
             <ul>
+                <!--
+                  TAG: <li>
+                  APA: List Item — satu butir dalam daftar <ul> atau <ol>.
+                  KENAPA: Setiap poin materi dimasukkan ke dalam <li> agar tampil sebagai bullet terpisah.
+                -->
                 <li>Pendalaman CSS fokus pada selektor lanjutan, tipografi, pewarnaan, box model, layouting (float/positioning), dan responsivitas.</li>
                 <li>Memahami pendalaman CSS membantu membuat website terlihat profesional, efisien kodenya, dan adaptif.</li>
             </ul>
         </div>
 
         <!-- 🛠️ AREA PRAKTEK -->
+        <!--
+          TAG: <h2>
+          APA: Heading level 2 — sub-judul tingkat kedua, hierarki di bawah h1.
+          KENAPA: Digunakan untuk menandai bagian "Area Praktik" sebagai sub-bagian utama setelah judul h1 halaman.
+        -->
         <h2>🛠️ Area Praktik</h2>
+
+        <!--
+          TAG: <div class="practice-area">
+          APA: Kotak pembungkus area demonstrasi/praktik kode.
+          KENAPA: Dipisahkan secara visual dengan border putus-putus agar siswa tahu mana konten teori dan mana area percobaan.
+        -->
         <div class="practice-area">
+            <!--
+              TAG: <p class="demo-text">
+              APA: Paragraf teks berisi kalimat sambutan/demonstrasi.
+              KENAPA: Dipakai untuk menampilkan blok teks inline. Class "demo-text" memungkinkan CSS memberi gaya khusus (warna hijau, tebal) pada paragraf ini saja.
+              NILAI LAIN: Untuk teks satu baris pendek, bisa pakai <span>; untuk kutipan, pakai <blockquote>.
+            -->
             <p class="demo-text">Selamat datang di Pendalaman CSS! Ini adalah langkah awal kamu untuk menguasai tata letak tingkat lanjut dan styling visual modern.</p>
         </div>
     </div>

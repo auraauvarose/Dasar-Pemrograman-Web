@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08. Latihan: Membangun Landing Page Dicoding (Materi 08)</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome untuk ikon sosial media -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- APA: Menghubungkan file HTML dengan berkas CSS eksternal -->
+    <!-- KENAPA: Agar struktur halaman HTML terpisah rapi dengan dekorasi styling CSS -->
+    <link rel="stylesheet" href="../css/08_latihan_landing_page.css">
+</head>
+<body>
+    <div class="container-materi">
+        <h1>08. Latihan: Membangun Landing Page Dicoding (Materi 08)</h1>
+
+        <!-- 📚 RANGKUMAN MATERI -->
+        <div class="rangkuman">
+            <h3>📚 Langkah Membangun Landing Page</h3>
+            <ul>
+                <li><strong>Reset Box Model:</strong> Menetapkan <code>box-sizing: border-box</code> untuk semua elemen (<code>*::before, *::after, *</code>).</li>
+                <li><strong>Navigasi Fleksibel:</strong> Menggunakan <code>display: flex</code> pada navbar container dengan <code>justify-content: space-around</code> dan <code>align-items: center</code>.</li>
+                <li><strong>Kolom Konten Ganda:</strong> <code>display: flex</code> pada <code>div.content</code> untuk berjejer horizontal secara default (<code>flex-direction: row</code>).</li>
+                <li><strong>Shorthand Flex:</strong> Menggunakan properti <code>flex: 1 1;</code> pada area deskripsi teks dan gambar agar membagi ruang secara proporsional.</li>
+                <li><strong>Ikon Sosial Media Terapung:</strong> Menggunakan <code>position: fixed;</code> pada <code>aside</code>, dikombinasikan dengan properti logical positioning modern seperti <code>inset-block: 0;</code> dan <code>inset-inline-end: 0;</code>.</li>
+            </ul>
+        </div>
+
+        <!-- 🛠️ AREA PRAKTEK -->
+        <h2>🛠️ Area Praktik (Halaman Desktop Landing Page)</h2>
+        <p class="instruksi">Buka file <code>css/08_latihan_landing_page.css</code>. Ikuti langkah TODO untuk melengkapi kode CSS agar halaman landing page berjejer rapi secara horizontal pada layar desktop!</p>
+        
+        <div class="practice-area-wrapper">
+            <!-- HEADER / NAVBAR -->
+            <header class="navbar-container">
+                <div class="logo">
+                    <span class="logo-text">dicoding</span>
+                </div>
+                <nav class="nav-list">
+                    <ul>
+                        <li><a href="#">Beranda</a></li>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">Apa yang Baru</a></li>
+                        <li><a href="#" class="btn-contact">Kontak</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- MAIN LANDING SECTION -->
+            <main class="main-content">
+                <!-- CONTENT ROW -->
+                <div class="content">
+                    <!-- LEFT COLUMN: TEXT -->
+                    <div class="content-description">
+                        <h1 class="title">Dicoding Indonesia</h1>
+                        <p>Kami yakin pendidikan teknologi adalah fondasi bagi setiap bangsa agar menjadi yang terdepan dalam menghadapi dunia digital. Dicoding hadir sebagai platform pendidikan teknologi yang membantu menghasilkan talenta digital berstandar global. Semua demi mengakselerasi Indonesia agar menjadi yang terdepan.</p>
+                        <button class="btn-more">Lebih Lanjut</button>
+                    </div>
+
+                    <!-- RIGHT COLUMN: IMAGE ILLUSTRATION -->
+                    <div class="content-image">
+                        <!-- We use a styled div placeholder representing the circle image for illustration -->
+                        <div class="image-circle">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FIXED SOCIAL MEDIA BAR -->
+                <aside class="social-media-aside">
+                    <div class="social-media">
+                        <ul>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

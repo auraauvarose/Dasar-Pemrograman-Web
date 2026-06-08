@@ -1,0 +1,279 @@
+/* 08_latihan_landing_page.css */
+
+/* Reset Box Model */
+*::before,
+*::after,
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f1f5f9;
+    font-family: 'Quicksand', sans-serif;
+    color: #334155;
+    padding: 20px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container-materi {
+    background-color: #ffffff;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    text-align: center;
+    color: #0f172a;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.rangkuman {
+    background-color: #f0fdfa;
+    border-left: 6px solid #0d9488;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 0 8px 8px 0;
+    color: #0f766e;
+}
+
+.rangkuman h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.rangkuman ul {
+    margin-left: 20px;
+    padding: 0;
+}
+
+.rangkuman li {
+    margin-bottom: 8px;
+}
+
+.instruksi {
+    background-color: #fef08a;
+    color: #713f12;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    border-left: 4px solid #eab308;
+}
+
+.practice-area-wrapper {
+    border: 2px dashed #cbd5e1;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+    
+    /* body di set height 100vh di modul, tapi di latihan ini kita atur wadahnya saja */
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================
+   TUGAS KAMU: Selesaikan Styling Flexbox di bawah!
+   ========================================== */
+
+/* 1. NAVBAR CONTAINER */
+.navbar-container {
+    width: 100%;
+    padding-block: 1rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    
+    /* TODO 1: Aktifkan flexbox dengan space-around dan posisikan di tengah secara vertikal! */
+    /*
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    */
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2d3e50;
+    letter-spacing: -1px;
+}
+
+/* 2. NAVIGATION LIST */
+.nav-list ul {
+    padding-left: 0;
+    list-style-type: none;
+    margin: 0;
+    
+    /* TODO 2: Jadikan list ini sebagai flex container dengan gap: 2rem; agar link berjajar horizontal! */
+    /*
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    */
+}
+
+.nav-list a {
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #334155;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-list a:hover {
+    color: #2d3e50;
+}
+
+.nav-list .btn-contact {
+    background-color: #425c77;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 999px;
+}
+
+.nav-list .btn-contact:hover {
+    background-color: #2d3e50;
+    color: white;
+}
+
+/* 3. MAIN CONTENT LAYOUT */
+.main-content {
+    flex: 1;
+    width: 100%;
+    padding: 2rem 1rem;
+    
+    /* TODO 3: Jadikan main content ini flex container untuk menengahkan konten secara vertikal! */
+    /*
+    display: flex;
+    align-items: center;
+    */
+}
+
+.content {
+    width: 100%;
+    
+    /* TODO 4: Jadikan content ini flex container agar kolom teks di kiri dan gambar di kanan berjajar! */
+    /*
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    */
+}
+
+/* 4. COLUMNS (FLEX ITEMS) */
+.content-description {
+    /* TODO 5: Gunakan shorthand flex: 1 1; agar kolom deskripsi membagi ruang secara adil! */
+    /* flex: 1 1; */
+}
+
+.content-description .title {
+    font-size: 3rem;
+    color: #2d3e50;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.content-description p {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin-block: 1rem;
+    line-height: 1.7;
+}
+
+.btn-more {
+    padding: 12px 30px;
+    border: 3px solid #2d3e50;
+    background-color: #2d3e50;
+    border-radius: 999px;
+    font-family: 'Quicksand', sans-serif;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    transition: all 0.15s ease-in;
+}
+
+.btn-more:hover {
+    background-color: transparent;
+    color: #2d3e50;
+}
+
+.content-image {
+    /* TODO 6: Gunakan shorthand flex: 1 1; pada kolom gambar! */
+    /* flex: 1 1; */
+    
+    /* TODO 7: Jadikan kolom ini sebagai flex container dan gunakan margin: auto pada elemen anak untuk menengahkan gambar! */
+    /*
+    display: flex;
+    justify-content: center;
+    */
+}
+
+.image-circle {
+    width: 250px;
+    height: 250px;
+    background-color: #2d3e50;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.image-circle i {
+    color: white;
+    font-size: 6rem;
+}
+
+/* 5. SOCIAL MEDIA FIXED ASIDE (SOCIAL MEDIA BAR) */
+.social-media-aside {
+    /* TODO 8: Buat aside media sosial ini menempel (fixed) di posisi kanan layar! */
+    /*
+    position: absolute;  // Kita gunakan absolute agar menempel di kanan area praktek, bukan di layar browser utama
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    */
+    z-index: 10;
+}
+
+.social-media {
+    background-color: #2d3e50;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    padding: 1.5rem 1rem;
+}
+
+.social-media ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    
+    /* TODO 9: Susun ikon secara vertikal menggunakan flexbox dengan arah column! */
+    /*
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    */
+}
+
+.social-media a {
+    color: #89b0d9;
+    font-size: 1.5rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.social-media a:hover {
+    color: white;
+}

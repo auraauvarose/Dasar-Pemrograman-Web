@@ -1,0 +1,159 @@
+/* 07_pengenalan_landing_page.css */
+
+body {
+    background-color: #f8fafc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1e293b;
+    padding: 30px;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: #ffffff;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    text-align: center;
+    color: #0f172a;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.rangkuman {
+    background-color: #eff6ff;
+    border-left: 6px solid #2563eb;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 0 8px 8px 0;
+    color: #1e40af;
+}
+
+.rangkuman h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.rangkuman ul {
+    margin-left: 20px;
+    padding: 0;
+}
+
+.rangkuman li {
+    margin-bottom: 8px;
+}
+
+.instruksi {
+    background-color: #fef08a;
+    color: #713f12;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    border-left: 4px solid #eab308;
+}
+
+.practice-area {
+    border: 2px dashed #cbd5e1;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ==========================================
+   MOCKUP SHAPE LAYOUT
+   ========================================== */
+
+/* 1. HEADER MOCKUP */
+.mockup-header {
+    background-color: #e2e8f0;
+    padding: 15px;
+    border-radius: 6px;
+    
+    /* TODO 1: Aktifkan flexbox dengan justify-content: space-between untuk menempatkan logo di kiri dan nav di kanan! */
+    /*
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    */
+}
+
+.mockup-logo {
+    background-color: #f59e0b;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.mockup-nav {
+    background-color: #3b82f6;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* 2. MAIN & CONTENT MOCKUP */
+.mockup-main {
+    /* TODO 2: Jadikan flex container agar content area & aside teratur tata letaknya! */
+    /* display: flex; */
+    gap: 15px;
+}
+
+.mockup-content {
+    background-color: #e2e8f0;
+    padding: 15px;
+    border-radius: 6px;
+    flex: 4; /* porsi lebar 4/5 */
+
+    /* TODO 3: Aktifkan flexbox agar kolom kiri dan kanan berjejer secara horizontal! */
+    /*
+    display: flex;
+    gap: 15px;
+    */
+}
+
+.mockup-column-left {
+    background-color: #10b981;
+    color: white;
+    padding: 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    
+    /* TODO 4: Biarkan kolom kiri tumbuh selebar mungkin mengisi ruang! */
+    /* flex: 1; */
+}
+
+.mockup-column-right {
+    background-color: #8b5cf6;
+    color: white;
+    padding: 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    
+    /* TODO 5: Biarkan kolom kanan tumbuh selebar mungkin mengisi ruang! */
+    /* flex: 1; */
+}
+
+.mockup-aside {
+    background-color: #64748b;
+    color: white;
+    padding: 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    flex: 1; /* porsi lebar 1/5 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

@@ -1,0 +1,124 @@
+/* 05_flex_items_properties.css */
+
+body {
+    background-color: #f8fafc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1e293b;
+    padding: 30px;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    text-align: center;
+    color: #0f172a;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.rangkuman {
+    background-color: #fdf2f8;
+    border-left: 6px solid #db2777;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 0 8px 8px 0;
+    color: #9d174d;
+}
+
+.rangkuman h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.rangkuman ul {
+    margin-left: 20px;
+    padding: 0;
+}
+
+.rangkuman li {
+    margin-bottom: 8px;
+}
+
+.instruksi {
+    background-color: #fef08a;
+    color: #713f12;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    border-left: 4px solid #eab308;
+}
+
+.practice-area {
+    border: 2px dashed #cbd5e1;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8fafc;
+}
+
+.flex-container {
+    /* APA: Container Flexbox */
+    /* KENAPA: Mengaktifkan flexbox dengan tinggi container yang cukup tinggi untuk melihat perubahan align-self */
+    display: flex;
+    background-color: #fce7f3;
+    padding: 15px;
+    border-radius: 8px;
+    height: 250px;
+    align-items: center; /* Perataan default untuk semua item adalah di tengah secara vertikal */
+    gap: 10px;
+}
+
+.flex-item {
+    color: white;
+    padding: 20px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 6px;
+    min-width: 80px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================
+   TUGAS KAMU: Edit Properti Flex Item di bawah!
+   ========================================== */
+
+.item-1 {
+    background-color: #db2777;
+    
+    /* TODO 1: Coba ubah urutan Kotak 1 ke urutan paling akhir dengan properti order! */
+    /* order: 4; */
+}
+
+.item-2 {
+    background-color: #be185d;
+    
+    /* TODO 2: Coba berikan properti flex-grow: 1; pada Kotak 2 agar dia mengembang mengisi sisa tempat! */
+    /* flex-grow: 1; */
+}
+
+.item-3 {
+    background-color: #9d174d;
+    
+    /* TODO 3: Berikan properti flex-basis: 200px; agar ukuran awal Kotak 3 lebih lebar sebelum flexbox membagi sisa ruang! */
+    /* flex-basis: 200px; */
+    
+    /* TODO 4: Coba align-self: flex-start; agar Kotak 3 melayang ke atas sendirian! */
+    /* align-self: flex-start; */
+}
+
+.item-4 {
+    background-color: #831843;
+    
+    /* TODO 5: Coba align-self: flex-end; agar Kotak 4 turun ke bawah sendirian! */
+    /* align-self: flex-end; */
+}

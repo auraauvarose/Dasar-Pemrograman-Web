@@ -1,132 +1,451 @@
+<!--
+  ============================================================
+  FILE: formulir.html
+  TOPIK: Formulir HTML & Input User
+  BAB: 04 - Pengantar Pendalaman HTML
+  ============================================================
+  KONSEP UTAMA FORMULIR HTML:
+  Formulir (form) adalah cara utama pengguna BERINTERAKSI dengan website —
+  mengirimkan data, melakukan registrasi, login, pemesanan, pencarian, dll.
+
+  KOMPONEN UTAMA FORMULIR:
+    <form>      → Kontainer utama, mendefinisikan tujuan dan metode pengiriman
+    <label>     → Teks keterangan yang mendeskripsikan setiap input
+    <input>     → Kotak/kontrol input data (banyak tipe: text, email, password, dll)
+    <textarea>  → Input teks multi-baris untuk teks panjang
+    <select>    → Dropdown pilihan
+    <button>    → Tombol aksi (submit, reset, atau biasa)
+
+  ALUR KERJA FORMULIR:
+  Pengguna mengisi input → Klik tombol submit → Data dikirim ke URL (action)
+  menggunakan metode HTTP (method) → Server memproses → Merespons
+
+  PENTING: Data formulir tidak diproses di sini (ini frontend saja).
+           Pemrosesan data sesungguhnya dilakukan di sisi server (backend).
+  ============================================================
+-->
+
+<!--
+  TAG: <!DOCTYPE html>
+  APA: Deklarasi tipe dokumen HTML5.
+  KENAPA: Wajib ada agar browser tidak masuk "quirks mode" (mode kompatibilitas lama).
+  TIPS: Selalu letakkan di baris pertama sebelum apapun.
+-->
 <!DOCTYPE html>
+
+<!--
+  TAG: <html lang="id">
+  APA: Elemen akar dokumen HTML.
+  ATRIBUT lang="id": Menyatakan bahasa halaman adalah Bahasa Indonesia.
+  MANFAAT lang: Membantu screen reader melafalkan teks dengan aksen yang benar,
+                dan membantu mesin terjemahan otomatis bekerja lebih akurat.
+-->
 <html lang="id">
+
+<!--
+  TAG: <head>
+  APA: Bagian "kepala" yang berisi metadata — tidak terlihat di halaman, tapi penting.
+-->
 <head>
+
+    <!--
+      TAG: <meta charset="UTF-8">
+      APA: Menentukan encoding karakter dokumen.
+      KENAPA: UTF-8 mendukung karakter dari semua bahasa di dunia + emoji.
+              Tanpanya, karakter seperti "é", "ñ", atau aksara non-latin bisa rusak.
+      TIPS: Letakkan PERTAMA di dalam <head> sebelum tag lainnya.
+    -->
     <meta charset="UTF-8">
+
+    <!--
+      TAG: <meta name="viewport">
+      APA: Mengatur skala tampilan di perangkat mobile.
+      ATRIBUT content:
+        - width=device-width  → Lebar halaman = lebar layar perangkat
+        - initial-scale=1.0   → Tidak ada zoom awal (100% dari ukuran normal)
+      KENAPA: Tanpa ini, halaman akan terlihat sangat kecil di HP karena browser
+              mobile akan menampilkan versi "desktop" yang diperkecil.
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulir HTML & Input User</title>
+
+    <!--
+      TAG: <title>
+      APA: Judul halaman yang tampil di tab browser dan hasil pencarian.
+      KENAPA: Penting untuk UX (pengguna tahu halaman apa) dan SEO.
+    -->
+    <title>Formulir HTML &amp; Input User</title>
+    <!--
+      HTML ENTITY: &amp;
+      APA: Cara menulis karakter "&" di HTML agar tidak salah diinterpretasikan browser.
+      KENAPA: Karakter "&" di HTML bisa dianggap awal dari HTML entity (&amp; &lt; dst).
+              Untuk aman, selalu tulis & sebagai &amp; di dalam tag HTML.
+    -->
+
+    <!--
+      TAG: <style>
+      APA: Blok CSS internal — aturan styling yang berlaku untuk halaman ini.
+      KENAPA: Dipakai dalam satu file belajar untuk kemudahan. Proyek nyata → file .css terpisah.
+    -->
     <style>
+        /*
+          SELECTOR: body
+          APA: Mengatur gaya default untuk seluruh halaman.
+          Properti di sini diwariskan (inherit) oleh elemen-elemen turunannya.
+        */
         body {
-            background-color: #f8fafc;
+            background-color: #f8fafc; /* Abu-abu putih terang — latar bersih */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #334155;
+            /*
+              PENJELASAN FONT STACK:
+              Browser mencoba font dari kiri ke kanan:
+              1. 'Segoe UI'  → Font modern Windows 10/11 (tanda kutip karena ada spasi)
+              2. Tahoma      → Alternatif Windows lawas, terbaca jelas di ukuran kecil
+              3. Geneva      → Alternatif di macOS lama
+              4. Verdana     → Font humanis yang dirancang khusus untuk layar
+              5. sans-serif  → FALLBACK generik, pasti ada di semua sistem (Arial, Helvetica, dll)
+            */
+            color: #334155; /* Abu-abu gelap kebiruan (slate-700) — nyaman dibaca */
             padding: 20px;
-            line-height: 1.6;
+            line-height: 1.6; /* Jarak antar baris 1.6x ukuran font — nyaman dibaca */
         }
+
+        /*
+          SELECTOR: .container
+          FUNGSI: Membatasi lebar konten agar tidak terlalu lebar di layar besar,
+                  dan memusatkan konten secara horizontal.
+        */
         .container {
-            max-width: 800px;
+            max-width: 800px; /* Maksimal 800px — optimal untuk keterbacaan */
+
+            /*
+              PROPERTI: margin: 0 auto
+              APA: Trik CSS klasik untuk MEMUSATKAN elemen block-level secara horizontal.
+              CARA KERJA: auto pada margin kiri dan kanan membuat browser membagi
+                          sisa ruang secara SAMA antara kiri dan kanan → elemen jadi tengah.
+              SYARAT: Elemen HARUS punya width/max-width yang didefinisikan.
+            */
             margin: 0 auto;
-            background-color: #ffffff;
+
+            background-color: #ffffff; /* Putih bersih untuk konten */
             padding: 30px;
             border-radius: 8px;
+
+            /*
+              PROPERTI: box-shadow
+              APA: Efek bayangan di luar elemen untuk kedalaman visual.
+              FORMAT: [offset-x] [offset-y] [blur] [color]
+                0    → Tidak bergeser horizontal
+                4px  → Bergeser 4px ke bawah
+                6px  → Blur/kekaburan 6px
+                rgba(0,0,0,0.05) → Hitam 5% transparan = bayangan sangat halus
+            */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
+
+        /*
+          SELECTOR: .rangkuman
+          FUNGSI: Kotak informasi/callout berwarna ungu muda untuk ringkasan teori.
+          DESAIN: "Accent border left" — garis tebal di kiri = pola umum info box.
+        */
         .rangkuman {
-            background-color: #f5f3ff;
+            background-color: #f5f3ff; /* Ungu sangat muda (violet-50) */
+
+            /*
+              PROPERTI: border-left: 5px solid #8b5cf6
+              APA: Garis tebal hanya di sisi KIRI elemen.
+              KENAPA: Warna ungu (#8b5cf6 = violet-500) sesuai dengan tema formulir di file ini.
+                      Garis kiri tebal = penanda visual "ini kotak informasi penting".
+            */
             border-left: 5px solid #8b5cf6;
+
             padding: 20px;
-            margin-bottom: 25px;
+            margin-bottom: 25px; /* Jarak bawah ke area praktek */
+
+            /*
+              PROPERTI: border-radius: 0 6px 6px 0
+              APA: Membulatkan sudut kanan saja, sudut kiri dibiarkan tajam.
+              KENAPA: Sudut kiri tidak dibulatkan karena ada border garis di kiri.
+                      Membulatkan kiri dengan garis kiri akan terlihat janggal.
+              FORMAT 4 nilai (searah jarum jam dari kiri-atas):
+                0    → kiri-atas: tajam
+                6px  → kanan-atas: membulat 6px
+                6px  → kanan-bawah: membulat 6px
+                0    → kiri-bawah: tajam
+            */
             border-radius: 0 6px 6px 0;
-            color: #5b21b6;
+
+            color: #5b21b6; /* Ungu gelap (violet-800) untuk teks agar terbaca */
         }
+
         .rangkuman h3 {
-            margin-top: 0;
-            color: #4c1d95;
+            margin-top: 0; /* Hapus margin atas default agar rapi di dalam kotak */
+            color: #4c1d95; /* Ungu lebih gelap untuk judul kotak */
         }
-        .rangkuman ul {
-            margin-left: 20px;
-        }
-        .rangkuman li {
-            margin-bottom: 8px;
-        }
+
+        .rangkuman ul { margin-left: 20px; }
+        .rangkuman li { margin-bottom: 8px; }
+
         h1 {
-            color: #1e293b;
-            border-bottom: 2px solid #e2e8f0;
+            color: #1e293b; /* Hampir hitam (slate-800) */
+            border-bottom: 2px solid #e2e8f0; /* Garis bawah tipis abu-abu */
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
+
         h2 {
             color: #0f172a;
             margin-top: 25px;
             margin-bottom: 15px;
-            font-size: 1.25rem;
+            font-size: 1.25rem; /* 20px = 16px × 1.25 */
         }
+
+        /*
+          SELECTOR: form
+          APA: Menargetkan elemen <form> untuk mengatur tampilan kotak formulir.
+          FUNGSI: Membuat formulir tampil sebagai kotak yang dibatasi lebarnya
+                  agar tidak terlalu lebar dan mudah diisi.
+        */
         form {
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
+            background-color: #f8fafc; /* Abu-abu terang — sedikit berbeda dari background container */
+            border: 1px solid #e2e8f0; /* Border tipis abu-abu untuk membingkai formulir */
             padding: 20px;
             border-radius: 8px;
-            max-width: 500px;
-            margin: 15px 0;
+            max-width: 500px; /* Formulir tidak terlalu lebar → nyaman diisi di desktop */
+            margin: 15px 0;   /* Jarak 15px atas-bawah, 0 kiri-kanan */
         }
+
+        /*
+          SELECTOR: .form-group
+          APA: Kelas pembungkus setiap pasangan label + input.
+          FUNGSI: Mengatur tata letak agar label berada di ATAS input (layout vertikal).
+          DESAIN: Menggunakan Flexbox untuk kontrol layout yang fleksibel.
+        */
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 15px; /* Jarak antar kelompok input */
+
+            /*
+              PROPERTI: display: flex
+              APA: Mengaktifkan Flexbox pada elemen ini — membuat anak-anaknya jadi "flex items".
+              KENAPA: Dengan flexbox, kita bisa mengatur susunan dan perataan anak-anak dengan mudah.
+              NILAI LAIN: "block" (default, satu baris penuh), "inline", "grid", "inline-flex"
+            */
             display: flex;
+
+            /*
+              PROPERTI: flex-direction: column
+              APA: Mengatur ARAH tumpukan flex items.
+              KENAPA: "column" membuat items disusun secara VERTIKAL (dari atas ke bawah).
+                      Hasilnya: label di atas, input di bawah — layout form yang umum.
+              NILAI LAIN: "row" (kiri ke kanan, default), "row-reverse", "column-reverse"
+            */
             flex-direction: column;
+
+            /*
+              PROPERTI: gap
+              APA: Jarak antara flex/grid items.
+              KENAPA: 5px memberikan sedikit jarak antara label dan input agar tidak terlalu rapat.
+              NILAI LAIN: "10px", "1rem", "0"
+              TIPS: "gap" lebih praktis dari margin karena tidak perlu menentukan margin
+                    khusus pada elemen pertama atau terakhir.
+            */
             gap: 5px;
         }
+
+        /*
+          SELECTOR: label
+          APA: Menargetkan semua elemen <label> di halaman.
+          FUNGSI: Memberikan tampilan yang konsisten pada semua label formulir.
+        */
         label {
-            font-weight: bold;
+            font-weight: bold; /* Label lebih tebal dari teks biasa → mudah dibedakan */
             color: #334155;
-            font-size: 0.9em;
+            font-size: 0.9em; /* 90% dari ukuran font parent → sedikit lebih kecil dari input */
         }
+
+        /*
+          SELECTOR: input, select, textarea
+          APA: Menargetkan KETIGA jenis elemen input sekaligus (dipisahkan koma).
+          FUNGSI: Memberikan tampilan yang KONSISTEN pada semua kontrol formulir.
+          KENAPA: Setiap browser memiliki tampilan default yang berbeda untuk elemen input.
+                  CSS ini "me-reset" dan menyeragamkan tampilannya.
+        */
         input, select, textarea {
-            padding: 10px;
-            border: 1px solid #cbd5e1;
+            padding: 10px; /* Ruang 10px di dalam kotak input agar teks tidak menempel tepi */
+
+            border: 1px solid #cbd5e1; /* Border tipis abu-abu (slate-300) */
             border-radius: 6px;
+
+            /*
+              PROPERTI: outline: none
+              APA: Menghapus garis outline default browser saat elemen difokus.
+              KENAPA: Browser menampilkan outline biru/oranye saat input diklik (untuk aksesibilitas).
+                      Kita hapus ini karena kita membuat efek fokus sendiri yang lebih bagus
+                      dengan border-color dan box-shadow di selector :focus di bawah.
+              PERINGATAN: Jika dihapus tanpa pengganti, aksesibilitas keyboard akan berkurang!
+                          SELALU sediakan indikator fokus alternatif (lihat selector :focus di bawah).
+            */
             outline: none;
+
+            /*
+              PROPERTI: font-family: inherit
+              APA: "inherit" membuat properti ini mewarisi nilai dari parent element.
+              KENAPA: Secara default, browser TIDAK mewariskan font-family ke elemen input/select/textarea.
+                      Elemen-elemen ini akan menggunakan font sistem default browser (biasanya sans-serif
+                      berbeda). Dengan "inherit", font akan sama dengan elemen parent (body) = konsisten.
+              TIPS: "inherit", "initial", "unset" adalah keyword khusus CSS yang berguna untuk reset.
+            */
             font-family: inherit;
-            font-size: 0.95em;
+
+            font-size: 0.95em; /* 95% dari ukuran font parent — sedikit lebih kecil */
+
+            /*
+              PROPERTI: width: 100%
+              APA: Membuat input mengisi seluruh lebar container parentnya (.form-group).
+              KENAPA: Tanpa ini, input akan hanya selebar kontennya (sangat kecil).
+                      Dengan 100%, semua input akan lebar yang sama dan rapi.
+              CATATAN: width: 100% + padding bisa menyebabkan overflow karena
+                       total lebar = 100% + padding kiri + padding kanan.
+                       Solusi: gunakan "box-sizing: border-box" (sudah dipakai banyak CSS reset).
+            */
             width: 100%;
         }
+
+        /*
+          SELECTOR: input:focus, select:focus, textarea:focus
+          APA: Pseudo-class :focus — styling yang berlaku saat elemen SEDANG aktif/diklik/difokus.
+          KENAPA: Memberikan feedback visual kepada pengguna bahwa mereka sedang mengedit field ini.
+                  Ini sangat penting untuk UX dan aksesibilitas (terutama untuk pengguna keyboard).
+        */
         input:focus, select:focus, textarea:focus {
+            /*
+              PROPERTI: border-color
+              APA: Mengubah warna border saat input fokus.
+              KENAPA: Border ungu (#8b5cf6) memberi sinyal "field ini sedang aktif".
+                      Ini menggantikan outline bawaan browser yang sudah kita hapus dengan outline:none.
+            */
             border-color: #8b5cf6;
+
+            /*
+              PROPERTI: box-shadow
+              APA: Efek "glow" (cahaya halus) di sekitar input yang sedang fokus.
+              KENAPA: Memberikan feedback visual yang lebih halus dan modern dibanding outline browser.
+              FORMAT: [offset-x] [offset-y] [blur] [spread] [color]
+                0    → Tidak bergeser horizontal
+                0    → Tidak bergeser vertikal
+                0    → Tidak ada blur
+                3px  → Spread 3px = bayangan "tumbuh" 3px ke semua arah (efek ring/glow)
+                rgba(139,92,246,0.15) → Ungu dengan opacity 15% = efek glow transparan
+            */
             box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
         }
+
+        /*
+          SELECTOR: button[type="submit"]
+          APA: Menargetkan elemen <button> yang MEMILIKI atribut type="submit" secara spesifik.
+          KENAPA: Hanya tombol submit yang perlu tampilan khusus (ungu, bold, dll).
+                  Tombol type lain (type="button", type="reset") tidak terpengaruh.
+          SELECTOR ATRIBUT: [atribut="nilai"] — menargetkan elemen dengan atribut nilai tertentu.
+          CONTOH LAIN: a[href="#"], input[type="checkbox"], div[data-role="card"]
+        */
         button[type="submit"] {
-            background-color: #8b5cf6;
-            color: #ffffff;
+            background-color: #8b5cf6; /* Ungu (violet-500) — warna tema utama file ini */
+            color: #ffffff; /* Teks putih agar kontras dengan background ungu */
+
+            /*
+              PROPERTI: border: none
+              APA: Menghapus border default tombol browser.
+              KENAPA: Browser memberikan border abu-abu pada tombol secara default.
+                      Kita hapus dan buat tampilan sendiri yang lebih modern.
+            */
             border: none;
-            padding: 12px 20px;
+
+            padding: 12px 20px; /* 12px atas-bawah, 20px kiri-kanan */
             border-radius: 6px;
             font-weight: bold;
+
+            /*
+              PROPERTI: cursor: pointer
+              APA: Mengubah kursor mouse menjadi ikon tangan (pointer) saat hover di atas elemen.
+              KENAPA: Secara default, cursor pada tombol biasa (bukan link) adalah "default" (panah).
+                      "pointer" (tangan) memberi petunjuk visual bahwa elemen ini bisa diklik.
+              NILAI LAIN: "default" (panah), "text" (I-beam untuk teks), "not-allowed" (larangan),
+                          "grab" (tangan genggam), "crosshair" (silang), "wait" (loading)
+            */
             cursor: pointer;
+
+            /*
+              PROPERTI: transition
+              APA: Menganimasi perubahan properti CSS secara halus (smooth).
+              KENAPA: Tanpa transition, perubahan warna saat hover terjadi SEKETIKA (terasa kasar).
+                      Dengan transition, perubahan terjadi secara gradual selama 0.2 detik.
+              FORMAT: [properti] [durasi] [timing-function] [delay]
+                background-color → Properti yang dianimasi
+                0.2s             → Durasi animasi: 0.2 detik
+              NILAI LAIN: "all 0.3s ease", "opacity 1s linear", "transform 0.5s ease-in-out"
+            */
             transition: background-color 0.2s;
-            width: 100%;
+
+            width: 100%; /* Tombol submit melebar penuh mengisi formulir */
         }
+
+        /*
+          SELECTOR: button[type="submit"]:hover
+          APA: Pseudo-class :hover — styling saat kursor mouse berada DI ATAS elemen.
+          KENAPA: Memberikan feedback visual bahwa tombol bisa diklik dan bereaksi terhadap mouse.
+        */
         button[type="submit"]:hover {
+            /*
+              PROPERTI: background-color (berubah saat hover)
+              KENAPA: #7c3aed (violet-700) lebih gelap dari #8b5cf6 (violet-500).
+                      Efek "gelap saat hover" adalah pola umum UI untuk tombol — memberi kesan ditekan.
+              ANIMASI: Perubahan warna akan smooth berkat "transition: background-color 0.2s" di atas.
+            */
             background-color: #7c3aed;
         }
+
         .practice-area {
-            border: 2px dashed #e2e8f0;
+            border: 2px dashed #e2e8f0; /* Border abu-abu putus-putus = area praktek/draft */
             padding: 25px;
             border-radius: 6px;
             background-color: #fafafa;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h1>Formulir HTML & Input User</h1>
+
+        <!--
+          TAG: <h1>
+          APA: Judul utama halaman (level 1).
+          TIPS: Satu halaman = satu <h1>. Ini adalah judul yang paling penting secara hierarki.
+        -->
+        <h1>Formulir HTML &amp; Input User</h1>
 
         <!-- 📚 RANGKUMAN MATERI -->
         <div class="rangkuman">
             <h3>📚 Rangkuman Teori Formulir</h3>
             <ul>
-                <li><strong><code>&lt;form&gt;</code>:</strong> Elemen kontainer untuk mengumpulkan input pengguna. Atribut penting:
+                <li>
+                    <strong><code>&lt;form&gt;</code>:</strong> Elemen kontainer untuk mengumpulkan input pengguna. Atribut penting:
                     <ul>
                         <li><code>action="..."</code>: URL tujuan pengiriman data formulir.</li>
                         <li><code>method="..."</code>: Cara pengiriman data. <code>get</code> (lewat URL, tidak aman untuk data sensitif) atau <code>post</code> (dikirim secara tertutup, aman untuk data sensitif/besar).</li>
                     </ul>
                 </li>
-                <li><strong><code>&lt;label&gt;</code>:</strong> Memberikan judul label keterangan pada kolom input. Menggunakan atribut <code>for="..."</code> yang nilainya harus sama dengan <code>id</code> pada elemen input yang dituju (meningkatkan aksesibilitas).</li>
-                <li><strong>Atribut Validasi pada Input:</strong>
+                <li>
+                    <strong><code>&lt;label&gt;</code>:</strong> Memberikan judul label keterangan pada kolom input. Menggunakan atribut <code>for="..."</code> yang nilainya harus sama dengan <code>id</code> pada elemen input yang dituju (meningkatkan aksesibilitas).
+                </li>
+                <li>
+                    <strong>Atribut Validasi pada Input:</strong>
                     <ul>
                         <li><code>required</code>: Kolom input wajib diisi sebelum form dikirim.</li>
                         <li><code>placeholder="..."</code>: Teks petunjuk abu-abu sebelum diisi.</li>
                         <li><code>value="..."</code>: Nilai awal (default) dari kolom input.</li>
                     </ul>
                 </li>
-                <li><strong>Jenis-jenis Tipe Input:</strong>
+                <li>
+                    <strong>Jenis-jenis Tipe Input:</strong>
                     <ul>
                         <li><code>type="text"</code>: Input teks baris tunggal biasa.</li>
                         <li><code>type="email"</code>: Input email (memiliki validasi format email otomatis).</li>
@@ -134,50 +453,367 @@
                         <li><code>type="date"</code>: Pemilih tanggal kalender bawaan browser.</li>
                     </ul>
                 </li>
-                <li><strong><code>&lt;textarea&gt;</code>:</strong> Input teks baris ganda (multi-line) untuk deskripsi panjang atau alamat.</li>
+                <li>
+                    <strong><code>&lt;textarea&gt;</code>:</strong> Input teks baris ganda (multi-line) untuk deskripsi panjang atau alamat.
+                </li>
             </ul>
         </div>
 
         <!-- 🛠️ AREA PRAKTEK -->
         <h2>🛠️ Hasil Praktik Formulir Pemesanan Hotel</h2>
         <div class="practice-area">
-            
+
+            <!--
+              ============================================================
+              TAG: <form>
+              APA: Elemen kontainer utama formulir. Mendefinisikan bagaimana dan kemana
+                   data yang diisi pengguna akan dikirimkan.
+              ============================================================
+
+              ATRIBUT: action="/submit-hotel"
+              APA: URL tujuan pengiriman data formulir saat tombol submit diklik.
+              KENAPA: Data formulir akan dikirimkan ke endpoint "/submit-hotel" di server.
+                      Server kemudian memproses data (menyimpan ke database, mengirim email, dll).
+              NILAI LAIN: "#" (halaman yang sama), "https://api.contoh.com/data" (URL eksternal),
+                          "" atau tanpa action (mengirim ke URL halaman saat ini)
+              CATATAN: Di file belajar ini, URL "/submit-hotel" tidak ada, jadi tidak akan bekerja.
+                        Ini hanya untuk demonstrasi.
+
+              ATRIBUT: method="post"
+              APA: Metode HTTP yang digunakan untuk mengirimkan data formulir.
+              NILAI:
+                - "get"  → Data dikirim melalui URL (query string), contoh: /halaman?nama=Aura&umur=20
+                            ✅ Cocok untuk: pencarian, filter, halaman yang bisa di-bookmark
+                            ❌ Tidak untuk: data sensitif (password, kartu kredit), data besar
+                            Batas: URL punya batas panjang (~2000 karakter)
+
+                - "post" → Data dikirim dalam "body" request HTTP (tidak terlihat di URL)
+                            ✅ Cocok untuk: login, registrasi, upload file, data sensitif
+                            ✅ Tidak ada batas ukuran data
+                            ✅ Lebih aman (data tidak tersimpan di browser history)
+                            ❌ Tidak bisa di-bookmark
+
+              TIPS: Gunakan POST untuk SEMUA formulir yang mengubah data (create, update, delete)
+                    atau yang berisi data sensitif. Gunakan GET hanya untuk pencarian/filter.
+            -->
             <form action="/submit-hotel" method="post">
-                <!-- Input Teks Biasa -->
+
+                <!--
+                  ============================================================
+                  INPUT TEKS BIASA (type="text")
+                  ============================================================
+                -->
+
+                <!--
+                  TAG: <div class="form-group">
+                  APA: Pembungkus setiap pasangan label + input.
+                  KENAPA: Memudahkan styling agar label selalu di atas input (flex column).
+                           Juga memberikan margin antar kelompok input.
+                  TIPS: Ini adalah pola desain formulir yang sangat umum dipakai.
+                -->
                 <div class="form-group">
+
+                    <!--
+                      TAG: <label>
+                      APA: Teks keterangan yang mendeskripsikan field input di bawahnya.
+                      KENAPA PENTING: Tiga manfaat utama:
+                        1. UX: Pengguna tahu apa yang harus diisi
+                        2. Aksesibilitas: Screen reader membacakan label saat input fokus
+                        3. Klikabilitas: Klik label = fokus ke input yang dituju
+
+                      ATRIBUT: for="fullName"
+                      APA: Menghubungkan label ini ke elemen input yang memiliki id="fullName".
+                      KENAPA: Membuat klik pada teks label juga mengaktifkan/fokus ke input.
+                               Sangat penting untuk UX (area klik lebih besar).
+                               Juga menghubungkan semantik label-input untuk screen reader.
+                      TIPS: Nilai for HARUS SAMA PERSIS dengan nilai id pada elemen input!
+                      ALTERNATIF: Menempatkan input di DALAM label (tidak perlu for/id):
+                        <label>Nama: <input type="text" name="nama"></label>
+                    -->
                     <label for="fullName">Nama Lengkap:</label>
+
+                    <!--
+                      TAG: <input>
+                      APA: Elemen kontrol input yang paling serbaguna. Tidak perlu tag penutup (void element).
+                      CATATAN: <input> adalah "void element" — tidak bisa punya konten di dalamnya.
+                               Tidak perlu </input>, langsung tutup dengan > atau />.
+
+                      ATRIBUT: type="text"
+                      APA: Menentukan JENIS input. "text" = kotak teks satu baris untuk teks bebas.
+                      KENAPA: Untuk nama orang, tidak perlu validasi format khusus → "text" paling tepat.
+                      TIPE-TIPE INPUT LAINNYA (H T M L 5):
+                        text     → Teks satu baris bebas (default)
+                        email    → Teks dengan validasi format email (harus ada @)
+                        password → Teks dengan karakter tersembunyi (●●●●)
+                        number   → Input angka dengan tombol naik/turun
+                        date     → Pemilih tanggal kalender
+                        time     → Pemilih waktu jam
+                        tel      → Nomor telepon (keyboard numerik di mobile)
+                        url      → Input URL (validasi format URL)
+                        search   → Kotak pencarian (ada tombol X untuk clear)
+                        file     → Upload file
+                        checkbox → Kotak centang (pilihan on/off)
+                        radio    → Pilihan eksklusif (hanya satu yang bisa dipilih)
+                        range    → Slider (angka dalam rentang min-max)
+                        color    → Color picker (pemilih warna)
+                        hidden   → Input tersembunyi (tidak terlihat pengguna, tapi ikut terkirim)
+                        submit   → Tombol kirim formulir
+                        reset    → Tombol reset formulir ke nilai awal
+                        button   → Tombol biasa (tanpa aksi default)
+
+                      ATRIBUT: id="fullName"
+                      APA: Pengenal unik elemen di seluruh halaman.
+                      KENAPA: Dihubungkan dengan label via for="fullName" dan bisa ditarget JS/CSS.
+                      ATURAN: id HARUS UNIK di satu halaman — tidak boleh ada dua elemen dengan id sama.
+
+                      ATRIBUT: name="fullName"
+                      APA: Nama kunci data saat formulir dikirimkan ke server.
+                      KENAPA: Saat form di-submit, data dikirim sebagai "fullName=NilaiYangDiisi".
+                               Server menggunakan nama ini untuk mengidentifikasi data.
+                      PERBEDAAN id vs name:
+                        - id   → Untuk CSS styling dan JavaScript (sisi client)
+                        - name → Untuk pengiriman data ke server (sisi server)
+                      TIPS: Keduanya sering diisi nilai yang sama, tapi fungsinya berbeda.
+
+                      ATRIBUT: placeholder="Masukkan nama lengkap Anda"
+                      APA: Teks petunjuk abu-abu yang muncul di dalam input saat masih kosong.
+                           Teks ini HILANG begitu pengguna mulai mengetik.
+                      KENAPA: Memberi contoh/petunjuk format isian kepada pengguna.
+                      TIPS: Jangan gunakan placeholder sebagai pengganti label! 
+                            Saat pengguna mengetik, placeholder hilang → pengguna lupa apa yang harus diisi.
+                            Selalu gunakan <label> + placeholder bersama-sama.
+                      NILAI LAIN: "Contoh: Ahmad Budiman", "cth: 081234567890"
+
+                      ATRIBUT: required
+                      APA: Atribut boolean (tidak perlu nilai) yang membuat field WAJIB diisi.
+                           Browser akan menolak pengiriman form dan menampilkan pesan error
+                           jika field ini kosong saat tombol submit diklik.
+                      KENAPA: Validasi sisi-klien (client-side validation) yang built-in di browser,
+                               tanpa perlu JavaScript sama sekali!
+                      TIPS: required adalah atribut boolean — cukup tulis "required" saja.
+                            Penulisan "required='required'" atau "required='true'" juga valid tapi berlebihan.
+                      CATATAN: Validasi required bisa "dilewati" dengan menonaktifkan JavaScript
+                               atau mengirim request langsung ke server. Karena itu, SELALU validasi
+                               juga di sisi server (server-side validation).
+                    -->
                     <input type="text" id="fullName" name="fullName" placeholder="Masukkan nama lengkap Anda" required>
                 </div>
+
+                <!--
+                  ============================================================
+                  INPUT EMAIL (type="email")
+                  ============================================================
+                -->
 
                 <!-- Input Email -->
                 <div class="form-group">
                     <label for="emailUser">Alamat Email:</label>
+
+                    <!--
+                      ATRIBUT: type="email"
+                      APA: Input khusus untuk alamat email.
+                      PERBEDAAN DARI type="text":
+                        1. Validasi otomatis: Browser memverifikasi format email (harus ada "@" dan domain).
+                           Contoh valid:   "user@gmail.com"
+                           Contoh invalid: "useratgmail.com", "user@", "@gmail"
+                        2. Keyboard mobile: Di HP, keyboard akan menampilkan karakter "@" dan "." yang mudah diakses
+                        3. Autocomplete: Browser bisa menawarkan email yang tersimpan secara otomatis
+
+                      ATRIBUT: placeholder="nama@email.com"
+                      KENAPA: Menunjukkan FORMAT email yang benar kepada pengguna.
+                    -->
                     <input type="email" id="emailUser" name="emailUser" placeholder="nama@email.com" required>
                 </div>
+
+                <!--
+                  ============================================================
+                  INPUT PASSWORD (type="password")
+                  ============================================================
+                -->
 
                 <!-- Input Password -->
                 <div class="form-group">
                     <label for="passwordUser">Kata Sandi Akun:</label>
+
+                    <!--
+                      ATRIBUT: type="password"
+                      APA: Input khusus untuk kata sandi/PIN/kode rahasia.
+                      FITUR KEAMANAN:
+                        1. MASKING: Karakter yang diketik DISEMBUNYIKAN → ditampilkan sebagai ●●●●
+                        2. Tidak tersimpan di browser history (tidak seperti type="text")
+                        3. Tidak bisa di-copy paste dari tampilan (di sebagian browser)
+                        4. Screen reader tidak membacakan isi password (privasi)
+
+                      CATATAN PENTING:
+                        - type="password" hanya menyembunyikan TAMPILAN di layar.
+                        - Data yang dikirimkan ke server TETAP berupa teks biasa (plaintext)
+                          kecuali koneksi menggunakan HTTPS (enkripsi SSL/TLS).
+                        - SELALU gunakan HTTPS untuk form yang mengandung password!
+
+                      ATRIBUT TAMBAHAN YANG BERGUNA:
+                        - minlength="8"  → Minimal 8 karakter
+                        - maxlength="50" → Maksimal 50 karakter
+                        - autocomplete="new-password" → Hindari autofill di form registrasi
+                        - autocomplete="current-password" → Izinkan autofill di form login
+
+                      TIPS: Tambahkan "Tampilkan/Sembunyikan password" toggle button menggunakan
+                            JavaScript untuk UX yang lebih baik.
+                    -->
                     <input type="password" id="passwordUser" name="passwordUser" placeholder="Minimal 8 karakter" required>
                 </div>
+
+                <!--
+                  ============================================================
+                  INPUT TANGGAL (type="date")
+                  ============================================================
+                -->
 
                 <!-- Input Tanggal (Date) -->
                 <div class="form-group">
                     <label for="checkInDate">Tanggal Check-In:</label>
+
+                    <!--
+                      ATRIBUT: type="date"
+                      APA: Input khusus untuk memilih tanggal menggunakan kalender bawaan browser.
+                      FITUR:
+                        1. Browser menampilkan Date Picker (kalender interaktif) → UX lebih mudah
+                        2. Validasi format tanggal otomatis (pengguna tidak bisa salah format)
+                        3. Nilai yang dikirim ke server selalu dalam format ISO: "YYYY-MM-DD"
+                           (contoh: "2026-12-25" untuk 25 Desember 2026)
+
+                      ATRIBUT TAMBAHAN YANG BERGUNA:
+                        - min="2026-01-01" → Tanggal minimum yang bisa dipilih
+                        - max="2026-12-31" → Tanggal maksimum yang bisa dipilih
+                        - value="2026-06-09" → Tanggal default yang sudah terpilih
+
+                      CONTOH BATASAN TANGGAL:
+                        <input type="date" min="2026-06-09" max="2027-06-09">
+                        → Pengguna hanya bisa memilih tanggal dalam 1 tahun ke depan
+
+                      CATATAN BROWSER: Tampilan date picker berbeda di setiap browser.
+                                        Di browser lama yang tidak mendukung (jarang di 2026),
+                                        akan fallback ke input teks biasa.
+                    -->
                     <input type="date" id="checkInDate" name="checkInDate" required>
                 </div>
+
+                <!--
+                  ============================================================
+                  TEXTAREA (Input Teks Multi-Baris)
+                  ============================================================
+                -->
 
                 <!-- Textarea (Multi-Line Input) -->
                 <div class="form-group">
                     <label for="specialRequest">Permintaan Khusus (Opsional):</label>
+
+                    <!--
+                      TAG: <textarea>
+                      APA: Area input teks multi-baris — berbeda dari <input> yang hanya satu baris.
+                      KENAPA: Untuk teks yang bisa panjang (komentar, alamat, deskripsi, permintaan).
+                      PERBEDAAN DARI <input type="text">:
+                        - <input> → Satu baris, tidak bisa dibesarkan oleh pengguna
+                        - <textarea> → Multi-baris, bisa diresize oleh pengguna (sudut kanan bawah)
+
+                      PENTING: <textarea> BUKAN void element seperti <input>.
+                               <textarea> HARUS ditutup dengan </textarea>.
+                               Nilai default ditulis di ANTARA tag buka dan tutup (bukan di atribut value!):
+                                 <textarea>Ini teks default</textarea>
+
+                      ATRIBUT: rows="4"
+                      APA: Tinggi awal textarea diukur dalam jumlah baris teks yang terlihat.
+                      KENAPA: 4 baris adalah ukuran yang nyaman untuk permintaan singkat.
+                      NILAI LAIN: rows="2" (kecil), rows="8" (besar), rows="15" (sangat besar)
+                      CATATAN: Pengguna masih bisa memperbesar textarea dengan drag di sudut kanan bawah.
+                               Untuk mencegah resize: CSS → resize: none;
+
+                      ATRIBUT: placeholder="Contoh: Kamar bebas asap rokok..."
+                      APA: Teks petunjuk yang muncul saat textarea kosong.
+                      TIPS: Gunakan contoh nyata yang membantu pengguna memahami apa yang harus diisi.
+
+                      CATATAN: Tidak ada atribut "required" di sini karena label sudah mengatakan "(Opsional)".
+                               Bidang ini tidak wajib diisi.
+
+                      ATRIBUT CSS TAMBAHAN YANG BERGUNA:
+                        resize: none;       → Mencegah pengguna mengubah ukuran textarea
+                        resize: vertical;   → Hanya bisa dibesarkan secara vertikal (atas-bawah) — default
+                        resize: horizontal; → Hanya bisa diperlebar secara horizontal
+                        resize: both;       → Bebas ukuran ke segala arah
+                    -->
                     <textarea id="specialRequest" name="specialRequest" rows="4" placeholder="Contoh: Kamar bebas asap rokok, lantai atas..."></textarea>
                 </div>
 
+                <!--
+                  ============================================================
+                  TOMBOL SUBMIT
+                  ============================================================
+                -->
+
                 <!-- Tombol Submit -->
+                <!--
+                  TAG: <button>
+                  APA: Elemen tombol yang bisa diklik.
+                  KENAPA: Lebih fleksibel dari <input type="submit"> — bisa berisi HTML di dalamnya
+                          (ikon, gambar, teks dengan berbagai format).
+
+                  ATRIBUT: type="submit"
+                  APA: Menentukan perilaku tombol saat diklik.
+                  KENAPA: "submit" membuat tombol ini memicu pengiriman formulir ke URL action.
+                  NILAI TYPE BUTTON:
+                    - "submit"  → (DEFAULT jika di dalam form) Mengirimkan data formulir ke server
+                    - "reset"   → Mengosongkan/me-reset semua input ke nilai awal
+                    - "button"  → Tombol biasa tanpa aksi default (biasanya diproses JavaScript)
+                  
+                  PENTING: Jika <button> berada di dalam <form> dan tidak memiliki atribut type,
+                           browser akan menganggapnya sebagai type="submit" secara otomatis!
+                           Ini bisa menyebabkan bug — selalu tulis atribut type secara eksplisit.
+
+                  TEKS "Kirim Pemesanan":
+                  Teks di dalam <button> bisa diisi HTML (ikon + teks):
+                  <button type="submit">🏨 Kirim Pemesanan</button>
+                  Berbeda dengan <input type="submit" value="Kirim"> yang hanya teks biasa.
+                -->
                 <button type="submit">Kirim Pemesanan</button>
+
             </form>
+            <!--
+              PENUTUP: </form>
+              Semua elemen input yang ingin dikirimkan HARUS berada di dalam tag form.
+              Input di luar form tidak akan ikut terkirim saat submit.
+            -->
 
         </div>
+        <!--
+          PENUTUP: </div> practice-area
+        -->
+
     </div>
+    <!--
+      PENUTUP: </div> container
+    -->
+
 </body>
+<!--
+  ============================================================
+  RINGKASAN: ANATOMI FORMULIR HTML
+  ============================================================
+  <form action="/url-tujuan" method="post">     ← Kontainer formulir
+    
+    <div class="form-group">                    ← Pembungkus label+input
+      <label for="namaField">Teks Label</label> ← Keterangan field
+      <input type="text"                        ← Kontrol input
+             id="namaField"                     ← Terhubung ke label
+             name="namaField"                   ← Kunci data ke server
+             placeholder="Petunjuk isian"       ← Teks abu-abu petunjuk
+             required>                          ← Wajib diisi
+    </div>
+    
+    <textarea id="pesan" name="pesan" rows="4"> ← Input multi-baris
+    </textarea>
+    
+    <button type="submit">Kirim</button>         ← Tombol kirim
+  
+  </form>
+  ============================================================
+-->
 </html>

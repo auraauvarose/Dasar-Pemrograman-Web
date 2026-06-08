@@ -1,0 +1,295 @@
+/* 09_latihan_responsivitas_landing_page.css */
+
+/* Reset Box Model */
+*::before,
+*::after,
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f1f5f9;
+    font-family: 'Quicksand', sans-serif;
+    color: #334155;
+    padding: 20px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container-materi {
+    background-color: #ffffff;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    text-align: center;
+    color: #0f172a;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.rangkuman {
+    background-color: #fef3c7;
+    border-left: 6px solid #d97706;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 0 8px 8px 0;
+    color: #92400e;
+}
+
+.rangkuman h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.rangkuman ul {
+    margin-left: 20px;
+    padding: 0;
+}
+
+.rangkuman li {
+    margin-bottom: 8px;
+}
+
+.instruksi {
+    background-color: #fef08a;
+    color: #713f12;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    border-left: 4px solid #eab308;
+}
+
+.practice-area-wrapper {
+    border: 2px dashed #cbd5e1;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================
+   STYLING DESKTOP (DEFAULT)
+   ========================================== */
+
+.navbar-container {
+    width: 100%;
+    padding-block: 1rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2d3e50;
+    letter-spacing: -1px;
+}
+
+.nav-list ul {
+    padding-left: 0;
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.nav-list a {
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #334155;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-list .btn-contact {
+    background-color: #425c77;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 999px;
+}
+
+.main-content {
+    flex: 1;
+    width: 100%;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    transition: all 0.3s ease;
+}
+
+.content-description {
+    flex: 1 1;
+    transition: all 0.3s ease;
+}
+
+.content-description .title {
+    font-size: 3rem;
+    color: #2d3e50;
+    margin: 0;
+    line-height: 1.2;
+    transition: all 0.3s ease;
+}
+
+.content-description p {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin-block: 1rem;
+    line-height: 1.7;
+}
+
+.btn-more {
+    padding: 12px 30px;
+    border: 3px solid #2d3e50;
+    background-color: #2d3e50;
+    border-radius: 999px;
+    font-family: 'Quicksand', sans-serif;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    transition: all 0.15s ease-in;
+}
+
+.content-image {
+    flex: 1 1;
+    display: flex;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.image-circle {
+    width: 220px;
+    height: 220px;
+    background-color: #2d3e50;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.image-circle i {
+    color: white;
+    font-size: 5rem;
+}
+
+/* SOCIAL MEDIA BAR (ASIDE) */
+.social-media-aside {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.social-media {
+    background-color: #2d3e50;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    padding: 1.5rem 1rem;
+}
+
+.social-media ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.social-media a {
+    color: #89b0d9;
+    font-size: 1.5rem;
+    transition: all 0.2s ease-in-out;
+}
+
+/* =======================================================
+   TUGAS KAMU: MEDIA QUERY UNTUK LAYAR SEDANG/KECIL
+   (Simulasi responsivitas pada lebar 768px ke bawah)
+   ======================================================= */
+
+/* TODO 1: Hapus tanda komentar di media query ini dan selesaikan kodenya! */
+/*
+@media (max-width: 768px) {
+    
+    // 1. Ubah susunan navbar container menjadi vertikal (column) agar tidak memotong layar!
+    .navbar-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    // 2. Berikan properti flex-wrap: wrap pada daftar nav list agar menu navigasi melipat rapi ke bawah!
+    .nav-list ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem 0.5rem;
+    }
+
+    // 3. Kecilkan padding main content agar tidak terlalu mepet
+    .main-content {
+        padding: 1rem 1.5rem;
+    }
+
+    // 4. Ubah susunan flex content menjadi column (vertikal)!
+    .content {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    // 5. Ubah ukuran font h1 agar pas di layar handphone!
+    .content-description .title {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+    
+    .content-description p {
+        text-align: center;
+        font-size: 1rem;
+    }
+    
+    .content-description {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    // 6. Gunakan properti order: -1 pada kolom gambar agar ilustrasi lingkaran naik ke atas teks deskripsi!
+    .content-image {
+        order: -1;
+    }
+
+    // 7. Berikan perataan dan penyusutan ikon sosial media agar teratur di layar mobile
+    .social-media-aside {
+        // Biarkan menempel di kanan bawah atau tetap di posisinya
+    }
+}
+*/

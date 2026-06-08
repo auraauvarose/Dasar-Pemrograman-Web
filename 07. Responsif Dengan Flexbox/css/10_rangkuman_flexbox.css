@@ -1,0 +1,159 @@
+/* 10_rangkuman_flexbox.css */
+
+body {
+    background-color: #f8fafc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1e293b;
+    padding: 30px;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: #ffffff;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    text-align: center;
+    color: #0f172a;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.rangkuman {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+}
+
+.rangkuman h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.25rem;
+    color: #0f172a;
+}
+
+/* TABLE STYLING */
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.95rem;
+}
+
+.summary-table th, 
+.summary-table td {
+    border: 1px solid #e2e8f0;
+    padding: 10px 12px;
+    text-align: left;
+}
+
+.summary-table th {
+    background-color: #f1f5f9;
+    color: #475569;
+    font-weight: 700;
+}
+
+.summary-table .header-row {
+    background-color: #e2e8f0;
+    color: #1e293b;
+    font-weight: bold;
+    text-align: center;
+}
+
+.summary-table code {
+    background-color: #f1f5f9;
+    color: #e11d48;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 0.85rem;
+}
+
+.instruksi {
+    background-color: #fef08a;
+    color: #713f12;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    border-left: 4px solid #eab308;
+}
+
+.practice-area {
+    border: 2px dashed #cbd5e1;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8fafc;
+}
+
+/* ==========================================
+   TUGAS KAMU: Uji Coba Sandbox Rangkuman
+   ========================================== */
+
+.summary-container {
+    background-color: #e2e8f0;
+    padding: 20px;
+    border-radius: 8px;
+    min-height: 300px;
+    
+    /* TODO 1: Aktifkan flexbox dengan wrapping! */
+    /*
+    display: flex;
+    flex-wrap: wrap;
+    */
+    
+    /* TODO 2: Atur perataan agar space terbagi merata di antara baris-baris (align-content)! */
+    /* align-content: space-between; */
+    
+    /* TODO 3: Atur justify-content agar tersebar merata (space-between)! */
+    /* justify-content: space-between; */
+}
+
+.sandbox-item {
+    color: white;
+    padding: 20px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 6px;
+    min-width: 150px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* TODO 4: Coba atur properti individual item di bawah ini (order & align-self) */
+.box-1 {
+    background-color: #3b82f6;
+    
+    /* Coba beri order: 3; dan align-self: flex-start; */
+    /*
+    order: 3;
+    align-self: flex-start;
+    */
+}
+
+.box-2 {
+    background-color: #10b981;
+    
+    /* Coba beri order: 2; dan align-self: center; */
+    /*
+    order: 2;
+    align-self: center;
+    */
+}
+
+.box-3 {
+    background-color: #ef4444;
+    
+    /* Coba beri order: 1; dan align-self: flex-end; */
+    /*
+    order: 1;
+    align-self: flex-end;
+    */
+}

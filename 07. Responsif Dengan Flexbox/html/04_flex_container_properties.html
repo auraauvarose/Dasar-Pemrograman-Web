@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04. Properti pada Flex Container (Materi 04)</title>
+    <!-- APA: Menghubungkan file HTML dengan berkas CSS eksternal -->
+    <!-- KENAPA: Agar struktur halaman HTML terpisah rapi dengan dekorasi styling CSS -->
+    <link rel="stylesheet" href="../css/04_flex_container_properties.css">
+</head>
+<body>
+    <div class="container">
+        <h1>04. Properti pada Flex Container (Materi 04)</h1>
+
+        <!-- 📚 RANGKUMAN MATERI -->
+        <div class="rangkuman">
+            <h3>📚 Properti-Properti untuk Parent Element (Flex Container)</h3>
+            <ul>
+                <li><strong><code>display: flex | inline-flex</code></strong>: Mengaktifkan konteks Flexbox.</li>
+                <li><strong><code>flex-direction: row | row-reverse | column | column-reverse</code></strong>: Menentukan arah sumbu utama (Main Axis).</li>
+                <li><strong><code>flex-wrap: nowrap | wrap | wrap-reverse</code></strong>: Menentukan apakah elemen anak boleh membungkus ke baris baru saat meluap.</li>
+                <li><strong><code>justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly</code></strong>: Meratakan item di sepanjang <strong>Main Axis</strong>.</li>
+                <li><strong><code>align-items: stretch | flex-start | flex-end | center | baseline</code></strong>: Meratakan item di sepanjang <strong>Cross Axis</strong> pada satu baris tunggal.</li>
+                <li><strong><code>align-content: stretch | flex-start | flex-end | center | space-between | space-around | space-evenly</code></strong>: Meratakan baris-baris item pada cross axis (hanya berfungsi jika <code>flex-wrap: wrap</code> aktif dan terdiri dari banyak baris).</li>
+                <li><strong><code>gap / row-gap / column-gap</code></strong>: Memberi celah kosong antar item secara horizontal/vertikal tanpa memengaruhi margin terluar.</li>
+            </ul>
+        </div>
+
+        <!-- 🛠️ AREA PRAKTEK -->
+        <h2>🛠️ Area Praktik (Flex Container Playground)</h2>
+        <p class="instruksi">Buka file <code>css/04_flex_container_properties.css</code>. Coba satu per satu instruksi TODO untuk melihat bagaimana properti Flex Container mengubah letak kotak-kotak di bawah!</p>
+        
+        <div class="practice-area">
+            <div class="playground-container">
+                <div class="box box-1">Kotak 1</div>
+                <div class="box box-2">Kotak 2 (Teks Lebih Tinggi)<br>Baris Baru</div>
+                <div class="box box-3">Kotak 3</div>
+                <div class="box box-4">Kotak 4</div>
+                <div class="box box-5">Kotak 5</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

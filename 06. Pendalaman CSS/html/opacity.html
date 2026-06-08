@@ -1,30 +1,205 @@
+<!--
+  ============================================================
+  FILE: opacity.html
+  MATERI: 18 - Opacity vs Transparansi Latar (RGBA)
+  ============================================================
+  KONSEP UTAMA:
+  Ada DUA cara membuat elemen menjadi transparan/buram di CSS:
+  
+  1. opacity: 0.5
+     → Memudarkan SELURUH elemen (termasuk teks di dalamnya)
+     → Nilai 0 = tidak terlihat sama sekali, 1 = 100% terlihat
+  
+  2. background-color: rgba(R, G, B, A)
+     → Hanya memudarkan WARNA LATAR BELAKANG saja
+     → Teks di atasnya tetap solid/tajam tidak ikut buram
+  
+  KAPAN PAKAI YANG MANA?
+  - Gunakan opacity jika ingin seluruh elemen termasuk teks memudar
+    (misalnya: efek disabled/tidak aktif pada tombol)
+  - Gunakan rgba jika ingin latar transparan tapi teks tetap terbaca jelas
+    (misalnya: overlay gambar dengan caption teks)
+  ============================================================
+-->
+
+<!--
+  TAG: <!DOCTYPE html>
+  APA: Deklarasi tipe dokumen. Memberitahu browser bahwa ini adalah HTML versi 5.
+  KENAPA: Tanpa ini, browser bisa masuk ke mode "quirks" yang menampilkan
+          halaman dengan cara lama tidak standar. Selalu tulis di baris paling atas.
+  CATATAN: Ini bukan tag HTML, melainkan instruksi ke browser.
+-->
 <!DOCTYPE html>
+
+<!--
+  TAG: <html lang="id">
+  APA: Elemen akar (root) yang membungkus seluruh konten halaman HTML.
+  KENAPA: Semua konten HTML harus berada di dalam tag ini.
+  ATRIBUT lang="id":
+    - Memberitahu browser dan pembaca layar bahwa bahasa halaman adalah Indonesia
+    - Berguna untuk aksesibilitas (screen reader akan membaca dengan aksen yg benar)
+    - Nilai lain: lang="en" (Inggris), lang="ja" (Jepang), lang="ar" (Arab)
+-->
 <html lang="id">
+
+<!--
+  TAG: <head>
+  APA: Bagian kepala dokumen yang berisi informasi meta (tidak ditampilkan di layar).
+  KENAPA: Tempat meletakkan metadata, judul halaman, dan link ke file CSS/JS eksternal.
+  INGAT: Konten di sini TIDAK tampil di halaman, hanya dibaca oleh browser dan mesin pencari.
+-->
 <head>
+    <!--
+      TAG: <meta charset="UTF-8">
+      APA: Mendeklarasikan encoding karakter yang digunakan halaman ini.
+      KENAPA: UTF-8 mendukung hampir semua karakter di dunia termasuk huruf Latin,
+              aksara Arab, Mandarin, hingga emoji. Tanpa ini, karakter seperti
+              "é", "ñ", atau bahkan tanda kutip Indonesia bisa tampil rusak (mojibake).
+      NILAI LAIN: charset="ISO-8859-1" (hanya Latin, sudah usang)
+      TIPS: Selalu gunakan UTF-8 untuk proyek modern.
+    -->
     <meta charset="UTF-8">
+
+    <!--
+      TAG: <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      APA: Mengatur area tampilan (viewport) untuk perangkat mobile.
+      KENAPA: Tanpa ini, smartphone akan menyusutkan halaman seolah layarnya lebar seperti desktop,
+              membuat teks menjadi sangat kecil. Dengan ini, halaman menyesuaikan lebar layar asli.
+      DETAIL ATRIBUT content:
+        - width=device-width → Lebar viewport = lebar layar perangkat yang dipakai
+        - initial-scale=1.0 → Zoom awal = 100% (tidak diperbesar/perkecil)
+      NILAI LAIN content: "width=600" (paksa lebar 600px), "user-scalable=no" (larang zoom)
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+      TAG: <title>
+      APA: Menetapkan judul halaman yang tampil di tab browser.
+      KENAPA: Membantu pengguna mengenali halaman saat banyak tab terbuka.
+              Juga penting untuk SEO (Search Engine Optimization) karena mesin pencari
+              menggunakan title sebagai judul hasil pencarian.
+      TIPS: Buat title yang deskriptif, maksimal 60 karakter agar tidak terpotong di mesin pencari.
+    -->
     <title>Opacity vs Transparansi Latar (Materi 18)</title>
+
+    <!-- 
+      TAG: <link>
+      APA: Menghubungkan (link) file HTML ini dengan file CSS eksternal.
+      KENAPA: Memisahkan HTML (struktur) dari CSS (tampilan) adalah praktik terbaik.
+              Satu file CSS bisa digunakan oleh banyak halaman HTML sekaligus.
+      ATRIBUT:
+        - rel="stylesheet" → Hubungan antara file ini dengan file yang ditautkan adalah stylesheet
+        - href="../css/opacity.css" → Lokasi file CSS (../ berarti naik satu folder ke atas, lalu masuk folder css/)
+      NILAI LAIN rel: "icon" (favicon), "preload" (muat duluan), "canonical" (SEO)
+    -->
     <!-- APA: Menghubungkan file HTML dengan berkas CSS eksternal -->
     <!-- KENAPA: Agar struktur halaman HTML terpisah rapi dengan dekorasi styling CSS -->
     <link rel="stylesheet" href="../css/opacity.css">
 </head>
+
+<!--
+  TAG: <body>
+  APA: Tubuh dokumen. Semua konten yang TERLIHAT di layar browser harus ada di sini.
+  KENAPA: Browser merender (menggambar) konten dari tag <body> ke layar pengguna.
+  PERBEDAAN dengan <head>: <head> = informasi untuk browser, <body> = konten untuk pengguna
+-->
 <body>
+
+    <!--
+      TAG: <div class="container">
+      APA: Division (pembagi). Elemen blok generik tanpa makna semantik khusus.
+      KENAPA: Digunakan sebagai pembungkus (wrapper) untuk mengelompokkan elemen-elemen
+              dan menerapkan styling secara bersamaan ke seluruh grup.
+      ATRIBUT class="container":
+        - Menandai elemen ini dengan nama kelas "container"
+        - CSS akan menargetkan elemen ini dengan selektor .container
+      ALTERNATIF SEMANTIK: <main>, <section>, <article> (lebih bermakna, disarankan untuk konten utama)
+    -->
     <div class="container">
+
+        <!--
+          TAG: <h1>
+          APA: Heading level 1. Judul utama halaman. Paling besar dan paling penting.
+          KENAPA: Menunjukkan topik utama halaman. Browser menampilkan h1 dengan teks besar dan tebal secara default.
+          HIERARKI: h1 > h2 > h3 > h4 > h5 > h6 (makin besar angka, makin kecil ukurannya)
+          SEO: Idealnya hanya ada SATU h1 per halaman, karena mesin pencari menjadikannya judul utama.
+          TIPS COMMON MISTAKE: Jangan skip level (misal langsung dari h1 ke h3 tanpa h2)
+        -->
         <h1>Opacity vs Transparansi Latar (Materi 18)</h1>
 
         <!-- 📚 RANGKUMAN MATERI -->
+        <!--
+          TAG: <div class="rangkuman">
+          APA: Kotak pembungkus untuk bagian rangkuman teori materi.
+          KENAPA: Mengelompokkan elemen-elemen terkait rangkuman agar bisa diberi style bersama.
+          ATRIBUT class="rangkuman": Kelas CSS yang memberi latar biru muda dan border kiri biru.
+        -->
         <div class="rangkuman">
+            <!--
+              TAG: <h3>
+              APA: Heading level 3. Sub-subjudul dengan ukuran lebih kecil dari h1 dan h2.
+              KENAPA: Digunakan di sini karena berada dalam seksi sub-konten, bukan judul utama halaman.
+              NILAI LAIN: h2 (jika ini sub-bagian pertama), h4 (jika hierarkinya lebih dalam)
+            -->
             <h3>📚 Rangkuman Teori</h3>
+
+            <!--
+              TAG: <ul>
+              APA: Unordered List. Daftar tidak berurutan (menggunakan bullet/titik).
+              KENAPA: Cocok untuk daftar poin-poin yang tidak memiliki urutan kepentingan.
+              ALTERNATIF: <ol> (ordered list - menggunakan angka, untuk urutan yang penting)
+              CATATAN: <ul> hanya boleh memiliki anak langsung <li>
+            -->
             <ul>
+                <!--
+                  TAG: <li>
+                  APA: List Item. Satu butir item dalam daftar.
+                  KENAPA: Setiap poin dalam ul/ol harus dibungkus dengan li.
+                  TIPS: Isi li boleh berupa teks, gambar, link, bahkan ul/ol lain (nested list)
+                -->
                 <li>Opacity: Memudarkan seluruh elemen beserta teks di dalamnya.</li>
                 <li>RGBA: Hanya mentransparankan warna latar belakang (teks tetap solid).</li>
             </ul>
         </div>
 
         <!-- 🛠️ AREA PRAKTEK -->
+        <!--
+          TAG: <h2>
+          APA: Heading level 2. Sub-judul halaman, satu tingkat di bawah h1.
+          KENAPA: Menandai seksi "Area Praktik" sebagai subbagian utama dari konten h1.
+        -->
         <h2>🛠️ Area Praktik</h2>
+
+        <!--
+          TAG: <div class="practice-area">
+          APA: Kotak area praktik yang menampung elemen-elemen demo/latihan.
+          KENAPA: Memisahkan secara visual antara penjelasan teori dengan area demo interaktif.
+          ATRIBUT class="practice-area": Diberi border putus-putus di CSS untuk membedakan area ini.
+        -->
         <div class="practice-area">
+
+            <!--
+              TAG: <div class="box-opacity">
+              APA: Kotak demo yang menggunakan properti CSS opacity.
+              KENAPA: Membuktikan bahwa opacity: 0.5 membuat SELURUH elemen (termasuk teks)
+                      menjadi setengah transparan (buram 50%).
+              KONSEP PENTING:
+                Opacity mempengaruhi elemen DAN semua anak di dalamnya.
+                Tidak bisa membuat opacity elemen induk berbeda dari anaknya.
+                Nilai opacity: 0 (tak terlihat) - 1 (penuh)
+            -->
             <div class="box-opacity">Teks ini ikut pudar (Opacity)</div>
+
+            <!--
+              TAG: <div class="box-rgba">
+              APA: Kotak demo yang menggunakan background-color RGBA.
+              KENAPA: Membuktikan bahwa rgba() hanya membuat LATAR BELAKANG transparan,
+                      sedangkan teks di atasnya tetap 100% solid/tajam.
+              KONSEP PENTING:
+                RGBA = Red, Green, Blue, Alpha (transparansi)
+                Alpha 0 = transparan total, Alpha 1 = solid penuh
+                Ini adalah cara yang lebih tepat saat ingin overlay transparan dengan teks terbaca.
+            -->
       <div class="box-rgba">Teks ini tetap solid (RGBA)</div>
         </div>
     </div>

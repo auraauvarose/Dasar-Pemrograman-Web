@@ -1,77 +1,276 @@
-/* pengantar.css */
+/* ============================================================
+   FILE: pengantar.css
+   DESKRIPSI: Stylesheet untuk halaman Pengantar Pendalaman CSS (Materi 01)
+   KONSEP UTAMA: Cara memberi gaya dasar pada elemen HTML menggunakan CSS
+   ============================================================ */
 
+/* =============================================================
+   SELEKTOR: body
+   APA: Type Selector yang menargetkan elemen <body> — yaitu seluruh badan halaman HTML.
+   KENAPA: Properti yang ditaruh di body diwariskan (inherited) ke semua elemen turunannya,
+           sehingga ini adalah tempat terbaik untuk menetapkan "gaya dasar" halaman
+           seperti font, warna teks, dan latar belakang secara global.
+   ============================================================= */
 body {
-    /* APA: Mengatur latar belakang halaman */
-    /* KENAPA: Memberikan kenyamanan visual dan kontras yang pas */
+    /* PROPERTI: background-color: #f1f2f6
+       APA: Mengatur warna latar belakang seluruh halaman menjadi abu-abu sangat terang (#f1f2f6).
+       KENAPA: Warna abu-abu terang (#f1f2f6) lebih nyaman di mata dibanding putih murni (#ffffff)
+               karena mengurangi kecerahan berlebihan. Ini teknik umum di desain UI modern.
+       NILAI ALTERNATIF: #ffffff (putih murni), #e8e8e8 (abu sedikit lebih gelap), #f9fafb (hampir putih). */
     background-color: #f1f2f6;
+
+    /* PROPERTI: font-family: Arial, sans-serif
+       APA: Menetapkan jenis huruf (typeface) yang digunakan di seluruh halaman.
+       KENAPA: Arial adalah font sans-serif (tanpa kaki/serif) yang terpasang di hampir semua
+               sistem operasi (Windows, Mac, Linux). Nilai "sans-serif" di belakangnya adalah
+               fallback — jika Arial tidak tersedia, browser akan memakai font sans-serif default sistem.
+       NILAI ALTERNATIF: 'Helvetica Neue', sans-serif | Georgia, serif | 'Courier New', monospace
+       TIPS: Selalu sertakan generic fallback (sans-serif/serif/monospace) sebagai nilai terakhir. */
     font-family: Arial, sans-serif;
+
+    /* PROPERTI: color: #2f3542
+       APA: Mengatur warna teks default seluruh halaman menjadi abu-abu gelap (#2f3542).
+       KENAPA: Warna #2f3542 (hampir hitam tapi sedikit kebiruan) lebih nyaman dibaca daripada
+               hitam murni (#000000) karena kontrasnya tidak terlalu ekstrem dengan latar abu terang.
+       NILAI ALTERNATIF: #333333 (abu gelap netral), #1a1a2e (hitam kebiruan tua), #000000 (hitam murni). */
     color: #2f3542;
+
+    /* PROPERTI: padding: 30px
+       APA: Menambahkan ruang kosong (jarak dalam) sebesar 30 piksel di semua sisi (atas, kanan, bawah, kiri) elemen body.
+       KENAPA: Agar konten halaman tidak menempel langsung ke tepi layar browser, memberikan "napas" visual.
+       NILAI ALTERNATIF: padding: 20px 40px (atas-bawah 20px, kiri-kanan 40px)
+                        padding-top: 30px; padding-bottom: 30px; (cara panjang). */
     padding: 30px;
+
+    /* PROPERTI: line-height: 1.6
+       APA: Menetapkan tinggi baris (jarak antar baris teks) menjadi 1.6 kali ukuran font yang aktif.
+       KENAPA: Nilai 1.6 (setara ~160% dari font-size) adalah standar keterbacaan yang direkomendasikan
+               oleh para desainer UI. Jika terlalu rapat (1.0) teks susah dibaca, jika terlalu longgar (2.5+) tampak aneh.
+       NILAI ALTERNATIF: 1.4 (sedikit lebih rapat), 1.8 (lebih longgar, cocok untuk artikel panjang), 24px (nilai absolut). */
     line-height: 1.6;
 }
 
+/* =============================================================
+   SELEKTOR: .container
+   APA: Class Selector yang menargetkan elemen dengan class="container".
+        Ini adalah kotak pembungkus konten utama di tengah halaman.
+   KENAPA: Teknik "container centered" adalah pola desain web yang sangat umum —
+           konten diberi lebar maksimum dan dipusatkan horizontal agar tampak
+           rapi di layar lebar maupun kecil.
+   ============================================================= */
 .container {
-    /* APA: Membungkus konten utama di tengah layar */
-    /* KENAPA: Menjaga kerapian konten agar mudah dibaca */
+    /* PROPERTI: background-color: #ffffff
+       APA: Mengatur latar belakang kotak container menjadi putih murni (#ffffff).
+       KENAPA: Menciptakan kontras "kartu putih di atas abu-abu" — pola desain yang umum
+               dan elegan. Konten utama terasa seperti selembar kertas di atas meja abu-abu.
+       NILAI ALTERNATIF: #fafafa (putih hangat), #f8f9fa (putih abu Bootstrap). */
     background-color: #ffffff;
+
+    /* PROPERTI: max-width: 650px
+       APA: Membatasi lebar maksimum kontainer menjadi 650 piksel.
+       KENAPA: Jika teks terlalu lebar (misal 1200px), mata harus bergerak terlalu jauh kanan-kiri
+               saat membaca — ini melelahkan. Lebar 600-700px adalah rentang optimal keterbacaan.
+               Di layar kecil (HP), elemen akan menyempit mengikuti layar karena ini adalah MAX width.
+       NILAI ALTERNATIF: max-width: 800px (lebih lebar), max-width: 100% (tidak dibatasi). */
     max-width: 650px;
+
+    /* PROPERTI: margin: 0 auto
+       APA: Menetapkan margin atas-bawah = 0, dan margin kiri-kanan = auto (otomatis sama rata).
+       KENAPA: "margin: 0 auto" adalah trik klasik CSS untuk memusatkan elemen block secara horizontal.
+               Browser menghitung sisa ruang di kiri dan kanan lalu membaginya sama rata.
+       CATATAN PENTING: Ini hanya bekerja pada elemen block yang punya lebar eksplisit (max-width/width).
+       NILAI ALTERNATIF: margin: 20px auto (ada jarak atas-bawah 20px + tetap center). */
     margin: 0 auto;
+
+    /* PROPERTI: padding: 25px
+       APA: Menambahkan ruang dalam (jarak dari tepi kotak ke konten di dalamnya) sebesar 25 piksel di semua sisi.
+       KENAPA: Tanpa padding, teks akan menempel di tepi kotak putih dan terasa sesak.
+               25px memberi ruang bernapas yang cukup tanpa terlalu boros.
+       NILAI ALTERNATIF: padding: 20px 30px (atas-bawah 20px, kiri-kanan 30px). */
     padding: 25px;
+
+    /* PROPERTI: border-radius: 8px
+       APA: Membulatkan sudut kotak sebesar 8 piksel di keempat pojoknya.
+       KENAPA: Sudut membulat memberi kesan modern, ramah, dan bersih dibanding sudut tajam (kotak kaku).
+               8px adalah nilai kecil yang tidak terlalu ekstrem — tampak profesional.
+       NILAI ALTERNATIF: 0px (sudut tajam), 16px (lebih bulat), 50% (jadi lingkaran — untuk avatar). */
     border-radius: 8px;
+
+    /* PROPERTI: box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05)
+       APA: Menambahkan bayangan kotak di bawah kontainer untuk efek kedalaman.
+       KENAPA: Bayangan halus (0.05 opacity) membuat kotak terasa "mengapung" di atas background,
+               memberi kedalaman visual tanpa terlihat berlebihan.
+       RINCIAN NILAI:
+         0       → offset horizontal (tidak bergeser kanan/kiri)
+         4px     → offset vertikal (bayangan 4px di bawah)
+         6px     → blur radius (seberapa kabur tepinya — semakin besar semakin lembut)
+         rgba(0,0,0,0.05) → warna bayangan hitam dengan opacity 5% (sangat transparan)
+       NILAI ALTERNATIF: box-shadow: 0 10px 30px rgba(0,0,0,0.1) (bayangan lebih dramatis). */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
+/* =============================================================
+   SELEKTOR: .rangkuman
+   APA: Class Selector yang menargetkan kotak rangkuman teori.
+   KENAPA: Diberi gaya tersendiri agar terlihat berbeda dari konten biasa —
+           menandakan ini adalah "info box" berisi teori penting.
+   ============================================================= */
 .rangkuman {
-    /* APA: Kotak info rangkuman teori */
-    /* KENAPA: Memberikan penanda visual yang menonjol untuk belajar teori */
+    /* PROPERTI: background-color: #eff6ff
+       APA: Latar belakang biru muda sangat pucat (#eff6ff) untuk kotak rangkuman.
+       KENAPA: Warna biru muda memberi kesan informatif/akademis. Dikombinasikan dengan
+               border-left biru gelap, menciptakan pola "info alert" yang familiar bagi pengguna.
+       NILAI ALTERNATIF: #f0fff4 (hijau muda), #fff7ed (oranye muda), #fef2f2 (merah muda). */
     background-color: #eff6ff;
+
+    /* PROPERTI: border-left: 5px solid #3b82f6
+       APA: Menambahkan border (garis) solid berwarna biru (#3b82f6) di sisi KIRI kotak, tebal 5px.
+       KENAPA: Garis tebal di kiri adalah pola desain populer untuk "callout box" atau "blockquote".
+               Secara visual langsung menarik perhatian. Hanya border-left (bukan 4 sisi) agar tidak terasa terkurung.
+       RINCIAN: border-left: [ketebalan] [tipe garis] [warna]
+                Tipe lain: dashed (putus-putus), dotted (titik-titik), double (ganda).
+       NILAI ALTERNATIF: border-left: 4px solid #10b981 (garis hijau). */
     border-left: 5px solid #3b82f6;
+
+    /* PROPERTI: padding: 15px
+       APA: Ruang dalam 15px di semua sisi kotak rangkuman.
+       KENAPA: Memberi "napas" pada teks di dalam kotak agar tidak menempel di tepi. */
     padding: 15px;
+
+    /* PROPERTI: margin-bottom: 25px
+       APA: Jarak kosong 25px di bawah kotak rangkuman (luar kotak, ke elemen berikutnya).
+       KENAPA: Memberi jarak antara kotak teori dengan area praktik di bawahnya agar tidak saling menempel. */
     margin-bottom: 25px;
+
+    /* PROPERTI: border-radius: 0 6px 6px 0
+       APA: Membulatkan sudut dengan nilai berbeda per pojok:
+            pojok kiri-atas=0, kanan-atas=6px, kanan-bawah=6px, kiri-bawah=0.
+       KENAPA: Sisi kiri TIDAK dibulatkan (0) karena ada border kiri lurus.
+               Sisi kanan dibulatkan (6px) untuk tampilan yang lebih halus dan asimetris. */
     border-radius: 0 6px 6px 0;
+
+    /* PROPERTI: color: #1e40af
+       APA: Warna teks di dalam kotak rangkuman menjadi biru tua (#1e40af).
+       KENAPA: Kontras dengan background biru muda (#eff6ff) agar teks tetap terbaca jelas.
+               Warna biru gelap juga memberi kesan "akademis" dan informatif.
+       NILAI ALTERNATIF: #1d4ed8, #2563eb (variasi biru). */
     color: #1e40af;
 }
 
+/* =============================================================
+   SELEKTOR: .rangkuman h3
+   APA: Descendant Selector — menargetkan elemen <h3> yang BERADA DI DALAM elemen .rangkuman.
+   KENAPA: Dipakai agar pengaturam margin khusus hanya berlaku pada h3 di dalam rangkuman,
+           tidak mempengaruhi h3 lain di halaman.
+   ============================================================= */
 .rangkuman h3 {
+    /* PROPERTI: margin-top: 0
+       APA: Menghilangkan margin atas default milik <h3> (browser secara default memberi margin pada heading).
+       KENAPA: Agar h3 tidak terlalu jauh dari tepi atas kotak rangkuman. */
     margin-top: 0;
+
+    /* PROPERTI: margin-bottom: 8px
+       APA: Jarak bawah h3 ke elemen berikutnya (ul) sebesar 8px.
+       KENAPA: Memberi sedikit jarak antara judul rangkuman dengan daftar poin di bawahnya. */
     margin-bottom: 8px;
 }
 
+/* SELEKTOR: .rangkuman ul — Mengatur margin kiri daftar di dalam rangkuman */
 .rangkuman ul {
+    /* PROPERTI: margin-left: 20px
+       APA: Menggeser daftar ke kanan sebesar 20px agar bullet terlihat dan tidak terpotong. */
     margin-left: 20px;
 }
 
+/* SELEKTOR: .rangkuman li — Mengatur tiap item daftar di dalam rangkuman */
 .rangkuman li {
+    /* PROPERTI: margin-bottom: 6px
+       APA: Memberi jarak 6px di bawah setiap item daftar agar tidak terlalu rapat. */
     margin-bottom: 6px;
 }
 
+/* =============================================================
+   SELEKTOR: h1
+   APA: Type Selector yang menargetkan SEMUA elemen <h1> di halaman.
+   KENAPA: Mengatur tampilan judul utama halaman secara terpusat.
+   ============================================================= */
 h1 {
+    /* PROPERTI: text-align: center
+       APA: Meratakan teks judul ke tengah secara horizontal.
+       KENAPA: Judul utama yang berada di tengah terasa lebih formal dan berimbang secara visual.
+       NILAI ALTERNATIF: left (kiri, default), right (kanan), justify (rata kanan-kiri). */
     text-align: center;
+
+    /* PROPERTI: color: #2f3542
+       APA: Warna teks judul abu-abu gelap (#2f3542), sama dengan warna teks body.
+       KENAPA: Konsistensi warna — tidak perlu warna mencolok untuk judul karena ukurannya sudah cukup membedakannya. */
     color: #2f3542;
+
+    /* PROPERTI: margin-bottom: 30px
+       APA: Jarak 30px di bawah judul ke elemen berikutnya.
+       KENAPA: Memberi ruang visual yang jelas antara judul dan konten di bawahnya. */
     margin-bottom: 30px;
+
+    /* PROPERTI: font-size: 1.5rem
+       APA: Ukuran font 1.5rem = 1.5 × 16px (ukuran root default) = 24px.
+       KENAPA: Lebih kecil dari default h1 browser (biasanya 2em/32px) karena kita menginginkan tampilan yang lebih kompak.
+               Satuan "rem" relatif terhadap ukuran font root (<html>), bukan parent — lebih konsisten dari "em".
+       NILAI ALTERNATIF: 2rem (lebih besar), 20px (absolut), 1.8em (relatif parent). */
     font-size: 1.5rem;
 }
 
+/* SELEKTOR: h2 — Sub-judul area praktik */
 h2 {
+    /* PROPERTI: color: #747d8c
+       APA: Warna teks abu-abu medium (#747d8c) untuk sub-judul.
+       KENAPA: Lebih terang dari teks body (#2f3542) agar terlihat sebagai elemen sekunder/pendukung,
+               tidak bersaing perhatian dengan judul utama h1. */
     color: #747d8c;
+
+    /* PROPERTI: font-size: 1.2rem
+       APA: Ukuran 1.2rem = ~19.2px, lebih kecil dari h1 (1.5rem).
+       KENAPA: Hierarki visual — h2 harus terlihat lebih kecil dari h1 untuk menunjukkan tingkatannya. */
     font-size: 1.2rem;
+
     margin-top: 20px;
     margin-bottom: 10px;
 }
 
+/* =============================================================
+   SELEKTOR: .practice-area
+   APA: Class Selector untuk kotak area demonstrasi/praktik kode.
+   KENAPA: Diberi border putus-putus sebagai penanda visual bahwa ini adalah
+           zona eksperimen, bukan konten informatif.
+   ============================================================= */
 .practice-area {
-    /* APA: Pembatas area praktik */
-    /* KENAPA: Memisahkan secara visual antara rangkuman teori dengan elemen uji coba */
+    /* PROPERTI: border: 2px dashed #cbd5e1
+       APA: Garis tepi putus-putus (dashed) tebal 2px berwarna abu-abu biru muda (#cbd5e1) di semua sisi.
+       KENAPA: Border putus-putus (dashed) secara konvensi desain menandakan "kotak sementara" atau
+               "area kerja" — cocok untuk zona praktik. Warna abu-abu biru muda tidak terlalu mencolok.
+       RINCIAN: border: [ketebalan] [tipe] [warna] → shorthand untuk border-top, right, bottom, left.
+       NILAI ALTERNATIF: border: 1px solid #e2e8f0 (garis solid tipis abu), dashed #94a3b8. */
     border: 2px dashed #cbd5e1;
+
     padding: 20px;
     border-radius: 6px;
 }
 
+/* =============================================================
+   SELEKTOR: .demo-text
+   APA: Class Selector untuk paragraf teks demo di area praktik.
+   KENAPA: Paragraf ini diberi gaya berbeda (tebal + hijau) agar menonjol sebagai konten utama demo.
+   ============================================================= */
 .demo-text {
-    /* APA: Mengatur ketebalan huruf menjadi tebal (bold) */
-    /* KENAPA: Untuk memberikan penekanan visual pada teks utama paragraf pengantar */
+    /* PROPERTI: font-weight: bold
+       APA: Mengatur ketebalan huruf menjadi tebal (bold = setara nilai numerik 700).
+       KENAPA: Membuat teks demo terasa lebih penting dan menonjol dibanding teks biasa.
+       NILAI ALTERNATIF: normal (400), light (300), bolder (relatif lebih tebal dari parent), 600, 700, 800, 900. */
     font-weight: bold;
-    /* APA: Memberikan warna teks hijau gelap */
-    /* KENAPA: Menggunakan warna tematik untuk menunjukkan modul pengantar */
+
+    /* PROPERTI: color: #2e7d32
+       APA: Mengatur warna teks menjadi hijau gelap (#2e7d32).
+       KENAPA: Warna hijau gelap memberi kesan "selamat datang" yang positif dan hangat.
+               Dipilih sebagai warna tematik untuk halaman pengantar (fresh start).
+       NILAI ALTERNATIF: #1b5e20 (hijau lebih tua), #4caf50 (hijau terang). */
     color: #2e7d32;
 }

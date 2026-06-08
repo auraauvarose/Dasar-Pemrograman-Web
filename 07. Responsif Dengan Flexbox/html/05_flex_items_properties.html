@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. Properti pada Flex Items (Materi 05)</title>
+    <!-- APA: Menghubungkan file HTML dengan berkas CSS eksternal -->
+    <!-- KENAPA: Agar struktur halaman HTML terpisah rapi dengan dekorasi styling CSS -->
+    <link rel="stylesheet" href="../css/05_flex_items_properties.css">
+</head>
+<body>
+    <div class="container">
+        <h1>05. Properti pada Flex Items (Materi 05)</h1>
+
+        <!-- 📚 RANGKUMAN MATERI -->
+        <div class="rangkuman">
+            <h3>📚 Properti-Properti untuk Child Element (Flex Items)</h3>
+            <ul>
+                <li><strong><code>order: [angka]</code></strong>: Mengubah urutan tampilan flex items tanpa merubah urutan kode HTML (default adalah 0. Semakin kecil nilainya, semakin awal dia diposisikan).</li>
+                <li><strong><code>flex-grow: [angka]</code></strong>: Menentukan porsi pertumbuhan item untuk menghabiskan sisa ruang kosong dalam container (default adalah 0 / tidak tumbuh).</li>
+                <li><strong><code>flex-shrink: [angka]</code></strong>: Menentukan porsi penyusutan item saat ukuran container menyempit dan tidak mencukupi (default adalah 1 / menyusut. Berikan nilai 0 jika tidak ingin item menciut).</li>
+                <li><strong><code>flex-basis: [ukuran]</code></strong>: Menentukan ukuran dasar (lebar/tinggi) awal elemen sebelum didistribusikan sisa ruang container (default adalah auto).</li>
+                <li><strong><code>align-self: auto | flex-start | flex-end | center | baseline | stretch</code></strong>: Mengubah perataan vertikal (Cross Axis) untuk SATU item tertentu saja (meng-override nilai <code>align-items</code> milik container).</li>
+            </ul>
+        </div>
+
+        <!-- 🛠️ AREA PRAKTEK -->
+        <h2>🛠️ Area Praktik (Flex Items Playground)</h2>
+        <p class="instruksi">Buka file <code>css/05_flex_items_properties.css</code>. Baca petunjuk TODO di dalamnya untuk melihat bagaimana properti Flex Items mengatur ukuran dan letak masing-masing elemen anak secara mandiri!</p>
+        
+        <div class="practice-area">
+            <div class="flex-container">
+                <div class="flex-item item-1">Kotak 1</div>
+                <div class="flex-item item-2">Kotak 2</div>
+                <div class="flex-item item-3">Kotak 3</div>
+                <div class="flex-item item-4">Kotak 4</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

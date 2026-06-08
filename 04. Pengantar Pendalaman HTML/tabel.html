@@ -1,106 +1,574 @@
+<!--
+  ============================================================
+  FILE: tabel.html
+  TOPIK: Struktur Tabel HTML
+  BAB: 04 - Pengantar Pendalaman HTML
+  ============================================================
+  KONSEP UTAMA TABEL HTML:
+  Tabel digunakan untuk menampilkan data dalam format BARIS dan KOLOM (grid).
+  Tabel HTML terdiri dari beberapa tag khusus yang bekerja sama:
+    - <table>  → Pembungkus utama seluruh tabel
+    - <thead>  → Kepala tabel (judul kolom)
+    - <tbody>  → Isi / tubuh data tabel
+    - <tfoot>  → Kaki tabel (ringkasan/total)
+    - <tr>     → Satu baris (Table Row)
+    - <th>     → Sel kepala (Table Header) → teks tebal + rata tengah otomatis
+    - <td>     → Sel data biasa (Table Data)
+
+  ATURAN PENTING:
+  - Jangan gunakan tabel untuk layout halaman web! Tabel hanya untuk DATA TABULAR.
+  - Selalu gunakan thead/tbody/tfoot agar tabel lebih terstruktur dan mudah dibaca.
+  ============================================================
+-->
+
+<!--
+  TAG: <!DOCTYPE html>
+  APA: Deklarasi tipe dokumen. Memberitahu browser bahwa ini adalah dokumen HTML5.
+  KENAPA: Tanpa ini, browser akan masuk mode "quirks" (mode kompatibilitas lama)
+          yang membuat tampilan bisa berbeda-beda antar browser.
+  NILAI LAIN: Tidak ada nilai lain — selalu tulis persis seperti ini untuk HTML5.
+  TIPS: Ini BUKAN tag HTML, melainkan instruksi untuk browser. Selalu letakkan di baris pertama.
+-->
 <!DOCTYPE html>
+
+<!--
+  TAG: <html>
+  APA: Elemen akar (root) yang membungkus SEMUA konten halaman web.
+  KENAPA: Browser membutuhkan elemen ini sebagai titik awal membaca dokumen HTML.
+  ATRIBUT lang="id":
+    - Memberitahu browser (dan screen reader) bahwa bahasa halaman ini adalah Bahasa Indonesia.
+    - "id" = kode ISO 639-1 untuk Bahasa Indonesia
+    - Nilai lain: "en" (Inggris), "ja" (Jepang), "ar" (Arab), "fr" (Prancis)
+  TIPS: Atribut lang sangat penting untuk aksesibilitas dan SEO!
+-->
 <html lang="id">
+
+<!--
+  TAG: <head>
+  APA: Bagian "kepala" dokumen yang berisi metadata (informasi tentang halaman).
+  KENAPA: Konten di dalam <head> TIDAK ditampilkan di halaman, tapi penting
+          untuk browser, mesin pencari (SEO), dan pengaturan tampilan.
+  ISI UMUM: <meta>, <title>, <link>, <style>, <script>
+-->
 <head>
+
+    <!--
+      TAG: <meta charset="UTF-8">
+      APA: Menentukan encoding karakter yang digunakan dokumen ini.
+      KENAPA: UTF-8 mendukung hampir semua karakter di dunia termasuk
+              huruf latin, aksara Arab, Cina, emoji, dan karakter khusus.
+              Tanpa ini, karakter seperti "é", "ñ", atau emoji bisa rusak (muncul kotak/tanda tanya).
+      NILAI LAIN: "ISO-8859-1" (Latin-1, sudah kuno), "UTF-16" (jarang dipakai di web)
+      TIPS: SELALU gunakan UTF-8. Letakkan PERTAMA di dalam <head> sebelum tag lainnya.
+    -->
     <meta charset="UTF-8">
+
+    <!--
+      TAG: <meta name="viewport">
+      APA: Mengatur cara halaman ditampilkan di layar perangkat mobile (HP/tablet).
+      KENAPA: Tanpa tag ini, browser mobile akan menampilkan halaman dengan lebar
+              desktop penuh dan membuatnya sangat kecil / susah dibaca di HP.
+      ATRIBUT content="width=device-width, initial-scale=1.0":
+        - width=device-width  → Lebar halaman menyesuaikan lebar layar perangkat
+        - initial-scale=1.0   → Zoom level awal adalah 100% (tidak diperbesar/perkecil)
+      TIPS: Tag ini adalah SYARAT WAJIB untuk membuat website yang responsif (mobile-friendly).
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+      TAG: <title>
+      APA: Menentukan judul halaman yang muncul di TAB browser dan hasil pencarian Google.
+      KENAPA: Judul yang baik membantu SEO dan UX — pengguna tahu halaman apa yang sedang dibuka.
+      TIPS: Idealnya 50-60 karakter. Tulis judul yang deskriptif, bukan hanya "Untitled".
+    -->
     <title>Struktur Tabel HTML</title>
+
+    <!--
+      TAG: <style>
+      APA: Blok CSS internal yang berisi aturan styling untuk halaman ini.
+      KENAPA: Dipakai karena ini file belajar mandiri (satu file). Pada proyek nyata,
+              sebaiknya CSS dipisahkan ke file .css tersendiri dan dihubungkan dengan <link>.
+      NILAI LAIN: Alternatifnya → <link rel="stylesheet" href="style.css"> (CSS eksternal)
+      TIPS: CSS internal lebih diprioritaskan dari CSS eksternal, tapi lebih susah di-maintain
+            jika halaman banyak.
+    -->
     <style>
+        /*
+          SELECTOR: body
+          APA: Menargetkan elemen <body> — container seluruh konten yang terlihat di halaman.
+          CSS yang ditulis di sini akan berlaku sebagai "default" untuk seluruh halaman
+          karena semua elemen lain mewarisi (inherit) beberapa properti dari body.
+        */
         body {
+            /*
+              PROPERTI: background-color
+              APA: Mengatur warna latar belakang elemen.
+              KENAPA: #f8fafc adalah warna abu-abu putih yang sangat terang (hampir putih),
+                      memberikan kesan bersih dan tidak membuat mata lelah dibanding putih murni (#ffffff).
+              NILAI LAIN: Bisa menggunakan nama warna ("lightgray"), rgb(248, 250, 252), hsl(210, 40%, 98%)
+            */
             background-color: #f8fafc;
+
+            /*
+              PROPERTI: font-family
+              APA: Menentukan jenis huruf (font) yang digunakan untuk teks.
+              KENAPA: Ditulis dalam urutan preferensi (font stack). Browser akan mencoba
+                      font pertama dulu, jika tidak ada, lanjut ke berikutnya.
+                      'Segoe UI' = font default Windows 10/11 yang modern dan terbaca.
+                      Tahoma, Geneva, Verdana = font alternatif di sistem lama.
+                      sans-serif = jenis huruf terakhir (generic fallback) yang pasti ada di semua sistem.
+              NILAI LAIN: 'Arial', 'Helvetica', 'Roboto', 'Inter', monospace, serif
+            */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            /*
+              PROPERTI: color
+              APA: Mengatur warna TEKS (bukan background).
+              KENAPA: #334155 adalah abu-abu gelap kebiruan (slate-700 dalam Tailwind).
+                      Lebih lembut dari hitam pekat (#000000) sehingga tidak terlalu
+                      kontras dan tidak menyilaukan mata saat membaca teks panjang.
+              NILAI LAIN: #000000 (hitam murni), #1a1a1a (hampir hitam), #555555 (abu-abu medium)
+            */
             color: #334155;
+
+            /*
+              PROPERTI: padding
+              APA: Memberikan jarak antara TEPI elemen dan ISI elemen (dari dalam).
+              KENAPA: padding: 20px pada body memberikan "napas" agar konten tidak
+                      menempel langsung ke tepi jendela browser, terutama di layar kecil.
+              NILAI LAIN: "padding: 10px 20px" (atas-bawah 10px, kiri-kanan 20px)
+                          "padding-top: 20px" (hanya atas)
+              PERBEDAAN padding vs margin: 
+                - padding = jarak DALAM elemen (antara tepi dan konten)
+                - margin  = jarak LUAR elemen (antara elemen dan elemen lain)
+            */
             padding: 20px;
+
+            /*
+              PROPERTI: line-height
+              APA: Mengatur tinggi baris (jarak antar baris teks dalam paragraf).
+              KENAPA: Nilai 1.6 artinya tinggi baris = 1.6 × ukuran font.
+                      Ini adalah nilai yang direkomendasikan untuk readability (keterbacaan).
+                      Nilai default browser (1.2) sering terlalu rapat untuk teks panjang.
+              NILAI LAIN: 1 (rapat), 1.4 (nyaman), 2 (sangat longgar), "24px" (nilai absolut)
+              TIPS: Gunakan nilai tanpa satuan (seperti 1.6) agar line-height otomatis
+                    proporsional terhadap ukuran font elemen anak.
+            */
             line-height: 1.6;
         }
+
+        /*
+          SELECTOR: .container
+          APA: Menargetkan elemen yang memiliki atribut class="container".
+          FUNGSI: Membuat "kotak" pembungkus utama konten agar tidak terlalu lebar
+                  di layar besar dan tetap terbaca dengan nyaman.
+        */
         .container {
+            /*
+              PROPERTI: max-width
+              APA: Batas MAKSIMAL lebar elemen. Elemen tidak akan lebih lebar dari nilai ini.
+              KENAPA: 800px adalah lebar optimal untuk konten teks agar mudah dibaca.
+                      Di layar yang lebih sempit (HP), elemen akan menyesuaikan otomatis.
+              PERBEDAAN max-width vs width:
+                - width: 800px → Selalu 800px, bisa overflow di layar kecil
+                - max-width: 800px → Maksimal 800px, mengecil jika layar lebih kecil (responsif!)
+            */
             max-width: 800px;
+
+            /*
+              PROPERTI: margin
+              APA: Jarak di luar elemen (antara elemen ini dan elemen lain di sekitarnya).
+              KENAPA: "margin: 0 auto" adalah trik klasik CSS untuk MEMUSATKAN elemen secara horizontal.
+                - 0  → margin atas dan bawah = 0
+                - auto → margin kiri dan kanan dihitung otomatis sama besar (= tengah)
+              SYARAT: Harus ada max-width/width yang didefinisikan agar auto bisa bekerja.
+            */
             margin: 0 auto;
-            background-color: #ffffff;
+
+            background-color: #ffffff; /* Latar putih agar konten kontras dengan background abu-abu */
+
+            /*
+              PROPERTI: padding
+              APA: Jarak dalam elemen — memberikan ruang antara tepi kotak dan kontennya.
+              KENAPA: 30px memberikan "breathing room" yang nyaman agar teks tidak menempel
+                      langsung ke tepi kotak putih.
+            */
             padding: 30px;
+
+            /*
+              PROPERTI: border-radius
+              APA: Membulatkan sudut elemen. Nilai dalam px menentukan radius kelengkungan.
+              KENAPA: 8px memberikan sudut membulat yang modern dan halus. 
+              NILAI LAIN: 0 (sudut tajam), 4px (sedikit bulat), 50% (oval/lingkaran penuh)
+            */
             border-radius: 8px;
+
+            /*
+              PROPERTI: box-shadow
+              APA: Menambahkan bayangan (shadow) di luar atau dalam elemen.
+              KENAPA: Bayangan halus memberi kesan elemen "mengambang" di atas halaman,
+                      menciptakan efek kedalaman (depth) yang modern.
+              FORMAT: box-shadow: [offset-x] [offset-y] [blur-radius] [color]
+                - 0        → Bayangan tepat di kiri-kanan (tidak geser horizontal)
+                - 4px      → Bayangan 4px ke bawah (geser vertikal)
+                - 6px      → Radius blur/kekaburan bayangan
+                - rgba(0,0,0,0.05) → Warna hitam dengan opacity 5% (sangat transparan/halus)
+              NILAI LAIN: "2px 2px 10px #ccc", "none" (tanpa bayangan), "inset ..." (bayangan dalam)
+            */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
+
+        /*
+          SELECTOR: .rangkuman
+          APA: Kotak informatif berwarna biru muda untuk menampilkan ringkasan teori.
+          DESAIN: Menggunakan "left border accent" — garis tebal di kiri — yang populer
+                  untuk callout box / info box di dokumentasi dan blog teknis.
+        */
         .rangkuman {
-            background-color: #eff6ff;
+            background-color: #eff6ff; /* Biru sangat muda (blue-50) */
+
+            /*
+              PROPERTI: border-left
+              APA: Menambahkan garis tepi HANYA di sisi kiri elemen.
+              KENAPA: Garis biru tebal (5px solid) di sisi kiri membuat kotak ini
+                      langsung terlihat sebagai "kotak informasi penting" secara visual.
+              FORMAT: border-left: [tebal] [tipe-garis] [warna]
+              NILAI LAIN: "1px dashed #999", "3px dotted red", "none"
+            */
             border-left: 5px solid #3b82f6;
+
             padding: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 25px; /* Jarak 25px ke bawah agar tidak menempel elemen berikutnya */
+
+            /*
+              PROPERTI: border-radius
+              APA: Membulatkan sudut elemen.
+              KENAPA: "0 6px 6px 0" membulatkan HANYA sudut kanan (atas-kanan dan bawah-kanan).
+                      Sudut kiri dibiarkan tajam (0) karena ada border garis di kiri — 
+                      jika dibulatkan, border kiri akan terlihat aneh.
+              FORMAT shorthand (4 nilai, searah jarum jam):
+                border-radius: [kiri-atas] [kanan-atas] [kanan-bawah] [kiri-bawah]
+                → 0 6px 6px 0 = kiri-atas:0, kanan-atas:6px, kanan-bawah:6px, kiri-bawah:0
+            */
             border-radius: 0 6px 6px 0;
-            color: #1e40af;
+
+            color: #1e40af; /* Biru gelap (blue-800) agar teks terbaca di atas background biru muda */
         }
+
         .rangkuman h3 {
-            margin-top: 0;
-            color: #1e3a8a;
+            margin-top: 0; /* Menghapus margin atas default <h3> agar rapi di dalam kotak */
+            color: #1e3a8a; /* Biru sangat gelap (blue-900) untuk judul kotak */
         }
+
         .rangkuman ul {
-            margin-left: 20px;
+            margin-left: 20px; /* Indentasi list 20px ke kanan agar bullet terlihat */
         }
+
         .rangkuman li {
-            margin-bottom: 8px;
+            margin-bottom: 8px; /* Jarak 8px antar item list untuk keterbacaan */
         }
+
         h1 {
-            color: #1e293b;
+            color: #1e293b; /* Hampir hitam (slate-800) untuk judul utama halaman */
+
+            /*
+              PROPERTI: border-bottom
+              APA: Menambahkan garis tepi di bawah elemen.
+              KENAPA: Garis bawah tipis (2px) pada h1 memberikan pemisah visual antara
+                      judul dan konten di bawahnya, seperti garis bawah judul di dokumen.
+              FORMAT: [tebal] [tipe] [warna]
+            */
             border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+
+            padding-bottom: 10px; /* Jarak 10px antara teks h1 dan garis bawahnya */
+            margin-bottom: 20px;  /* Jarak 20px antara garis dan konten di bawahnya */
         }
+
         h2 {
-            color: #0f172a;
+            color: #0f172a; /* Hampir hitam pekat (slate-900) untuk sub-judul */
             margin-top: 25px;
             margin-bottom: 10px;
+
+            /*
+              PROPERTI: font-size
+              APA: Mengatur ukuran huruf.
+              KENAPA: "1.25rem" = 125% dari ukuran font root (biasanya 16px × 1.25 = 20px).
+                      Menggunakan "rem" lebih baik dari "px" karena menghormati pengaturan
+                      ukuran font di browser pengguna (aksesibilitas).
+              NILAI LAIN: "16px", "1em" (relatif terhadap parent), "1.5rem", "small", "large"
+              TIPS: rem = relatif terhadap <html>/root | em = relatif terhadap parent element
+            */
             font-size: 1.25rem;
         }
+
+        /*
+          SELECTOR: code
+          APA: Menargetkan semua elemen <code> di halaman (tampilan kode inline).
+        */
         code {
-            background-color: #f1f5f9;
-            padding: 2px 6px;
+            background-color: #f1f5f9; /* Abu-abu muda sebagai latar kode */
+            padding: 2px 6px; /* Ruang kecil di dalam (atas-bawah 2px, kiri-kanan 6px) */
             border-radius: 4px;
-            color: #ef4444;
+            color: #ef4444; /* Merah untuk teks kode agar menonjol dari teks biasa */
+
+            /*
+              PROPERTI: font-family (untuk code)
+              APA: Font monospace (huruf sama lebar) khusus untuk kode program.
+              KENAPA: Monospace memudahkan membaca kode karena tiap karakter lebar sama.
+                      Consolas = font kode default Visual Studio Code.
+                      Monaco = font kode default di Mac OS X.
+                      monospace = generic fallback yang pasti ada di semua sistem.
+            */
             font-family: Consolas, Monaco, monospace;
-            font-size: 0.9em;
+
+            font-size: 0.9em; /* 90% dari ukuran font parent — kode sedikit lebih kecil */
         }
-        /* Style Table yang Modern */
+
+        /*
+          ============================================================
+          CSS UNTUK TABEL — BAGIAN PALING PENTING DI FILE INI!
+          ============================================================
+        */
+
+        /*
+          SELECTOR: table
+          APA: Menargetkan SEMUA elemen <table> di halaman.
+          FUNGSI: Mengatur tampilan dasar tabel agar terlihat modern dan rapi.
+        */
         table {
+            /*
+              PROPERTI: width: 100%
+              APA: Membuat tabel mengisi 100% lebar container parentnya.
+              KENAPA: Secara default tabel hanya selebar kontennya. Dengan 100%,
+                      tabel akan melebar mengisi seluruh area yang tersedia.
+              NILAI LAIN: "500px" (lebar tetap), "80%" (persentase dari parent)
+            */
             width: 100%;
+
+            /*
+              PROPERTI: border-collapse
+              APA: Mengontrol bagaimana border (garis tepi) sel-sel tabel digabungkan.
+              KENAPA: "collapse" membuat border antar sel DIGABUNG menjadi satu garis.
+                      Tanpa ini (nilai default "separate"), akan ada 2 garis yang berdempetan
+                      antara setiap sel, membuat tabel terlihat tebal dan aneh.
+              NILAI LAIN:
+                - "separate" → Border dipisah (default), ada celah antar border sel
+                - "collapse" → Border digabung menjadi satu (tampilan lebih bersih)
+              TIPS: Hampir selalu gunakan "collapse" untuk tabel data yang rapi.
+            */
             border-collapse: collapse;
+
             margin-top: 15px;
             margin-bottom: 25px;
             background-color: #ffffff;
         }
+
+        /*
+          SELECTOR: th, td
+          APA: Menargetkan SEMUA sel kepala <th> DAN sel data <td> sekaligus.
+          FUNGSI: Mengatur gaya yang sama untuk semua sel tabel.
+        */
         th, td {
+            /*
+              PROPERTI: border
+              APA: Menambahkan garis tepi di semua sisi (atas, kanan, bawah, kiri) elemen.
+              KENAPA: 1px solid #cbd5e1 memberikan garis tipis abu-abu terang yang
+                      memisahkan sel satu dengan lainnya tanpa terlalu mencolok.
+              FORMAT: [tebal] [tipe-garis] [warna]
+              NILAI LAIN: "2px dashed #999", "none" (tanpa border), "3px double black"
+            */
             border: 1px solid #cbd5e1;
+
+            /*
+              PROPERTI: padding
+              APA: Jarak antara tepi sel dan isi teks di dalam sel.
+              KENAPA: 12px memberikan ruang yang nyaman di dalam sel.
+                      Tanpa padding, teks akan menempel langsung ke garis tepi sel.
+              NILAI LAIN: "8px" (compact), "16px" (spacious), "10px 15px" (atas-bawah kiri-kanan berbeda)
+            */
             padding: 12px;
+
+            /*
+              PROPERTI: text-align
+              APA: Mengatur perataan teks secara horizontal.
+              KENAPA: "left" (rata kiri) adalah default yang nyaman untuk teks,
+                      berbeda dengan default <th> yang rata tengah.
+              NILAI LAIN: "center" (rata tengah), "right" (rata kanan), "justify" (rata kiri-kanan)
+            */
             text-align: left;
         }
+
+        /*
+          SELECTOR: th
+          APA: Menargetkan HANYA elemen <th> (sel kepala tabel).
+          FUNGSI: Membedakan tampilan kepala kolom dari baris data biasa.
+        */
         th {
-            background-color: #f1f5f9;
-            color: #1e293b;
+            background-color: #f1f5f9; /* Abu-abu muda sebagai latar belakang kepala tabel */
+            color: #1e293b; /* Teks hampir hitam agar kontras dengan latar abu-abu */
+
+            /*
+              PROPERTI: font-weight
+              APA: Mengatur ketebalan huruf.
+              KENAPA: "bold" membuat teks kepala tabel lebih tebal → mudah dibedakan dari data.
+              NILAI LAIN: "normal" (tebal biasa), "100"-"900" (skala numerik ketebalan),
+                          "lighter" (lebih tipis dari parent)
+              CATATAN: Secara default, <th> SUDAH bold. Ini dituliskan secara eksplisit untuk kejelasan.
+            */
             font-weight: bold;
         }
+
+        /*
+          SELECTOR: tr:nth-child(even)
+          APA: Menargetkan setiap baris <tr> yang GENAP (ke-2, ke-4, ke-6, dst).
+          KENAPA: Teknik ini disebut "zebra striping" — memberi warna bergantian
+                  pada baris tabel agar pembaca lebih mudah mengikuti satu baris
+                  dari kiri ke kanan tanpa tertukar ke baris lain.
+          NILAI LAIN: ":nth-child(odd)" (baris ganjil), ":nth-child(3n)" (setiap 3 baris)
+          TIPS: Ini adalah pseudo-class CSS, bukan class biasa. Tidak perlu ditulis di HTML.
+        */
         tr:nth-child(even) {
-            background-color: #f8fafc;
+            background-color: #f8fafc; /* Abu-abu sangat muda untuk baris genap */
         }
+
+        /*
+          SELECTOR: .practice-area
+          APA: Kotak area praktek dengan border putus-putus.
+          DESAIN: Border dashed memberikan kesan "placeholder" atau "area draft"
+                  yang secara visual menunjukkan ini adalah area untuk bereksperimen.
+        */
         .practice-area {
+            /*
+              PROPERTI: border
+              APA: Garis tepi di semua sisi elemen.
+              KENAPA: "2px dashed #e2e8f0" memberikan border abu-abu putus-putus
+                      yang halus — membingkai area praktek tanpa terlalu mencolok.
+              PERBEDAAN TIPE BORDER:
+                - solid  → Garis penuh (—————)
+                - dashed → Garis putus-putus (- - - -)
+                - dotted → Titik-titik (........)
+                - double → Garis ganda (═══════)
+                - none   → Tidak ada garis
+            */
             border: 2px dashed #e2e8f0;
+
             padding: 25px;
             border-radius: 6px;
-            background-color: #fafafa;
+            background-color: #fafafa; /* Hampir putih, sedikit lebih gelap dari putih murni */
         }
     </style>
 </head>
+
+<!--
+  TAG: <body>
+  APA: Elemen yang berisi SEMUA konten yang akan TERLIHAT di browser (teks, gambar, tabel, dll).
+  KENAPA: Ini adalah "canvas" utama halaman web. Semua yang ingin ditampilkan harus ada di sini.
+  TIPS: Sebuah dokumen HTML hanya boleh memiliki SATU <body>.
+-->
 <body>
+
+    <!--
+      TAG: <div>
+      ATRIBUT: class="container"
+      APA: <div> adalah elemen generic "pembungkus kotak" (block-level, tidak punya makna semantik).
+      KENAPA: Dipakai di sini untuk membungkus semua konten agar styling .container bisa diterapkan
+              (membatasi lebar maksimal 800px dan memusatkan konten di halaman).
+      NILAI LAIN: Bisa menggunakan <main> untuk konten utama (lebih semantik), tapi karena
+                  ada elemen semantik lain yang lebih spesifik di dalam, <div> sudah tepat di sini.
+      PERBEDAAN div vs span:
+        - <div>  → Block-level, mengambil 1 baris penuh, untuk membungkus grup elemen besar
+        - <span> → Inline-level, mengambil ruang seperlunya, untuk membungkus teks di dalam paragraf
+    -->
     <div class="container">
+
+        <!--
+          TAG: <h1>
+          APA: Heading level 1 — judul paling utama di halaman. Secara default teks besar dan tebal.
+          KENAPA: Setiap halaman sebaiknya punya TEPAT SATU <h1> yang mendeskripsikan topik utama.
+                  Penting untuk SEO (Google memberi bobot tinggi pada teks di <h1>).
+          NILAI LAIN: <h2> sampai <h6> untuk sub-judul yang semakin kecil tingkatannya.
+          TIPS: Jangan skip level heading! Gunakan h1 → h2 → h3 secara berurutan.
+        -->
         <h1>Struktur Tabel HTML</h1>
 
         <!-- 📚 RANGKUMAN MATERI -->
+        <!--
+          TAG: <div class="rangkuman">
+          APA: Kotak informasi (callout box) yang menampilkan ringkasan teori materi.
+          KENAPA: Memisahkan antara "teori" dan "praktik" secara visual.
+          DESAIN: Background biru muda + border kiri biru tebal = pola umum "info box".
+        -->
         <div class="rangkuman">
+
+            <!--
+              TAG: <h3>
+              APA: Heading level 3, sub-judul tingkat ketiga.
+              KENAPA: Di sini dipakai karena judul kotak info ini ada "di bawah" h1 halaman.
+                      Penggunaan h3 (bukan h2) karena h2 dipakai untuk judul section praktek.
+            -->
             <h3>📚 Rangkuman Teori Tabel</h3>
+
+            <!--
+              TAG: <ul>
+              APA: Unordered List — daftar dengan bullet (•) tanpa urutan bernomor.
+              KENAPA: Digunakan untuk daftar tag-tag tabel yang tidak perlu diurutkan.
+              NILAI LAIN: <ol> (Ordered List — bernomor 1, 2, 3), <dl> (Definition List)
+            -->
             <ul>
-                <li><strong><code>&lt;table&gt;</code>:</strong> Elemen utama pembungkus tabel.</li>
-                <li><strong><code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>:</strong> Elemen struktural pembagi kepala tabel, tubuh data, dan kaki tabel.</li>
-                <li><strong><code>&lt;tr&gt;</code> (Table Row):</strong> Elemen untuk membuat baris baru pada tabel.</li>
-                <li><strong><code>&lt;th&gt;</code> (Table Header):</strong> Kolom kepala tabel (teks otomatis tebal dan rata tengah secara default).</li>
-                <li><strong><code>&lt;td&gt;</code> (Table Data):</strong> Kolom isi data biasa.</li>
-                <li><strong>Spanning Cells (Atribut Penggabung):</strong>
+                <!--
+                  TAG: <li>
+                  APA: List Item — satu item di dalam daftar <ul> atau <ol>.
+                  KENAPA: Setiap poin/item daftar harus dibungkus tag <li>.
+                  TIPS: <li> hanya boleh menjadi anak langsung dari <ul>, <ol>, atau <menu>.
+                -->
+                <li>
+                    <!--
+                      TAG: <strong>
+                      APA: Menebalkan teks DAN memberi makna semantik "penting/kritis".
+                      KENAPA: Berbeda dengan <b> yang hanya menebalkan tampilan tanpa makna.
+                               <strong> memberitahu screen reader bahwa teks ini penting.
+                      NILAI LAIN: <b> (hanya tebal, tanpa makna), <em> (miring+penekanan), <i> (miring saja)
+                    -->
+                    <strong>
+                        <!--
+                          TAG: <code>
+                          APA: Menampilkan teks sebagai kode program (font monospace, latar abu-abu).
+                          KENAPA: Memudahkan pembaca membedakan nama tag/kode dari teks biasa.
+                        -->
+                        <code>&lt;table&gt;:</code>
+                    </strong>
+                    <!--
+                      HTML ENTITY: &lt; dan &gt;
+                      APA: Karakter khusus untuk menulis simbol < dan > di HTML.
+                      KENAPA: Browser menginterpretasikan < dan > sebagai awal/akhir tag HTML.
+                              Jika ditulis langsung, akan dianggap sebagai tag, bukan teks.
+                      DAFTAR ENTITY UMUM:
+                        &lt;   → <   (less than)
+                        &gt;   → >   (greater than)
+                        &amp;  → &   (ampersand)
+                        &copy; → ©   (copyright)
+                        &nbsp; → spasi yang tidak terputus (non-breaking space)
+                    -->
+                    Elemen utama pembungkus tabel.
+                </li>
+                <li>
+                    <strong><code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>:</strong>
+                    Elemen struktural pembagi kepala tabel, tubuh data, dan kaki tabel.
+                </li>
+                <li>
+                    <strong><code>&lt;tr&gt;</code> (Table Row):</strong>
+                    Elemen untuk membuat baris baru pada tabel.
+                </li>
+                <li>
+                    <strong><code>&lt;th&gt;</code> (Table Header):</strong>
+                    Kolom kepala tabel (teks otomatis tebal dan rata tengah secara default).
+                </li>
+                <li>
+                    <strong><code>&lt;td&gt;</code> (Table Data):</strong>
+                    Kolom isi data biasa.
+                </li>
+                <li>
+                    <strong>Spanning Cells (Atribut Penggabung):</strong>
                     <ul>
                         <li><code>colspan="..."</code>: Menggabungkan beberapa kolom secara mendatar (horizontal).</li>
                         <li><code>rowspan="..."</code>: Menggabungkan beberapa baris secara menurun (vertical).</li>
@@ -110,33 +578,124 @@
         </div>
 
         <!-- 🛠️ AREA PRAKTEK -->
+        <!--
+          TAG: <h2>
+          APA: Heading level 2 — sub-judul halaman, di bawah h1.
+          KENAPA: Memisahkan area "teori" (rangkuman) dan "praktik" secara hierarki judul.
+        -->
         <h2>🛠️ Hasil Praktik Tabel</h2>
+
         <div class="practice-area">
-            
-            <h3>1. Tabel Data Dasar (Menggunakan thead & tbody)</h3>
+
+            <!--
+              ============================================================
+              TABEL 1: TABEL DATA DASAR
+              Mendemonstrasikan struktur tabel standar dengan thead dan tbody.
+              ============================================================
+            -->
+
+            <!--
+              TAG: <h3>
+              APA: Heading level 3 untuk judul setiap sub-bagian dalam area praktek.
+            -->
+            <h3>1. Tabel Data Dasar (Menggunakan thead &amp; tbody)</h3>
+
+            <!--
+              TAG: <table>
+              APA: Elemen UTAMA yang mendefinisikan tabel HTML.
+              KENAPA: Semua elemen tabel lainnya (thead, tbody, tr, th, td) harus berada
+                      di dalam <table> ini.
+              TIPS: Jangan gunakan <table> untuk layout halaman! Gunakan CSS Flexbox/Grid.
+                    <table> hanya untuk DATA TABULAR (data yang memang berbentuk baris-kolom).
+              ATRIBUT LAMA (sudah tidak dianjurkan, pakai CSS): border, cellpadding, cellspacing, width
+            -->
             <table>
+
+                <!--
+                  TAG: <thead>
+                  APA: Table Head — membungkus baris-baris yang berisi KEPALA KOLOM tabel.
+                  KENAPA: Memisahkan kepala tabel dari isi data secara semantik.
+                          Manfaat penting:
+                          1. Screen reader tahu bahwa ini adalah kepala kolom
+                          2. Saat tabel panjang dan di-print, thead bisa diulang di tiap halaman
+                          3. JavaScript/CSS bisa menarget thead secara spesifik
+                  TIPS: <thead> harus berisi setidaknya satu <tr> yang berisi <th>.
+                -->
                 <thead>
+
+                    <!--
+                      TAG: <tr>
+                      APA: Table Row — mendefinisikan SATU BARIS horizontal dalam tabel.
+                      KENAPA: Setiap baris data atau kepala tabel harus dibungkus <tr>.
+                      TIPS: <tr> bisa berisi <th> (untuk kepala) atau <td> (untuk data), atau keduanya.
+                    -->
                     <tr>
+
+                        <!--
+                          TAG: <th>
+                          APA: Table Header — sel KEPALA KOLOM. Secara default: teks tebal & rata tengah.
+                          KENAPA: Berbeda dari <td>, <th> memberi informasi bahwa ini adalah label kolom,
+                                  bukan data. Screen reader akan mengumumkan "Nama, Umur, Jenis Kelamin"
+                                  sebelum membacakan isi setiap sel yang terkait.
+                          ATRIBUT PENTING:
+                            - scope="col" → Menunjukkan th ini adalah kepala KOLOM (untuk aksesibilitas)
+                            - scope="row" → Menunjukkan th ini adalah kepala BARIS
+                          TIPS: Selalu gunakan <th> untuk kepala kolom, bukan <td> dengan CSS bold!
+                        -->
                         <th>Nama</th>
                         <th>Umur</th>
                         <th>Jenis Kelamin</th>
                     </tr>
                 </thead>
+
+                <!--
+                  TAG: <tbody>
+                  APA: Table Body — membungkus semua baris DATA tabel (bukan kepala, bukan kaki).
+                  KENAPA: Memisahkan data dari kepala/kaki tabel secara semantik.
+                          Saat tabel sangat panjang, tbody bisa di-scroll secara independen
+                          dari thead menggunakan CSS (overflow-y: scroll pada tbody).
+                  TIPS: Meskipun <tbody> bisa dihilangkan (browser otomatis menambahkannya),
+                        selalu tulis secara eksplisit untuk kode yang lebih jelas dan maintainable.
+                -->
                 <tbody>
+
+                    <!-- Baris data pertama -->
                     <tr>
+                        <!--
+                          TAG: <td>
+                          APA: Table Data — sel yang berisi DATA biasa. Secara default: teks normal & rata kiri.
+                          KENAPA: Berbeda dari <th>, ini adalah data yang "dideskripsikan" oleh <th>.
+                          TIPS: <td> bisa berisi teks, gambar, link, bahkan tabel lain (nested table).
+                        -->
                         <td>Aura</td>
                         <td>20</td>
                         <td>Perempuan</td>
                     </tr>
+
+                    <!-- Baris data kedua -->
                     <tr>
                         <td>Auvarose</td>
                         <td>20</td>
                         <td>Perempuan</td>
                     </tr>
+
+                    <!--
+                      CATATAN ZEBRA STRIPING:
+                      Baris ke-1 dan ke-2 mendapat background berbeda karena CSS:
+                        tr:nth-child(even) { background-color: #f8fafc; }
+                      Baris ke-2 (genap) akan berwarna abu-abu muda, baris ke-1 (ganjil) putih.
+                      Ini membantu mata mengikuti baris dari kiri ke kanan.
+                    -->
                 </tbody>
             </table>
 
+            <!--
+              ============================================================
+              TABEL 2: COLSPAN — PENGGABUNGAN KOLOM HORIZONTAL
+              ============================================================
+            -->
             <h3>2. Tabel dengan Colspan (Penggabungan Kolom)</h3>
+
             <table>
                 <thead>
                     <tr>
@@ -146,6 +705,24 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <!--
+                          ATRIBUT: colspan="2"
+                          APA: Membuat sel ini "menggabungkan" (merentang) sebanyak 2 kolom secara HORIZONTAL.
+                          KENAPA: Digunakan di sini untuk menampilkan pesan "kosong" yang melebar
+                                  melewati 2 kolom (Nama Lengkap + Status), karena tidak ada data.
+                          CARA KERJA: Jika tabel punya 2 kolom dan kita buat td dengan colspan="2",
+                                      maka tidak boleh ada td lain di baris yang sama (sudah penuh).
+                          NILAI LAIN: colspan="3" (gabung 3 kolom), colspan="1" (default, tidak menggabung)
+
+                          STYLE INLINE di bawah:
+                          - text-align: center    → Teks rata tengah di dalam sel yang lebar ini
+                          - font-weight: bold     → Teks tebal agar pesan terlihat jelas
+                          - background-color: #fef08a → Kuning muda (amber) untuk menarik perhatian
+                          
+                          CATATAN: Atribut style="..." disebut "inline CSS". 
+                          Lebih baik dihindari dan gunakan class+CSS terpisah,
+                          tapi untuk satu elemen yang sangat spesifik, boleh dipakai.
+                        -->
                         <td colspan="2" style="text-align: center; font-weight: bold; background-color: #fef08a;">
                             Data Siswa Sedang Kosong
                         </td>
@@ -153,10 +730,54 @@
                 </tbody>
             </table>
 
+            <!--
+              CATATAN TENTANG rowspan (tidak dipraktikkan di sini, tapi penting dipahami):
+              
+              ATRIBUT: rowspan="N"
+              APA: Membuat sel merentang sebanyak N baris secara VERTIKAL (ke bawah).
+              CONTOH PENGGUNAAN:
+                <tr>
+                  <td rowspan="3">Jawa Barat</td>   ← sel ini akan menggabungkan 3 baris ke bawah
+                  <td>Bandung</td>
+                </tr>
+                <tr>
+                  <td>Cimahi</td>   ← tidak perlu td untuk "Jawa Barat" karena sudah di-rowspan
+                </tr>
+                <tr>
+                  <td>Bekasi</td>   ← sama, tidak perlu td "Jawa Barat"
+                </tr>
+              Hasilnya: sel "Jawa Barat" akan vertikal melewati 3 baris.
+            -->
+
+            <!--
+              ============================================================
+              TABEL 3: TABEL VERTIKAL (KEY-VALUE / PROFIL)
+              ============================================================
+            -->
             <h3>3. Tabel Vertikal (Untuk Informasi Profil / Key-Value)</h3>
+
+            <!--
+              KONSEP: TABEL VERTIKAL
+              Berbeda dari tabel biasa yang punya kepala di ATAS (horizontal),
+              tabel ini menempatkan <th> di KIRI setiap baris.
+              Cocok untuk menampilkan "informasi profil" atau pasangan "kunci - nilai" (key-value pairs).
+              Contoh: Nama: Aura | Umur: 20 | Kota: Bandung
+            -->
             <table>
+                <!--
+                  CATATAN: Tabel ini tidak menggunakan <thead> karena tidak ada baris kepala.
+                  Setiap baris memiliki <th> di kiri sebagai label, dan <td> di kanan sebagai nilai.
+                  Ini sah secara HTML dan berguna untuk data profil.
+                -->
                 <tbody>
                     <tr>
+                        <!--
+                          <th> dipakai di KIRI baris (bukan di kepala kolom)
+                          Ini disebut "row header" — kepala baris.
+                          Untuk aksesibilitas yang benar, tambahkan: scope="row"
+                          → <th scope="row">Negara</th>
+                          Ini memberitahu screen reader bahwa th ini adalah label untuk baris ini.
+                        -->
                         <th>Negara</th>
                         <td>Indonesia</td>
                     </tr>
@@ -166,7 +787,17 @@
                     </tr>
                     <tr>
                         <th>Luas Total Bandung</th>
-                        <td>167.67 km<sup>2</sup></td>
+                        <td>
+                            167.67 km
+                            <!--
+                              TAG: <sup>
+                              APA: Superscript — teks yang ditampilkan lebih kecil dan lebih TINGGI dari teks normal.
+                              KENAPA: Digunakan untuk menulis pangkat matematika, seperti km² (km kuadrat),
+                                      atau catatan kaki seperti footnote¹.
+                              NILAI LAIN: <sub> (subscript) — teks kecil di BAWAH, contoh: H₂O
+                            -->
+                            <sup>2</sup>
+                        </td>
                     </tr>
                     <tr>
                         <th>Bahasa Daerah</th>
@@ -176,6 +807,48 @@
             </table>
 
         </div>
+        <!--
+          PENUTUP: </div> untuk .practice-area
+        -->
+
     </div>
+    <!--
+      PENUTUP: </div> untuk .container
+    -->
+
 </body>
+<!--
+  PENUTUP: </body>
+  Semua konten yang terlihat harus di atas tag penutup ini.
+-->
+
 </html>
+<!--
+  PENUTUP: </html>
+  Tag penutup untuk elemen root dokumen HTML.
+  Tidak boleh ada konten apapun setelah tag ini.
+
+  ============================================================
+  RINGKASAN STRUKTUR TABEL HTML:
+  ============================================================
+  <table>                    ← Pembungkus utama
+    <thead>                  ← Bagian kepala (judul kolom)
+      <tr>                   ← Baris kepala
+        <th>Judul 1</th>     ← Sel kepala kolom 1
+        <th>Judul 2</th>     ← Sel kepala kolom 2
+      </tr>
+    </thead>
+    <tbody>                  ← Bagian isi/data
+      <tr>                   ← Baris data ke-1
+        <td>Data A</td>      ← Sel data
+        <td>Data B</td>      ← Sel data
+      </tr>
+    </tbody>
+    <tfoot>                  ← Bagian kaki (ringkasan/total) — opsional
+      <tr>
+        <td colspan="2">Total: ...</td>
+      </tr>
+    </tfoot>
+  </table>
+  ============================================================
+-->
