@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adjacent & General Sibling Selector (Materi 04)</title>
+    <!-- APA: Menghubungkan file HTML dengan berkas CSS eksternal -->
+    <!-- KENAPA: Agar struktur halaman HTML terpisah rapi dengan dekorasi styling CSS -->
+    <link rel="stylesheet" href="../css/combinator_sibling.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Adjacent & General Sibling Selector (Materi 04)</h1>
+
+        <!-- 📚 RANGKUMAN MATERI -->
+        <div class="rangkuman">
+            <h3>📚 Rangkuman Teori</h3>
+            <ul>
+                <li>Adjacent Sibling (+): Menargetkan elemen yang berada persis tepat setelah elemen pemicu.</li>
+                <li>General Sibling (~): Menargetkan seluruh elemen setelah pemicu pada tingkat parent yang sama.</li>
+            </ul>
+        </div>
+
+        <!-- 🛠️ AREA PRAKTEK -->
+        <h2>🛠️ Area Praktik</h2>
+        <div class="practice-area">
+            <h3 class="trigger-adjacent">Adjacent Sibling (+)</h3>
+      <p>Paragraf ini persis setelah h3 (Akan terkena efek adjacent sibling).</p>
+      <p>Paragraf ini kedua setelah h3 (Tidak terkena efek).</p>
+      
+      <h3 class="trigger-general">General Sibling (~)</h3>
+      <p>Paragraf pertama setelah h3 (Terkena efek general sibling).</p>
+      <p>Paragraf kedua setelah h3 (Juga terkena efek).</p>
+        </div>
+    </div>
+</body>
+</html>

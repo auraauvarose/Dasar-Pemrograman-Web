@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permasalahan Float (Parent Collapse) (Materi 41)</title>
+    <!-- APA: Menghubungkan file HTML dengan berkas CSS eksternal -->
+    <!-- KENAPA: Agar struktur halaman HTML terpisah rapi dengan dekorasi styling CSS -->
+    <link rel="stylesheet" href="../css/floating_problems.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Permasalahan Float (Parent Collapse) (Materi 41)</h1>
+
+        <!-- 📚 RANGKUMAN MATERI -->
+        <div class="rangkuman">
+            <h3>📚 Rangkuman Teori</h3>
+            <ul>
+                <li>Karena elemen float dicabut dari aliran dokumen normal, kontainer induk kehilangan tinggi aslinya (parent collapse).</li>
+            </ul>
+        </div>
+
+        <!-- 🛠️ AREA PRAKTEK -->
+        <h2>🛠️ Area Praktik</h2>
+        <div class="practice-area">
+            <div class="collapsed-parent">
+          <div class="floated-child">Floated Child</div>
+      </div>
+      <p style="margin-top: 20px;">Induk di atas (berborder merah) menyusut kehilangan tinggi aslinya karena anaknya melayang.</p>
+        </div>
+    </div>
+</body>
+</html>

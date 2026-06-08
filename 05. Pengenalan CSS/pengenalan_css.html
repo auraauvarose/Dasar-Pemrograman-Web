@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengenalan CSS</title>
+    <!-- Melampirkan CSS secara Eksternal (External CSS) -->
+    <link rel="stylesheet" href="pengenalan_css.css">
+    <!-- Melampirkan CSS secara Internal (Internal CSS) -->
+    <style>
+        .demo-internal {
+            background-color: #ffeaa7;
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 5px solid #fdcb6e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="doc-header">
+            <h1>🎨 Pengenalan CSS (Cascading Style Sheets)</h1>
+            <p>Memahami sintaks, aturan, dan cara melampirkan styling pada dokumen HTML</p>
+        </header>
+
+        <!-- Rangkuman Materi -->
+        <section class="summary-section">
+            <h2>📚 Rangkuman Materi</h2>
+            
+            <div class="theory-card">
+                <h3>1. Apa itu CSS?</h3>
+                <p><strong>CSS (Cascading Style Sheets)</strong> adalah bahasa pemrograman yang digunakan untuk mengatur tampilan visual dan tata letak halaman web. Dengan CSS, kita bisa memisahkan konten (HTML) dari penyajian visualnya (CSS) sehingga kode menjadi lebih rapi dan mudah dirawat.</p>
+            </div>
+
+            <div class="theory-card">
+                <h3>2. Anatomi Aturan CSS (Rule Set)</h3>
+                <p>Aturan styling CSS ditulis dengan susunan berikut:</p>
+                <div class="code-diagram">
+                    <span class="selector">h1</span> { <span class="property">color</span>: <span class="value">blue</span>; <span class="property">font-size</span>: <span class="value">12px</span>; }
+                </div>
+                <ul>
+                    <li><strong>Selector (Penyeleksi):</strong> Elemen HTML yang ingin diberi gaya (contoh: <code>h1</code>).</li>
+                    <li><strong>Declaration Block (Blok Deklarasi):</strong> Dibungkus dengan kurung kurawal <code>{ }</code>, berisi satu atau lebih deklarasi yang dipisahkan tanda titik koma (<code>;</code>).</li>
+                    <li><strong>Property (Properti):</strong> Jenis gaya yang ingin diubah (contoh: <code>color</code>, <code>font-size</code>).</li>
+                    <li><strong>Value (Nilai):</strong> Nilai baru yang diberikan untuk properti (contoh: <code>blue</code>, <code>12px</code>).</li>
+                </ul>
+            </div>
+
+            <div class="theory-card">
+                <h3>3. Tiga Cara Melampirkan CSS</h3>
+                <ul>
+                    <li><strong>Inline CSS:</strong> Ditulis langsung di dalam tag HTML menggunakan atribut <code>style="..."</code>. Sangat spesifik namun sulit dikelola secara massal.</li>
+                    <li><strong>Internal CSS:</strong> Ditulis di dalam tag <code>&lt;style&gt;</code> di bagian <code>&lt;head&gt;</code> halaman HTML.</li>
+                    <li><strong>External CSS:</strong> Ditulis pada file terpisah berformat `.css`, lalu dihubungkan menggunakan tag <code>&lt;link rel="stylesheet" href="..."&gt;</code> di dalam <code>&lt;head&gt;</code>. Ini merupakan cara terbaik dan paling direkomendasikan.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Area Praktek -->
+        <section class="practice-section">
+            <h2>🛠️ Area Praktek Mandiri</h2>
+            
+            <div class="practice-item">
+                <h3>A. Contoh Inline CSS</h3>
+                <!-- Inline CSS menggunakan atribut style -->
+                <p style="color: #ff4757; font-weight: bold; font-size: 1.1rem;">Paragraf ini diwarnai merah menyala secara langsung menggunakan Inline CSS.</p>
+            </div>
+
+            <div class="practice-item">
+                <h3>B. Contoh Internal CSS</h3>
+                <!-- Didekorasi menggunakan tag <style> di bagian head di atas -->
+                <p class="demo-internal">Paragraf ini didekorasi menggunakan Internal CSS yang didefinisikan pada tag &lt;style&gt; di kepala halaman ini.</p>
+            </div>
+
+            <div class="practice-item">
+                <h3>C. Contoh External CSS</h3>
+                <!-- Didekorasi menggunakan file pengenalan_css.css -->
+                <p class="demo-external">Paragraf ini didekorasi menggunakan External CSS dari berkas terpisah <code>pengenalan_css.css</code>.</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

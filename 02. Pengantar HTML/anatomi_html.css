@@ -1,0 +1,165 @@
+/* anatomi_html.css */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f8fafc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #334155;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.doc-header {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+.doc-header h1 {
+    color: #1e293b;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.doc-header p {
+    color: #64748b;
+}
+
+/* Section styling */
+.summary-section, .practice-section {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+.summary-section h2, .practice-section h2 {
+    color: #0f172a;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.theory-card {
+    background-color: #f8fafc;
+    border-left: 4px solid #3b82f6;
+    padding: 15px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 20px;
+}
+
+.theory-card h3 {
+    color: #1e293b;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.theory-card ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.theory-card li {
+    margin-bottom: 5px;
+}
+
+/* Code Diagram styling */
+.code-diagram {
+    background-color: #1e293b;
+    color: #f8fafc;
+    padding: 15px;
+    border-radius: 6px;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 1.05rem;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.code-diagram .tag {
+    color: #f43f5e;
+    font-weight: bold;
+}
+
+.code-diagram .attr-name {
+    color: #3b82f6;
+}
+
+.code-diagram .attr-val {
+    color: #eab308;
+}
+
+.code-diagram .content {
+    color: #ffffff;
+}
+
+/* Pre and Code block */
+pre {
+    background-color: #1e293b;
+    color: #f8fafc;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: Consolas, Monaco, monospace;
+    margin: 15px 0;
+}
+
+code {
+    font-family: Consolas, Monaco, monospace;
+    background-color: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #ef4444;
+}
+
+pre code {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+}
+
+/* Sandbox styling */
+.practice-section .desc {
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+.sandbox {
+    background-color: #f0fdf4;
+    border: 2px dashed #22c55e;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.sandbox h3 {
+    color: #14532d;
+    margin-bottom: 10px;
+}
+
+.sandbox p {
+    color: #166534;
+    margin-bottom: 10px;
+}
+
+.sandbox .highlight-text {
+    background-color: #dcfce7;
+    padding: 8px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    cursor: help;
+}

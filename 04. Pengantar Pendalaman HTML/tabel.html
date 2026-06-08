@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Tabel HTML</title>
+    <style>
+        body {
+            background-color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #334155;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .rangkuman {
+            background-color: #eff6ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 0 6px 6px 0;
+            color: #1e40af;
+        }
+        .rangkuman h3 {
+            margin-top: 0;
+            color: #1e3a8a;
+        }
+        .rangkuman ul {
+            margin-left: 20px;
+        }
+        .rangkuman li {
+            margin-bottom: 8px;
+        }
+        h1 {
+            color: #1e293b;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #0f172a;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+        code {
+            background-color: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #ef4444;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 0.9em;
+        }
+        /* Style Table yang Modern */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 25px;
+            background-color: #ffffff;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        .practice-area {
+            border: 2px dashed #e2e8f0;
+            padding: 25px;
+            border-radius: 6px;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Struktur Tabel HTML</h1>
+
+        <!-- 📚 RANGKUMAN MATERI -->
+        <div class="rangkuman">
+            <h3>📚 Rangkuman Teori Tabel</h3>
+            <ul>
+                <li><strong><code>&lt;table&gt;</code>:</strong> Elemen utama pembungkus tabel.</li>
+                <li><strong><code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>:</strong> Elemen struktural pembagi kepala tabel, tubuh data, dan kaki tabel.</li>
+                <li><strong><code>&lt;tr&gt;</code> (Table Row):</strong> Elemen untuk membuat baris baru pada tabel.</li>
+                <li><strong><code>&lt;th&gt;</code> (Table Header):</strong> Kolom kepala tabel (teks otomatis tebal dan rata tengah secara default).</li>
+                <li><strong><code>&lt;td&gt;</code> (Table Data):</strong> Kolom isi data biasa.</li>
+                <li><strong>Spanning Cells (Atribut Penggabung):</strong>
+                    <ul>
+                        <li><code>colspan="..."</code>: Menggabungkan beberapa kolom secara mendatar (horizontal).</li>
+                        <li><code>rowspan="..."</code>: Menggabungkan beberapa baris secara menurun (vertical).</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 🛠️ AREA PRAKTEK -->
+        <h2>🛠️ Hasil Praktik Tabel</h2>
+        <div class="practice-area">
+            
+            <h3>1. Tabel Data Dasar (Menggunakan thead & tbody)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Umur</th>
+                        <th>Jenis Kelamin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aura</td>
+                        <td>20</td>
+                        <td>Perempuan</td>
+                    </tr>
+                    <tr>
+                        <td>Auvarose</td>
+                        <td>20</td>
+                        <td>Perempuan</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2. Tabel dengan Colspan (Penggabungan Kolom)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama Lengkap</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="text-align: center; font-weight: bold; background-color: #fef08a;">
+                            Data Siswa Sedang Kosong
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3. Tabel Vertikal (Untuk Informasi Profil / Key-Value)</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Negara</th>
+                        <td>Indonesia</td>
+                    </tr>
+                    <tr>
+                        <th>Hari Jadi Kota Bandung</th>
+                        <td>25 September 1810</td>
+                    </tr>
+                    <tr>
+                        <th>Luas Total Bandung</th>
+                        <td>167.67 km<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <th>Bahasa Daerah</th>
+                        <td>Sunda</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
+</html>

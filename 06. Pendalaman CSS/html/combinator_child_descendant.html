@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child & Descendant Selector (Materi 05)</title>
+    <!-- APA: Menghubungkan file HTML dengan berkas CSS eksternal -->
+    <!-- KENAPA: Agar struktur halaman HTML terpisah rapi dengan dekorasi styling CSS -->
+    <link rel="stylesheet" href="../css/combinator_child_descendant.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Child & Descendant Selector (Materi 05)</h1>
+
+        <!-- 📚 RANGKUMAN MATERI -->
+        <div class="rangkuman">
+            <h3>📚 Rangkuman Teori</h3>
+            <ul>
+                <li>Child Selector (>): Menargetkan hanya elemen anak langsung (1 tingkat di bawah parent).</li>
+                <li>Descendant Selector (Spasi): Menargetkan seluruh keturunan elemen (anak, cucu, cicit).</li>
+            </ul>
+        </div>
+
+        <!-- 🛠️ AREA PRAKTEK -->
+        <h2>🛠️ Area Praktik</h2>
+        <div class="practice-area">
+            <div class="parent-box">
+          <p>Ini anak langsung dari parent-box (Terkena gaya child & descendant).</p>
+          <div class="inner-box">
+              <p>Ini cucu dari parent-box (Hanya terkena gaya descendant).</p>
+          </div>
+      </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Formatting Text</title>
+    <style>
+        body {
+            background-color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #334155;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .rangkuman {
+            background-color: #fef3c7;
+            border-left: 5px solid #d97706;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 0 6px 6px 0;
+            color: #78350f;
+        }
+        .rangkuman h3 {
+            margin-top: 0;
+            color: #92400e;
+        }
+        .rangkuman ul {
+            margin-left: 20px;
+        }
+        .rangkuman li {
+            margin-bottom: 8px;
+        }
+        h1 {
+            color: #1e293b;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #0f172a;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+        }
+        blockquote {
+            background-color: #f1f5f9;
+            border-left: 5px solid #64748b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+            font-style: italic;
+        }
+        pre {
+            background-color: #1e293b;
+            color: #f8fafc;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 0.95em;
+            margin: 15px 0;
+        }
+        figure {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            text-align: center;
+            background-color: #f8fafc;
+            display: inline-block;
+        }
+        figcaption {
+            margin-top: 8px;
+            font-size: 0.85em;
+            color: #64748b;
+            font-style: italic;
+        }
+        .practice-area {
+            border: 2px dashed #e2e8f0;
+            padding: 25px;
+            border-radius: 6px;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Block Formatting Text</h1>
+
+        <!-- 📚 RANGKUMAN MATERI -->
+        <div class="rangkuman">
+            <h3>📚 Rangkuman Teori (Block-Level Elements)</h3>
+            <ul>
+                <li><strong>Block-Level:</strong> Elemen yang selalu dimulai pada baris baru dan mengambil seluruh lebar layar yang tersedia (dari kiri ke kanan).</li>
+                <li><strong><code>&lt;blockquote&gt;</code>:</strong> Digunakan untuk menampilkan kutipan panjang. Secara default, browser akan memberikan margin kiri dan kanan pada elemen ini. Atribut <code>cite</code> dapat ditambahkan untuk melampirkan URL sumber kutipan.</li>
+                <li><strong><code>&lt;pre&gt;</code> (Preformatted Text):</strong> Digunakan untuk mempertahankan format teks asli. Karakter spasi, tab, dan baris baru (Enter) yang ditulis di editor kode akan ditampilkan persis sama di browser. Sering digunakan untuk menulis puisi, sajak, atau blok kode komputer.</li>
+                <li><strong><code>&lt;figure&gt;</code> & <code>&lt;figcaption&gt;</code>:</strong> Digunakan untuk membungkus konten media mandiri seperti gambar, foto, atau ilustrasi (<code>&lt;figure&gt;</code>), serta menyertakan teks keterangan/judul untuk media tersebut (<code>&lt;figcaption&gt;</code>).</li>
+            </ul>
+        </div>
+
+        <!-- 🛠️ AREA PRAKTEK -->
+        <h2>🛠️ Hasil Praktik</h2>
+        <div class="practice-area">
+            
+            <h3>1. Kutipan Panjang (Blockquote)</h3>
+            <blockquote cite="https://id.wikipedia.org/wiki/Situs_web">
+                <p>
+                    "Situs web (bahasa Inggris: website) adalah sekumpulan halaman web yang saling berhubungan yang umumnya berada pada peladen yang sama berisikan kumpulan informasi yang disediakan secara perorangan, kelompok, atau organisasi."
+                </p>
+            </blockquote>
+
+            <h3>2. Mempertahankan Format Teks (Preformatted Text)</h3>
+            <pre>
+                  SAJAK PUTIH
+
+Bersandar pada tari warna pelangi
+Kau depanku bertudung sutra senja
+Di hitam matamu kembang mawar dan melati
+Harum rambutmu mengalun bergelut senda
+
+Sepi menyanyi, malam dalam mendoa tiba
+Meriak muka air kolam jiwa
+Dan dalam dadaku memerdu lagu
+Menarik menari seluruh aku
+
+Hidup dari hidupku, pintu terbuka
+Selama matamu bagiku menengadah
+Selama kau darah mengalir dari luka
+Antara kita Mati datang tidak membelah...
+
+                  Karya: Chairil Anwar
+            </pre>
+
+            <h3>3. Ilustrasi & Caption (Figure & Figcaption)</h3>
+            <br>
+            <figure>
+                <img src="https://raw.githubusercontent.com/dicodingacademy/BelajarDasarPemrogramanWeb/099-shared-files/dicoding-logo.png" alt="Logo Dicoding" height="80px">
+                <figcaption>Gambar 1. Logo Resmi Dicoding Academy</figcaption>
+            </figure>
+
+        </div>
+    </div>
+</body>
+</html>

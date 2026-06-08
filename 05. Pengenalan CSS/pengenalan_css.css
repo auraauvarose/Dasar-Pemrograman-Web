@@ -1,0 +1,142 @@
+/* pengenalan_css.css */
+
+/* Reset Dasar */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f1f2f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2f3542;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Header */
+.doc-header {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+    border-top: 5px solid #2f3542;
+}
+
+.doc-header h1 {
+    color: #2f3542;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.doc-header p {
+    color: #747d8c;
+}
+
+/* Sections */
+.summary-section, .practice-section {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+}
+
+.summary-section h2, .practice-section h2 {
+    color: #2f3542;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #f1f2f6;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Cards */
+.theory-card {
+    background-color: #f8f9fa;
+    border-left: 4px solid #1e90ff;
+    padding: 15px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 20px;
+}
+
+.theory-card h3 {
+    color: #2f3542;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.theory-card ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.theory-card li {
+    margin-bottom: 6px;
+}
+
+/* Code Diagram */
+.code-diagram {
+    background-color: #2f3542;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 6px;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 1.05rem;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.code-diagram .selector {
+    color: #ff6b81;
+    font-weight: bold;
+}
+
+.code-diagram .property {
+    color: #70a1ff;
+}
+
+.code-diagram .value {
+    color: #2ed573;
+}
+
+code {
+    background-color: #f1f2f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, Monaco, monospace;
+    color: #ff4757;
+    font-size: 0.9em;
+}
+
+/* Practice Items */
+.practice-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e1e8ed;
+}
+
+.practice-item h3 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #747d8c;
+}
+
+/* External CSS Demo Target */
+.demo-external {
+    background-color: #d2f8d2;
+    color: #1b5e20;
+    padding: 10px;
+    border-radius: 4px;
+    border-left: 5px solid #2ed573;
+    font-weight: bold;
+}

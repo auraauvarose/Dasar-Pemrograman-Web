@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elemen Dasar HTML: Paragraf, Heading, List & Gambar</title>
+    <style>
+        body {
+            background-color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #334155;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .rangkuman {
+            background-color: #f0fdf4;
+            border-left: 5px solid #22c55e;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 0 6px 6px 0;
+            color: #14532d;
+        }
+        .rangkuman h3 {
+            margin-top: 0;
+            color: #166534;
+        }
+        .rangkuman ul {
+            margin-left: 20px;
+        }
+        .rangkuman li {
+            margin-bottom: 8px;
+        }
+        h1 {
+            color: #1e293b;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #0f172a;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            margin-top: 10px;
+        }
+        .practice-area {
+            border: 2px dashed #cbd5e1;
+            padding: 25px;
+            border-radius: 6px;
+            background-color: #fafafa;
+        }
+        code {
+            background-color: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #ef4444;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Elemen Dasar: Paragraf, Heading, List & Gambar</h1>
+
+        <!-- 📚 RANGKUMAN MATERI -->
+        <div class="rangkuman">
+            <h3>📚 Rangkuman Teori</h3>
+            <ul>
+                <li><strong>Paragraf (<code>&lt;p&gt;</code>):</strong> Tag block-level untuk menulis teks paragraf. Browser otomatis menambahkan ruang kosong (margin) sebelum dan sesudah elemen paragraf.</li>
+                <li><strong>Heading (<code>&lt;h1&gt;</code> sampai <code>&lt;h6&gt;</code>):</strong> Mendefinisikan judul halaman atau bagian. <code>&lt;h1&gt;</code> adalah judul paling utama (terbesar) dan <code>&lt;h6&gt;</code> adalah judul paling rendah (terkecil).</li>
+                <li><strong>Daftar (List):</strong>
+                    <ul>
+                        <li><strong>Unordered List (<code>&lt;ul&gt;</code>):</strong> Daftar tidak berurutan (bullet points).</li>
+                        <li><strong>Ordered List (<code>&lt;ol&gt;</code>):</strong> Daftar berurutan (nomor/abjad). Menggunakan atribut <code>type="..."</code> untuk menentukan jenis penomoran (<code>1</code>, <code>a</code>, <code>A</code>, <code>i</code>, <code>I</code>).</li>
+                        <li><strong>Nested List:</strong> Daftar bersarang (memasukkan elemen list baru di dalam tag <code>&lt;li&gt;</code>).</li>
+                    </ul>
+                </li>
+                <li><strong>Gambar (<code>&lt;img&gt;</code>):</strong> Elemen inline untuk menampilkan gambar. Tag ini bersifat *self-closing* (tidak butuh tag penutup). Atribut wajib:
+                    <ul>
+                        <li><code>src="..."</code>: Lokasi/URL gambar.</li>
+                        <li><code>alt="..."</code>: Deskripsi alternatif gambar jika gagal dimuat (sangat penting untuk aksesibilitas/SEO).</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 🛠️ AREA PRAKTEK -->
+        <h2>🛠️ Hasil Praktik Elemen Dasar</h2>
+        <div class="practice-area">
+            
+            <h3>1. Paragraf & Heading</h3>
+            <h1>Ini adalah Heading 1 (Utama)</h1>
+            <h2>Ini adalah Heading 2</h2>
+            <h3>Ini adalah Heading 3</h3>
+            <p>Ini adalah teks paragraf biasa. Elemen ini digunakan untuk menulis artikel atau deskripsi panjang.</p>
+
+            <hr style="border: 0; height: 1px; background: #e2e8f0; margin: 20px 0;">
+
+            <h3>2. Daftar Tidak Berurutan (Unordered List)</h3>
+            <ul>
+                <li>Bahan makanan</li>
+                <li>Peralatan mandi
+                    <ul>
+                        <li>Sabun Cair</li>
+                        <li>Sampo</li>
+                    </ul>
+                </li>
+                <li>Minuman dingin</li>
+            </ul>
+
+            <hr style="border: 0; height: 1px; background: #e2e8f0; margin: 20px 0;">
+
+            <h3>3. Daftar Berurutan (Ordered List)</h3>
+            <ol type="I">
+                <li>Langkah pertama: Siapkan bahan.</li>
+                <li>Langkah kedua: Nyalakan kompor.</li>
+                <li>Langkah ketiga: Rebus air hingga mendidih.
+                    <ol type="a">
+                        <li>Gunakan api sedang.</li>
+                        <li>Tutup wadah agar lebih cepat.</li>
+                    </ol>
+                </li>
+            </ol>
+
+            <hr style="border: 0; height: 1px; background: #e2e8f0; margin: 20px 0;">
+
+            <h3>4. Gambar</h3>
+            <p>Logo resmi Dicoding Academy:</p>
+            <img src="https://raw.githubusercontent.com/dicodingacademy/BelajarDasarPemrogramanWeb/099-shared-files/dicoding-logo.png" alt="Logo Resmi Dicoding" height="80px">
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir HTML & Input User</title>
+    <style>
+        body {
+            background-color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #334155;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .rangkuman {
+            background-color: #f5f3ff;
+            border-left: 5px solid #8b5cf6;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 0 6px 6px 0;
+            color: #5b21b6;
+        }
+        .rangkuman h3 {
+            margin-top: 0;
+            color: #4c1d95;
+        }
+        .rangkuman ul {
+            margin-left: 20px;
+        }
+        .rangkuman li {
+            margin-bottom: 8px;
+        }
+        h1 {
+            color: #1e293b;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #0f172a;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+        }
+        form {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            margin: 15px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        label {
+            font-weight: bold;
+            color: #334155;
+            font-size: 0.9em;
+        }
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            outline: none;
+            font-family: inherit;
+            font-size: 0.95em;
+            width: 100%;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+        }
+        button[type="submit"] {
+            background-color: #8b5cf6;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+        button[type="submit"]:hover {
+            background-color: #7c3aed;
+        }
+        .practice-area {
+            border: 2px dashed #e2e8f0;
+            padding: 25px;
+            border-radius: 6px;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Formulir HTML & Input User</h1>
+
+        <!-- 📚 RANGKUMAN MATERI -->
+        <div class="rangkuman">
+            <h3>📚 Rangkuman Teori Formulir</h3>
+            <ul>
+                <li><strong><code>&lt;form&gt;</code>:</strong> Elemen kontainer untuk mengumpulkan input pengguna. Atribut penting:
+                    <ul>
+                        <li><code>action="..."</code>: URL tujuan pengiriman data formulir.</li>
+                        <li><code>method="..."</code>: Cara pengiriman data. <code>get</code> (lewat URL, tidak aman untuk data sensitif) atau <code>post</code> (dikirim secara tertutup, aman untuk data sensitif/besar).</li>
+                    </ul>
+                </li>
+                <li><strong><code>&lt;label&gt;</code>:</strong> Memberikan judul label keterangan pada kolom input. Menggunakan atribut <code>for="..."</code> yang nilainya harus sama dengan <code>id</code> pada elemen input yang dituju (meningkatkan aksesibilitas).</li>
+                <li><strong>Atribut Validasi pada Input:</strong>
+                    <ul>
+                        <li><code>required</code>: Kolom input wajib diisi sebelum form dikirim.</li>
+                        <li><code>placeholder="..."</code>: Teks petunjuk abu-abu sebelum diisi.</li>
+                        <li><code>value="..."</code>: Nilai awal (default) dari kolom input.</li>
+                    </ul>
+                </li>
+                <li><strong>Jenis-jenis Tipe Input:</strong>
+                    <ul>
+                        <li><code>type="text"</code>: Input teks baris tunggal biasa.</li>
+                        <li><code>type="email"</code>: Input email (memiliki validasi format email otomatis).</li>
+                        <li><code>type="password"</code>: Karakter yang diketik akan disamarkan (bullet).</li>
+                        <li><code>type="date"</code>: Pemilih tanggal kalender bawaan browser.</li>
+                    </ul>
+                </li>
+                <li><strong><code>&lt;textarea&gt;</code>:</strong> Input teks baris ganda (multi-line) untuk deskripsi panjang atau alamat.</li>
+            </ul>
+        </div>
+
+        <!-- 🛠️ AREA PRAKTEK -->
+        <h2>🛠️ Hasil Praktik Formulir Pemesanan Hotel</h2>
+        <div class="practice-area">
+            
+            <form action="/submit-hotel" method="post">
+                <!-- Input Teks Biasa -->
+                <div class="form-group">
+                    <label for="fullName">Nama Lengkap:</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Masukkan nama lengkap Anda" required>
+                </div>
+
+                <!-- Input Email -->
+                <div class="form-group">
+                    <label for="emailUser">Alamat Email:</label>
+                    <input type="email" id="emailUser" name="emailUser" placeholder="nama@email.com" required>
+                </div>
+
+                <!-- Input Password -->
+                <div class="form-group">
+                    <label for="passwordUser">Kata Sandi Akun:</label>
+                    <input type="password" id="passwordUser" name="passwordUser" placeholder="Minimal 8 karakter" required>
+                </div>
+
+                <!-- Input Tanggal (Date) -->
+                <div class="form-group">
+                    <label for="checkInDate">Tanggal Check-In:</label>
+                    <input type="date" id="checkInDate" name="checkInDate" required>
+                </div>
+
+                <!-- Textarea (Multi-Line Input) -->
+                <div class="form-group">
+                    <label for="specialRequest">Permintaan Khusus (Opsional):</label>
+                    <textarea id="specialRequest" name="specialRequest" rows="4" placeholder="Contoh: Kamar bebas asap rokok, lantai atas..."></textarea>
+                </div>
+
+                <!-- Tombol Submit -->
+                <button type="submit">Kirim Pemesanan</button>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

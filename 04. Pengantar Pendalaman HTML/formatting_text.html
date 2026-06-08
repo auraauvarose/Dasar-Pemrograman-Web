@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatting Text: Inline Elements</title>
+    <style>
+        body {
+            background-color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #334155;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .rangkuman {
+            background-color: #eff6ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 0 6px 6px 0;
+        }
+        .rangkuman h3 {
+            margin-top: 0;
+            color: #1e40af;
+        }
+        .rangkuman ul {
+            margin-left: 20px;
+        }
+        .rangkuman li {
+            margin-bottom: 8px;
+        }
+        h1 {
+            color: #1e293b;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #0f172a;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+        code {
+            background-color: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #ef4444;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 0.9em;
+        }
+        .practice-area {
+            border: 2px dashed #e2e8f0;
+            padding: 20px;
+            border-radius: 6px;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Formatting Text: Inline Elements</h1>
+
+        <!-- 📚 RANGKUMAN MATERI -->
+        <div class="rangkuman">
+            <h3>📚 Rangkuman Teori</h3>
+            <ul>
+                <li><strong>Anchor (<code>&lt;a&gt;</code>):</strong> Digunakan untuk membuat tautan (hyperlink). Atribut penting:
+                    <ul>
+                        <li><code>href</code>: Alamat tujuan (URL, email `mailto:`, telepon `tel:`, atau ID internal `#`).</li>
+                        <li><code>target="_blank"</code>: Membuka tautan di tab baru.</li>
+                        <li><code>download</code>: Mengunduh file dari tautan tersebut.</li>
+                        <li><code>title</code>: Menampilkan deskripsi melayang (tooltip).</li>
+                    </ul>
+                </li>
+                <li><strong>Format Penekanan (Emphasis):</strong>
+                    <ul>
+                        <li><code>&lt;em&gt;</code>: Memberikan penekanan teks (secara visual *italic* / miring).</li>
+                        <li><code>&lt;strong&gt;</code>: Memberikan penekanan kuat (secara visual **bold** / tebal).</li>
+                        <li><code>&lt;mark&gt;</code>: Menandai/menyorot teks (seperti memakai stabilo).</li>
+                    </ul>
+                </li>
+                <li><strong>Lainnya:</strong>
+                    <ul>
+                        <li><code>&lt;sub&gt;</code>: Membuat subscript (teks di bawah, misal: H<sub>2</sub>O).</li>
+                        <li><code>&lt;sup&gt;</code>: Membuat superscript (teks di atas, pangkat, misal: E=mc<sup>2</sup>).</li>
+                        <li><code>&lt;q&gt;</code>: Menambahkan kutipan pendek (ditandai dengan tanda petik dua ganda secara otomatis oleh browser).</li>
+                        <li><code>&lt;dfn&gt;</code>: Mendefinisikan istilah baru.</li>
+                        <li><code>&lt;cite&gt;</code>: Menyebutkan sumber kutipan (buku, website, dll.).</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 🛠️ AREA PRAKTEK -->
+        <h2>🛠️ Hasil Praktik</h2>
+        <div class="practice-area">
+            <h3>1. Demo Anchor (Link)</h3>
+            <p>Hubungi kami di:</p>
+            <ul>
+                <li><a href="https://example.com" target="_blank" title="Kunjungi Website Kami">Website Utama (Tab Baru)</a></li>
+                <li><a href="mailto:info@example.com">Kirim Email</a></li>
+                <li><a href="tel:+62123456">Telepon Layanan</a></li>
+                <li><a href="#address">Lihat Alamat Kantor</a></li>
+            </ul>
+
+            <br>
+
+            <h3>2. Demo Emphasized & Formatting Text</h3>
+            <p>Ini adalah teks biasa.</p>
+            <p>Ini adalah <em>teks penting dengan em (penekanan / italic)</em>.</p>
+            <p>Ini adalah <strong>teks kuat dengan strong (tebal)</strong>.</p>
+            <p>Ini adalah <mark>teks yang disorot dengan mark</mark>.</p>
+            <p>Ini adalah <small>teks berukuran kecil dengan small</small>.</p>
+            <p>Ini adalah <del>teks yang dicoret dengan del (dihapus)</del> dan ini adalah <ins>teks pengganti dengan ins (ditambahkan)</ins>.</p>
+            <p>Ini adalah <q>kutipan pendek menggunakan tag q</q>.</p>
+
+            <br>
+
+            <h3>3. Demo Citation & Term Definition</h3>
+            <p>Menurut <cite>Wikipedia</cite>, <dfn>HTML</dfn> adalah bahasa markup standar yang digunakan untuk membuat dokumen web.</p>
+
+            <br>
+
+            <h3>4. Demo Subscript & Superscript</h3>
+            <p><strong>Kimia:</strong> Rumus molekul air adalah H<sub>2</sub>O.</p>
+            <p><strong>Fisika:</strong> Teorema relativitas Einstein adalah E = mc<sup>2</sup>.</p>
+            
+            <br>
+            
+            <p id="address" style="background-color: #f1f5f9; padding: 10px; border-radius: 4px;"><strong>Alamat Kantor:</strong> Jl. Contoh No. 123, Jakarta (Target dari link jangkar #address)</p>
+        </div>
+    </div>
+</body>
+</html>

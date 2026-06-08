@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rangkuman Teori Pendahuluan Web</title>
+    <link rel="stylesheet" href="rangkuman_pendahuluan.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header class="main-header">
+            <h1>📚 Rangkuman Teori: Pendahuluan Web</h1>
+            <p>Memahami konsep dasar sebelum menulis kode HTML dan CSS</p>
+        </header>
+
+        <main class="grid-container">
+            <!-- 1. Pengantar Web Programming -->
+            <section class="card">
+                <h2>1. Pengantar Web Programming</h2>
+                <p><strong>Web Programming</strong> adalah proses menulis instruksi (kode) yang dijalankan oleh komputer untuk membuat halaman web dapat diakses dan interaktif.</p>
+                <div class="concept-box green">
+                    <strong>Tiga Pilar Web:</strong>
+                    <ul>
+                        <li><strong>HTML:</strong> Kerangka & struktur konten (Tulang).</li>
+                        <li><strong>CSS:</strong> Desain & tampilan visual (Baju/Kulit).</li>
+                        <li><strong>Javascript:</strong> Logika & interaktivitas (Otot/Otak).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 2. Cara Internet Bekerja -->
+            <section class="card">
+                <h2>2. Cara Internet Bekerja</h2>
+                <p>Internet adalah jaringan global komputer raksasa yang saling terhubung satu sama lain.</p>
+                <div class="concept-box blue">
+                    <strong>Alur Singkat Request Web:</strong>
+                    <ol>
+                        <li>Kamu mengetik URL (misal: <code>google.com</code>) di browser.</li>
+                        <li>Browser meminta bantuan <strong>DNS (Domain Name System)</strong> untuk menerjemahkan nama domain ke alamat IP (seperti buku telepon internet).</li>
+                        <li>Browser mengirimkan <strong>HTTP Request</strong> ke Web Server menggunakan alamat IP tersebut.</li>
+                        <li>Web Server memproses permintaan dan mengirimkan kembali <strong>HTTP Response</strong> berisi berkas HTML/CSS/JS.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- 3. Website vs Halaman Web -->
+            <section class="card">
+                <h2>3. Website & Jenis Halaman Web</h2>
+                <p><strong>Website</strong> adalah kumpulan dari halaman-halaman web yang saling terhubung di bawah satu nama domain.</p>
+                <div class="comparison-grid">
+                    <div class="comp-box">
+                        <strong>Web Statis</strong>
+                        <ul>
+                            <li>Kontennya tetap (tidak berubah-ubah).</li>
+                            <li>Dibuat hanya dengan HTML dan CSS.</li>
+                            <li>Contoh: Web portofolio, landing page produk sederhana.</li>
+                        </ul>
+                    </div>
+                    <div class="comp-box">
+                        <strong>Web Dinamis</strong>
+                        <ul>
+                            <li>Konten berubah-ubah secara realtime (tergantung database/user).</li>
+                            <li>Menggunakan Javascript, PHP, Python, Database.</li>
+                            <li>Contoh: Social Media (Facebook), E-commerce.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Web Server & Browser -->
+            <section class="card">
+                <h2>4. Web Server & Web Browser</h2>
+                <div class="concept-box orange">
+                    <p><strong>Web Server:</strong> Komputer khusus yang menyimpan file website (HTML, CSS, JS) dan bertugas mendengarkan serta merespon permintaan dari komputer lain (klien) lewat internet.</p>
+                    <p style="margin-top: 10px;"><strong>Web Browser:</strong> Aplikasi di perangkat kita (seperti Chrome, Firefox, Safari) yang bertugas membaca kode HTML/CSS/JS dari server dan menerjemahkannya menjadi tampilan visual yang kita lihat.</p>
+                </div>
+            </section>
+
+            <!-- 5. Anatomi Website -->
+            <section class="card full-width">
+                <h2>5. Anatomi Layout Website</h2>
+                <p>Umumnya, halaman website memiliki struktur tata letak dasar sebagai berikut:</p>
+                <div class="layout-demo">
+                    <div class="layout-header">Header (Judul, Logo, Navigasi Menu)</div>
+                    <div class="layout-middle">
+                        <div class="layout-main">Main Content (Artikel, Konten Utama)</div>
+                        <div class="layout-sidebar">Sidebar (Menu Samping, Widget, Iklan)</div>
+                    </div>
+                    <div class="layout-footer">Footer (Hak Cipta, Kontak, Link Sosial Media)</div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

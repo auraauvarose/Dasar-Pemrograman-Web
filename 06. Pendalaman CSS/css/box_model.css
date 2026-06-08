@@ -1,0 +1,76 @@
+/* box_model.css */
+
+body {
+    /* APA: Mengatur latar belakang halaman */
+    /* KENAPA: Memberikan kenyamanan visual dan kontras yang pas */
+    background-color: #f1f2f6;
+    font-family: Arial, sans-serif;
+    color: #2f3542;
+    padding: 30px;
+    line-height: 1.6;
+}
+
+.container {
+    /* APA: Membungkus konten utama di tengah layar */
+    /* KENAPA: Menjaga kerapian konten agar mudah dibaca */
+    background-color: #ffffff;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.rangkuman {
+    /* APA: Kotak info rangkuman teori */
+    /* KENAPA: Memberikan penanda visual yang menonjol untuk belajar teori */
+    background-color: #eff6ff;
+    border-left: 5px solid #3b82f6;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 0 6px 6px 0;
+    color: #1e40af;
+}
+
+.rangkuman h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.rangkuman ul {
+    margin-left: 20px;
+}
+
+.rangkuman li {
+    margin-bottom: 6px;
+}
+
+h1 {
+    text-align: center;
+    color: #2f3542;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+}
+
+h2 {
+    color: #747d8c;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.practice-area {
+    /* APA: Pembatas area praktik */
+    /* KENAPA: Memisahkan secara visual antara rangkuman teori dengan elemen uji coba */
+    border: 2px dashed #cbd5e1;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.box-model-demo {
+    /* APA: Mengaktifkan border solid */
+    /* KENAPA: Membuktikan secara visual batas luar area content dan padding */
+    border: 2px solid #2f3542;
+    background-color: #f1f2f6;
+    padding: 10px;
+}
