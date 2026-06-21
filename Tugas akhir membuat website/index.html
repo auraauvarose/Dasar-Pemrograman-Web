@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CartBook</title>
+  <meta name="description" content="Website katalog buku sederhana untuk tugas akhir belajar pemrograman web dasar.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="navbar-container">
+      <a href="#" class="logo">CartBook</a>
+
+      <nav id="main-navigation">
+        <ul>
+          <li><a href="#">Beranda</a></li>
+          <li><a href="#katalog">Katalog Buku</a></li>
+          <li><a href="#about-creator">Tentang Saya</a></li>
+          <li>
+            <a href="https://www.dicoding.com/users/auraauvarose" class="dicoding-profile-link" target="_blank" rel="noopener noreferrer">
+              Profil Dicoding
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN SECTION -->
+  <main>
+    <article id="katalog">
+      <section class="hero-banner">
+        <span class="hero-tag" style="background-color: #0056b3; color: white; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: bold; text-transform: uppercase;">Beranda</span>
+        <h1 style="margin-top: 10px;">Temukan Buku Impian &amp; Kembangkan Potensi Anda</h1>
+        <p>Selamat datang di CartBook. Ini adalah halaman katalog buku sederhana yang menampilkan beberapa referensi buku terpopuler di bidang teknologi, fiksi, bisnis, dan sains.</p>
+      </section>
+
+      <section class="catalog-section">
+        <h2>Daftar Buku Pilihan</h2>
+        <div class="book-grid">
+          <div class="book-card">
+            <img src="assets/book_tech.jpg" alt="Sampul Pemrograman Web Modern" class="book-cover">
+            <div class="book-info">
+              <div>
+                <span class="book-tag technology">teknologi</span>
+                <h3 class="book-title">Pemrograman Web Modern dengan HTML &amp; CSS</h3>
+                <p class="book-author">Oleh auvarose</p>
+                <div class="book-rating">★ 4.9</div>
+              </div>
+              <div class="book-price-row">
+                <span class="book-price">Rp 999.999.999</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Buku 2 -->
+          <div class="book-card">
+            <img src="assets/book_fiction.jpg" alt="Sampul Rembulan Tenggelam di Wajahmu" class="book-cover">
+            <div class="book-info">
+              <div>
+                <span class="book-tag fiction">fiksi</span>
+                <h3 class="book-title">Rembulan Tenggelam di Wajahmu</h3>
+                <p class="book-author">Oleh Tere Liye</p>
+                <div class="book-rating">★ 4.8</div>
+              </div>
+              <div class="book-price-row">
+                <span class="book-price">Rp 999.999.999</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Buku 3 -->
+          <div class="book-card">
+            <img src="assets/book_biz.jpg" alt="Sampul Zero to One" class="book-cover">
+            <div class="book-info">
+              <div>
+                <span class="book-tag business">bisnis</span>
+                <h3 class="book-title">Zero to One: Membangun Masa Depan</h3>
+                <p class="book-author">Oleh Peter Thiel</p>
+                <div class="book-rating">★ 4.7</div>
+              </div>
+              <div class="book-price-row">
+                <span class="book-price">Rp 999.999.999</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Buku 4 -->
+          <div class="book-card">
+            <img src="assets/book_science.jpg" alt="Sampul Kosmos" class="book-cover">
+            <div class="book-info">
+              <div>
+                <span class="book-tag science">sains</span>
+                <h3 class="book-title">Kosmos: Penjelajahan Alam Semesta</h3>
+                <p class="book-author">Oleh Carl Sagan</p>
+                <div class="book-rating">★ 4.9</div>
+              </div>
+              <div class="book-price-row">
+                <span class="book-price">Rp 999.999.999</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </article>
+
+    <!-- ELEMEN ASIDE -->
+    <aside id="about-creator">
+      <div class="profile-avatar-wrapper">
+        <img src="assets/profile.jpg" alt="Foto Profil Aura Auvarose" class="profile-avatar" id="profile-img">
+      </div>
+      <p class="profile-bio">
+        Pemrograman web dasar di Dicoding Indonesia.
+      </p>
+      <div class="profile-divider"></div>
+      <div class="profile-stats">
+        <div class="stat-item">
+          <span class="stat-val">3+</span>
+          <span class="stat-lbl">Proyek</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">Kelas 2</span>
+          <span class="stat-lbl">Dicoding</span>
+        </div>
+      </div>
+  </main>
+
+  <!-- FOOTER SECTION -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="#" class="logo" style="font-size: 20px;">CartBook</a>
+        <p>tugas akhir Dicoding.</p>
+      </div>
+
+      <ul class="footer-links">
+        <li><a href="#">Beranda</a></li>
+        <li><a href="#katalog">Katalog Buku</a></li>
+        <li><a href="https://www.dicoding.com" target="_blank" rel="noopener noreferrer">Dicoding</a></li>
+      </ul>
+
+      <div class="footer-copy">
+        <p>&copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
